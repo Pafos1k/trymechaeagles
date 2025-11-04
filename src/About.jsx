@@ -3,7 +3,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import DomeGallery from "./components/DomeGallery";
 import ShinyText from "./components/ShinyText";
-import "./about.css";
+import "./About.css";
 
 export default function About() {
   const [active, setActive] = useState("who");
