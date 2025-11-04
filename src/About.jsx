@@ -13,7 +13,7 @@ export default function About() {
   }, []);
 
   const content = {
-    who: `MechaEagles is a student-run team that designs, manufactures, and races.`,
+    who: `MechaEagles is a student-run team that designs, manufactures, and races high-performance robotic systems. We compete in national and international competitions, pushing the boundaries of engineering innovation while developing the next generation of technical leaders. .`,
     what: `We develop everything in-house — chassis, powertrain, electronics, aerodynamics, and software — combining engineering innovation with hands-on craftsmanship.`,
     ethos: `We believe in collaboration, curiosity, and pushing the limits of student engineering. Every failure is an opportunity to learn.`,
     legacy: `Our legacy is built on mentorship, persistence, and the drive to create something extraordinary together.`,

@@ -1,18 +1,17 @@
 import React, { useEffect } from "react";
 import Header from "/src/components/Header.jsx";
 import Footer from "/src/components/Footer.jsx";
+import ShinyText from "/src/components/ShinyText.jsx";
 import "./Sponsors.css";
 
 export default function Sponsors() {
   useEffect(() => {
     window.scrollTo(0, 0);
- 
-    // Background & theme setup
+
     document.documentElement.style.backgroundColor = "#000";
     document.body.style.backgroundColor = "#000";
     document.body.style.color = "#e7e7e7";
 
-    // Reveal animations
     let io = null;
     function ensureObserver() {
       if (io) return io;
@@ -99,6 +98,40 @@ export default function Sponsors() {
     }
   }, []);
 
+  // 🖼️ Sponsor Data
+  const sponsors = [
+    {
+      name: "Premier Partner",
+      desc: "Leading innovation in robotics and engineering excellence",
+      image: "/public/SAE.png",
+    },
+    {
+      name: "Technology Leader",
+      desc: "Advancing mechanical engineering through cutting-edge solutions",
+      image: "/public/NASA.png",
+    },
+    {
+      name: "Innovation Partner",
+      desc: "Supporting the next generation of engineers and innovators",
+      image: "/public/SOLIDWORK.png",
+    },
+    {
+      name: "Strategic Ally",
+      desc: "Empowering teams with resources and technical expertise",
+      image: "/public/IGOS.png",
+    },
+    {
+      name: "Technical Partner",
+      desc: "Providing state-of-the-art tools and manufacturing support",
+      image: "/public/FUSION365.png",
+    },
+    {
+      name: "Community Supporter",
+      desc: "Building the future through educational partnerships",
+      image: "/public/BCEngeeniring.png",
+    },
+  ];
+
   return (
     <div className="sponsors-page">
       <Header fixed={false} />
@@ -108,41 +141,35 @@ export default function Sponsors() {
           <section className="sponsors-hero reveal">
             <h1 className="sponsors-title">OUR SPONSORS</h1>
             <p className="sponsors-subtitle">
-              Powering Innovation Through Partnership
+              <ShinyText
+                text="Powering Innovation Through Partnership"
+                color1="#ffffff"
+                speed={4}
+              />
             </p>
           </section>
 
+          {/* 🔥 Sponsor Grid */}
           <section className="sponsors-grid">
-            {[...Array(7)].map((_, i) => (
+            {sponsors.map((s, i) => (
               <div className="sponsor-card reveal" key={i}>
                 <div className="sponsor-card-inner">
                   <div className="sponsor-logo-container">
-                    <div className="sponsor-logo-placeholder">
-                      <span className="sponsor-number">SPONSOR {i + 1}</span>
-                    </div>
+                    <img
+                      src={s.image}
+                      alt={s.name}
+                      className="sponsor-logo"
+                      loading="lazy"
+                    />
                   </div>
                   <div className="sponsor-info">
-                    <h3 className="sponsor-name">
-                      {[
-                        "Premier Partner",
-                        "Technology Leader",
-                        "Innovation Partner",
-                        "Strategic Ally",
-                        "Industry Leader",
-                        "Technical Partner",
-                        "Community Supporter",
-                      ][i]}
-                    </h3>
+                    <h3 className="sponsor-name">{s.name}</h3>
                     <p className="sponsor-description">
-                      {[
-                        "Leading innovation in robotics and engineering excellence",
-                        "Advancing mechanical engineering through cutting-edge solutions",
-                        "Supporting the next generation of engineers and innovators",
-                        "Empowering teams with resources and technical expertise",
-                        "Driving excellence in competitive robotics and STEM education",
-                        "Providing state-of-the-art tools and manufacturing support",
-                        "Building the future through educational partnerships",
-                      ][i]}
+                      <ShinyText
+                        text={s.desc}
+                        color1="#ffffff"
+                        speed={5}
+                      />
                     </p>
                   </div>
                 </div>
@@ -154,9 +181,14 @@ export default function Sponsors() {
             <div className="cta-content">
               <h2 className="cta-title">BECOME A SPONSOR</h2>
               <p className="cta-text">
-                Join us in shaping the future of robotics and engineering
+                <ShinyText
+                text="Join us in shaping the future of robotics and engineering"
+                speed={3}
+                />
               </p>
-              <button className="cta-button">GET IN TOUCH</button>
+              <button className="cta-button">
+                <span className="cta-button-inner">SPONSOR US</span>
+              </button>
             </div>
           </section>
         </div>
