@@ -97,22 +97,6 @@ export default function Sponsors() {
         setTimeout(() => (this.style.animation = ""), 500);
       });
     }
-
-    // Back to top button
-    const topButton = document.getElementById("backToTop");
-    const handleScroll = () => {
-      if (!topButton) return;
-      if (window.scrollY > 400) topButton.classList.add("show");
-      else topButton.classList.remove("show");
-    };
-    window.addEventListener("scroll", handleScroll);
-    topButton?.addEventListener("click", () =>
-      window.scrollTo({ top: 0, behavior: "smooth" })
-    );
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
   }, []);
 
   return (
@@ -179,10 +163,6 @@ export default function Sponsors() {
       </main>
 
       <Footer />
-
-      <button id="backToTop" aria-label="Back to top">
-        ↑
-      </button>
     </div>
   );
 }
