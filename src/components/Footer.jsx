@@ -16,7 +16,7 @@ const Footer = () => {
         <div className="footer-left">
           <h2 className="footer-title">MECHAEAGLES</h2>
           <p className="footer-address">
-            140 COMMONWEALTH AVE, CHESTNUT HILL, MA 02467
+            EAGLES DON'T JUST FLY—THEY RACE.
           </p>
           <p className="footer-credits">
             CRAFTED BY{' '}
