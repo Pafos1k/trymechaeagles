@@ -103,32 +103,32 @@ export default function Sponsors() {
     {
       name: "Premier Partner",
       desc: "Leading innovation in robotics and engineering excellence",
-      image: "/public/SAE.png",
+      image: "/SAE.png",
     },
     {
       name: "Technology Leader",
       desc: "Advancing mechanical engineering through cutting-edge solutions",
-      image: "/public/NASA.png",
+      image: "/NASA.png",
     },
     {
       name: "Innovation Partner",
       desc: "Supporting the next generation of engineers and innovators",
-      image: "/public/SOLIDWORK.png",
+      image: "/SOLIDWORK.png",
     },
     {
       name: "Strategic Ally",
       desc: "Empowering teams with resources and technical expertise",
-      image: "/public/IGOS.png",
+      image: "/IGOS.png",
     },
     {
       name: "Technical Partner",
       desc: "Providing state-of-the-art tools and manufacturing support",
-      image: "/public/FUSION365.png",
+      image: "/FUSION365.png",
     },
     {
       name: "Community Supporter",
       desc: "Building the future through educational partnerships",
-      image: "/public/BCEngeeniring.png",
+      image: "/BCEngeeniring.png",
     },
   ];
 
@@ -149,7 +149,7 @@ export default function Sponsors() {
             </p>
           </section>
 
-          {/* 🔥 Sponsor Grid */}
+
           <section className="sponsors-grid">
             {sponsors.map((s, i) => (
               <div className="sponsor-card reveal" key={i}>
