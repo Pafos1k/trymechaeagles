@@ -1,0 +1,176 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;700&display=swap");
+
+/* ====== BASE HEADER CONTAINER ====== */
+.site-header-container {
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  font-family: "Roboto Slab", serif;
+  background: transparent !important;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* Fixed header for all non-home pages */
+.site-header-container.header-fixed {
+  position: fixed !important;
+  z-index: 9999;
+}
+
+/* Relative header (for home page with transparent overlay) */
+.site-header-container.header-relative {
+  position: absolute !important;
+  z-index: 70 !important;
+  pointer-events: auto;
+}
+
+/* ====== HEADER LAYOUT ====== */
+.site-header-container header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  padding: 0.6rem 2rem;
+  background: transparent !important;
+  box-sizing: border-box;
+  pointer-events: auto;
+}
+
+/* ====== LOGO ====== */
+.site-header-container .logo {
+  margin-left: 0.5rem;
+  width: 150px;
+  justify-self: start;
+  filter: brightness(0.55) grayscale(25%);
+  opacity: 0.7;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.site-header-container .logo:hover {
+  filter: brightness(1) grayscale(0%);
+  opacity: 1;
+}
+
+/* ====== NAVIGATION ====== */
+.site-header-container nav {
+  display: flex;
+  align-items: center;
+  gap: 1.7rem;
+  justify-self: center;
+  z-index: 50;
+}
+
+.site-header-container nav a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: #d8d8d8;
+  border-radius: 30px;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 15px rgba(185, 185, 185, 0.95);
+  transition: all 0.3s ease;
+}
+
+.site-header-container nav a:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+/* ====== CONTACT US TAG (animated pill) ====== */
+.site-header-container .contact-tag-box {
+  position: relative;
+  width: 8rem;
+  height: 2.5rem;
+  border-radius: 50px;
+  background: linear-gradient(
+    90deg,
+    #7b7b7b,
+    #e5e5e5,
+    #7b7b7b,
+    #cdcccc,
+    #8d8d8d
+  );
+  background-size: 200%;
+  animation: headerGradient 2.5s linear infinite;
+  padding: 3px;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.25);
+}
+
+.site-header-container .contact-tag {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.05);
+}
+
+.site-header-container .contact-tag:hover {
+  color: #8a8a8a;
+}
+
+/* glowing dot inside */
+.site-header-container .contact-tag .dot {
+  width: 6px;
+  height: 6px;
+  background-color: #d5d5d5;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #fcfcfc;
+}
+
+/* ====== GRADIENT ANIMATION ====== */
+@keyframes headerGradient {
+  to {
+    background-position: 150%;
+  }
+}
+
+/* ====== BACKDROP / SHADOW ====== */
+#react-header > header,
+.main-header {
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(4px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 800px) {
+  .site-header-container header {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    row-gap: 1rem;
+    padding: 1rem;
+  }
+
+  .site-header-container nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .site-header-container .contact-tag-box {
+    width: 8rem;
+  }
+}
+
+/* padding for fixed header */
+body:has(.header-fixed) {
+  padding-top: 120px;
+}

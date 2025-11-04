@@ -1,80 +1,142 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
+import { motion, useInView } from 'framer-motion';
 import LightRays from './LightRays';
 import ShinyText from './components/ShinyText';
 import RollingGallery from './components/RollingGallery';
-
+import LogoLoop from './components/LogoLoop';
+import SlidingCarHorizontal from './components/SlidingCarHorizontal';
+import ScrollSequence from './components/ScrollSequence';
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 const App = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
   return (
-    <div className="w-full h-screen relative bg-black flex justify-center items-center overflow-hidden">
-      {/* --- BACKGROUND EFFECT --- */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <LightRays
-          raysOrigin="top-center"
-          raysColor="white"
-          raysSpeed={0.9}
-          lightSpread={0.9}
-          rayLength={2.8}
-          colorsaturation={0.8}
-          fadeDistance={1.2}
-          followMouse={true}
-          mouseInfluence={0.1}
-          noiseAmount={0}
-          distortion={0.05}
-          className="custom-rays"
-        />
-      </div>
+    <div className="w-full min-h-screen relative bg-black">
+      {/* --- HEADER (outside everything else) --- */}
+      <Header />
 
-      {/* --- GALLERY (positioned absolutely) --- */}
-      <RollingGallery />
+      {/* --- FIRST SECTION (Hero) --- */}
+      <section className="w-full h-screen relative flex justify-center items-center overflow-hidden">
+        {/* --- BACKGROUND EFFECT --- */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <LightRays
+            raysOrigin="top-center"
+            raysColor="white"
+            raysSpeed={0.9}
+            lightSpread={0.9}
+            rayLength={2.8}
+            saturation={0.8}
+            fadeDistance={1.2}
+            followMouse={true}
+            mouseInfluence={0.1}
+            noiseAmount={0}
+            distortion={0.05}
+            className="custom-rays"
+          />
+        </div>
 
-      {/* --- MAIN CONTAINER --- */}
-      <div className="container relative z-50">
-        <header className="flex justify-between items-center w-full py-6 px-0 relative z-50">
-          <img src="/eagle.png" alt="Logo" width="135" className="logo" />
+        {/* --- GALLERY (positioned absolutely) --- */}
+        <RollingGallery />
 
-          <nav className="flex space-x-6 relative z-[60]">
-            <a href="#" className="text-white hover:text-yellow-400 transition">HOME</a>
-            <a href="#" className="text-white hover:text-yellow-400 transition">ABOUT</a>
-            <a href="#" className="text-white hover:text-yellow-400 transition">PROJECTS</a>
-            <a href="#" className="text-white hover:text-yellow-400 transition">TEAM</a>
-          </nav>
+        {/* --- MAIN CONTAINER (no Header here) --- */}
+        <div className="container relative z-50">
+          <main className="relative z-40">
+            <div className="content text-white">
+              <div className="tag-box">
+                <div className="tag">INTRODUCING</div>
+              </div>
 
-          <div className="tag-box contact-tag-box relative z-[60]">
-            <div className="tag contact-tag">
-              <span className="dot"></span> CONTACT US
+              <h1 className="text-5xl font-bold mb-4 leading-tight">
+                BOSTON COLLEGE<br />
+                FIRST SAE BAJA <br />
+                RACING CLUB
+              </h1>
+
+              <ShinyText
+                text="Follow our journey as we take on this exciting challenge, push our engineering skills, and bring our vision to life."
+                disabled={false}
+                speed={3}
+                className="description text"
+              />
+
+              <div className="buttons">
+                <a href="#about" className="btn-get-started">
+                  JOIN US
+                </a>
+              </div>
             </div>
-          </div>
-        </header>
+          </main>
+        </div>
+      </section>
 
-        <main className="relative z-40">
-          <div className="content text-white">
-            <div className="tag-box">
-              <div className="tag">INTRODUCING</div>
-            </div>
+      {/* --- SPONSORS SECTION WITH LOGO LOOP --- */}
+      <section className="sponsors-section">
+        <div className="sponsors-section__container">
+          <div className="sponsors-section__spacer"></div>
+          <p className="sponsors-section__label">Powering Mechaegles</p>
+          <LogoLoop
+            logos={[
+              { src: "/SAE.png", href: "#" },
+              { src: "/FUSION.png", href: "#" },
+              { src: "/NASA.png", href: "#" },
+              { src: "/IGOS.png", href: "#" },
+              { src: "/BCEngeeniring.png", href: "#" },
+              { src: "/SOLIDWORK.png", href: "#" },
+            ]}
+            speed={75}
+            direction="left"
+            logoHeight={140}
+            gap={28}
+            pauseOnHover={true}
+            scaleOnHover={true}
+            ariaLabel="Our sponsors"
+          />
+        </div>
+      </section>
 
-            <h1 className="text-5xl font-bold mb-4 leading-tight">
-              BOSTON COLLEGE<br />
-              FIRST SAE BAJA <br />
-              RACING CLUB
-            </h1>
+      <ScrollSequence />
 
-            <ShinyText
-              text="Follow our journey as we take on this exciting challenge, push our engineering skills, and bring our vision to life."
-              disabled={false}
-              speed={3}
-              className="description text-lg max-w-xl mb-6"
-            />
+      <SlidingCarHorizontal imageSrc="/BajaSide.png" alt="Baja Car" />
+      
+      <section className="specs-section">
+        <div className="spec-item">
+          <img src="/BajaFront.png" alt="front" className="spec-image" />
+          <h2 className="spec-title">ACCELERATION</h2>
+          <ShinyText 
+            text="0-30 mph in 2s" 
+            disabled={false}
+            speed={2}
+            className="spec-text"
+          />
+        </div>
 
-            <div className="buttons">
-              <a
-                href="#"
-                className="btn-get-started bg-yellow-500 text-black px-6 py-3 rounded-xl font-semibold hover:bg-yellow-400 transition"
-              >JOIN US</a>
-            </div>
-          </div>
-        </main>
-      </div>
+        <div className="spec-item">
+          <img src="/BajaSide.png" alt="side" className="spec-image" />
+          <h2 className="spec-title">TOP SPEED</h2>
+          <ShinyText 
+            text="50 mph" 
+            disabled={false}
+            speed={2}
+            className="spec-text"
+          />
+        </div>
+
+        <div className="spec-item">
+          <img src="/BajaBack.png" alt="rear" className="spec-image" />
+          <h2 className="spec-title">WEIGHT</h2>
+          <ShinyText 
+            text="197 kg" 
+            disabled={false}
+            speed={2}
+            className="spec-text"
+          />
+        </div>
+      </section>
+      <Footer/>
     </div>
   );
 };

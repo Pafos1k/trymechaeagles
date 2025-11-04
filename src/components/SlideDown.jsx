@@ -1,6 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from "react";
 
-export default function SlideDown({ children, threshold = 0.08, rootMargin = '0px', className = '' }) {
+export default function SlideDown({
+  children,
+  threshold = 0.08,
+  rootMargin = "0px",
+  className = "",
+}) {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
 
@@ -9,8 +14,8 @@ export default function SlideDown({ children, threshold = 0.08, rootMargin = '0p
     if (!el) return;
 
     const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
+      (entries) => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setVisible(true);
             observer.unobserve(el);
@@ -31,7 +36,7 @@ export default function SlideDown({ children, threshold = 0.08, rootMargin = '0p
     const t = setTimeout(() => {
       // if IntersectionObserver didn't flip visible within 200ms, show anyway
       if (!visible) {
-        console.debug('SlideDown: fallback -> set visible');
+        console.debug("SlideDown: fallback -> set visible");
         setVisible(true);
       }
     }, 200);
@@ -39,7 +44,12 @@ export default function SlideDown({ children, threshold = 0.08, rootMargin = '0p
   }, [visible]);
 
   return (
-    <div ref={ref} className={`slide-down ${visible ? 'slide-down--visible' : ''} ${className}`.trim()}>
+    <div
+      ref={ref}
+      className={`slide-down ${
+        visible ? "slide-down--visible" : ""
+      } ${className}`.trim()}
+    >
       {children}
     </div>
   );

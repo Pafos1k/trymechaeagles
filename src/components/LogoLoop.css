@@ -1,5 +1,4 @@
 
-
 .logoloop {
   position: relative;
   overflow-x: hidden;
@@ -32,15 +31,33 @@
   align-items: center;
 }
 
+/* Each logo item */
 .logoloop__item {
   flex: 0 0 auto;
   margin-right: var(--logoloop-gap);
   font-size: var(--logoloop-logoHeight);
   line-height: 1;
+  /*THESE LINES FOR EQUAL SPACING: */
+  width: 210px; /* Fixed width container */
+  min-width: 210px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .logoloop__item:last-child {
   margin-right: var(--logoloop-gap);
+}
+
+.logoloop__item img,
+.logoloop__item .logoloop__node img {
+  height: var(--logoloop-logoHeight);
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  filter: grayscale(100%) brightness(1.1) invert(1);
+  opacity: 0.9;
+  transition: opacity 0.4s ease, filter 0.4s ease;
 }
 
 .logoloop__node {
@@ -161,28 +178,17 @@
   height: var(--logoloop-logoHeight);
   width: auto;
   object-fit: contain;
-  filter: grayscale(100%) brightness(0.2) invert(1); /*RESPONSIBLE FOR BRIGTNESS OF LOGOS*/
-  opacity: 0.2;
+  filter: grayscale(100%) brightness(1.2) invert(1); /*RESPONSIBLE FOR BRIGTNESS OF LOGOS*/
+  opacity: 0.70;
   transition: opacity 0.4s ease, filter 0.4s ease;
 }
 
 /* Optional: brighten on hover */
 .logoloop__item img:hover {
-  filter: grayscale(100%) brightness(0.7);
-  opacity: 0.8;
+  filter: grayscale(100%) brightness(0.9);
+  opacity: 0.9;
 }
 
-/* Optional fade edges (only if you enable fadeOut prop) */
-.logoloop--fade::before,
-.logoloop--fade::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 120px;
-  z-index: 2;
-  pointer-events: none;
-}
 
 .logoloop--fade::before {
   left: 0;
@@ -192,4 +198,34 @@
 .logoloop--fade::after {
   right: 0;
   background: linear-gradient(to left, var(--logoloop-fadeColor, #ffffff) 0%, transparent 100%);
+}
+
+.sponsors-section {
+  width: 100%;
+  /* position of LOGO LOOP*/
+  padding: 12rem 0;
+  background: linear-gradient(to bottom, #000000 0%, #000000 100%); /*Color gradient on the logo loop*/
+}
+
+.sponsors-section__container {
+  max-width: 1700px;
+  margin: 0 auto;
+  padding: 0 0.1rem;
+}
+
+.sponsors-section__spacer {
+  /* spacing between text*/
+  margin-bottom: 3px;
+}
+
+.sponsors-section__label {
+  text-align: center;
+  color: #cfcfcf;
+  font-size: 2.8rem;
+  letter-spacing: 0.15em;/*Spaing between letters*/
+  margin-bottom: 3rem;/*Disrance between text and loop*/
+  text-transform: uppercase;
+  font-weight: 480;
+  line-height: 1;/*position of the text and loop from the main page*/
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.418);
 }

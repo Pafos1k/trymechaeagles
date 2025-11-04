@@ -3,13 +3,13 @@ import { motion, useMotionValue, useAnimation, useTransform } from "motion/react
 import "./RollingGallery.css";
 
 const IMGS = [
-  "baja-side.png",
-  "CarRender13.JPG",
-  "CarRender1.JPG",
-  "baja-side.png",
-  "CarRender1.JPG",
-  "baja-side.png",
-  "CarRender14.JPG",
+  "/BajaSide.png",
+  "/CarRender13.JPG",
+  "/CarRender1.JPG",
+  "/BajaSide.png",
+  "/CarRender1.JPG",
+  "/BajaSide.png",
+  "/CarRender14.JPG",
 ];
 
 const RollingGallery = ({ autoplay = true, pauseOnHover = true }) => {
@@ -32,7 +32,7 @@ const RollingGallery = ({ autoplay = true, pauseOnHover = true }) => {
       const next = rotation.get() - 360 / faceCount;
       controls.start({
         rotateY: next,
-        transition: { duration: 2.5, ease: "easeInOut" },
+        transition: { duration: 2, ease: "easeInOut" },
       });
       rotation.set(next);
     };
@@ -64,7 +64,7 @@ const RollingGallery = ({ autoplay = true, pauseOnHover = true }) => {
         const next = rotation.get() - 360 / faceCount;
         controls.start({
           rotateY: next,
-          transition: { duration: 2.5, ease: "easeInOut" },
+          transition: { duration: 3, ease: "easeInOut" },
         });
         rotation.set(next);
       };

@@ -1,0 +1,52 @@
+.dome-container {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: transparent;
+  overflow: hidden;
+  perspective: 1600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 20px;
+}
+
+.sphere {
+  position: relative;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  transition: transform 0.2s ease-out;
+  cursor: grab;
+}
+
+.sphere:active {
+  cursor: grabbing;
+}
+
+.tile {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  transform-style: preserve-3d;
+  margin-left: -80px; /* половина ширины для центрирования */
+  margin-top: -80px; /* половина высоты для центрирования */
+}
+
+.tile img {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+  transition: transform 0.3s, box-shadow 0.3s, filter 0.3s;
+  user-select: none;
+  filter: grayscale(70%); /* MAKES THEM GREY */
+}
+
+.tile img:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
+}

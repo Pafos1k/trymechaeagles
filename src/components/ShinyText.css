@@ -1,16 +1,19 @@
 .shiny-text {
-  color: #fffdfda4; /* Adjust this color to change intensity/style */
+  color: transparent; /* ✅ ИЗМЕНЕНО с #fffdfda4 на transparent */
   background: linear-gradient(
     120deg,
-    rgba(255, 255, 255, 0) 40%,
-    rgba(255, 255, 255, 0.8) 50%,
-    rgba(255, 255, 255, 0) 60%
+    rgba(202, 202, 202, 0.8) 40%, /* ✅ Базовый цвет (как у .description) */
+    rgb(255, 255, 255) 50%, 
+    rgba(202, 202, 202, 0.8) 60% 
   );
   background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
-  display: inline-block;
-  animation: shine 10s linear infinite;
+  -webkit-text-fill-color: transparent; 
+  display: block;
+  animation: shine 3s linear infinite;
+  width: 100%;
+  overflow: visible !important;
 }
 
 @keyframes shine {
@@ -25,6 +28,3 @@
 .shiny-text.disabled {
   animation: none;
 }
-
-
-
