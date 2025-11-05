@@ -13,8 +13,8 @@ export default function About() {
   }, []);
 
   const content = {
-    who: `MechaEagles is a student-run team that designs, manufactures, and races high-performance robotic systems. We compete in national and international competitions, pushing the boundaries of engineering innovation while developing the next generation of technical leaders. .`,
-    what: `We develop everything in-house — chassis, powertrain, electronics, aerodynamics, and software — combining engineering innovation with hands-on craftsmanship.`,
+    who: ` MechaEagles is a high-powered vehicle racing and building team, founded by current Boston College students, with the goal of fueling the creative interests of students through the building and racing of go karts.`,
+    what: `Founded in fall 2024, our team is composed of 60+ active members who are aiming to design, build, and optimize high-performance vehicles while fostering a collaborative and hands-on engineering experience.`,
     ethos: `We believe in collaboration, curiosity, and pushing the limits of student engineering. Every failure is an opportunity to learn.`,
     legacy: `Our legacy is built on mentorship, persistence, and the drive to create something extraordinary together.`,
   };
