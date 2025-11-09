@@ -18,9 +18,16 @@ export default function Header() {
         </nav>
 
         <div className="contact-tag-box">
+        <a
+            href="mailto:mechaeagles@bc.edu"
+            className="contact-tag"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
           <div className="contact-tag">
             <span className="dot"></span> CONTACT US
           </div>
+        </a>
         </div>
       </header>
     </div>

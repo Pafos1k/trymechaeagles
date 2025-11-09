@@ -186,9 +186,17 @@ export default function Sponsors() {
                 speed={3}
                 />
               </p>
-              <button className="cta-button">
-                <span className="cta-button-inner">SPONSOR US</span>
-              </button>
+              <button
+  type="button"
+  className="cta-button"
+  onClick={() =>
+    (window.location.href =
+      "mailto:mechaeagles@bc.edu?")
+  }
+>
+  <span className="cta-button-inner">SPONSOR US</span>
+</button>
+
             </div>
           </section>
         </div>
