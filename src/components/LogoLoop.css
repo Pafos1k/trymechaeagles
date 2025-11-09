@@ -204,7 +204,7 @@
   width: 100%;
   /* position of LOGO LOOP*/
   padding: 12rem 0;
-  background: linear-gradient(to bottom, #000000 0%, #000000 100%); /*Color gradient on the logo loop*/
+  background: transparent; /*Color gradient on the logo loop*/
 }
 
 .sponsors-section__container {
@@ -229,3 +229,53 @@
   line-height: 1;/*position of the text and loop from the main page*/
   text-shadow: 0 0 20px rgba(255, 255, 255, 0.418);
 }
+
+/* Большие экраны — исходная версия */
+.logoloop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  gap: var(--logoloop-gap);
+  width: 100%;
+  position: relative;
+}
+
+/* Логотипы */
+.logoloop__item img {
+  height: var(--logoloop-logoHeight);
+  width: auto;
+}
+
+/* Малые экраны */
+@media (max-width: 900px) {
+  .logoloop {
+    justify-content: center; /* центрируем весь ряд */
+    gap: 10px; /* уменьшаем отступы */
+  }
+  .logoloop__item img {
+    height: 110px; /* уменьшаем логотипы */
+  }
+  .sponsors-section__label {
+    font-size: 2.2rem; /* уменьшает "POWERING MECHAEAGLES" */
+    letter-spacing: 0.12em;
+  }
+}
+
+/* Ещё меньше экран — например, 600px */
+@media (max-width: 600px) {
+  .logoloop__item img {
+    height: 100px; /* ещё меньше */
+  }
+  .logoloop {
+    gap: 10px;
+  }
+  .sponsors-section__label {
+    font-size: 1.8rem;
+    letter-spacing: 0.1em;
+  }
+}
+
+
+
+

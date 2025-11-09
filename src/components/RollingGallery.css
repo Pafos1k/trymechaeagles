@@ -8,7 +8,7 @@
   min-width: 380px;
   height: 220px;
   overflow: visible;
-  z-index: 5;
+  z-index: 100;
   perspective: 3500px;
   pointer-events: auto;
 }
@@ -77,9 +77,15 @@
   transition: all 0.4s ease;
 }
 
+
 @keyframes animationGradient {
   to {
     background-position: 150%;
   }
+
+  
 }
+
+
+
 
