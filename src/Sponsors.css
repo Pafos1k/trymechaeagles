@@ -17,6 +17,7 @@ body {
   margin: 0;
   background-color: black !important;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 a {
@@ -28,7 +29,6 @@ a:hover {
 }
 
 /* ========= LAYOUT ========= */
-/* Keep hero content below the (non-fixed) header */
 #react-header {
   position: relative;
   z-index: 1000;
@@ -45,76 +45,81 @@ a:hover {
   padding: 2rem 0;
   padding-bottom: 2rem;
   z-index: 1;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .sponsors-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 clamp(1rem, 4vw, 2rem);
+  width: 100%;
 }
 
 /* ========= HERO SECTION ========= */
 .sponsors-hero {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Центрирует горизонтально */
+  align-items: center;
   justify-content: center;
-  text-align: center; /* Центрирует текст */
-  margin: 160px auto 60px;
+  text-align: center;
+  margin: clamp(80px, 15vh, 160px) auto clamp(30px, 6vh, 60px);
   padding-bottom: 2.5rem;
   width: 100%;
 }
 
 .sponsors-title {
-  font-size: 4.5rem;
+  font-size: clamp(2rem, 8vw, 4.5rem);
   font-weight: 500;
-  letter-spacing: 0.07em;
+  letter-spacing: clamp(0.04em, 0.5vw, 0.07em);
   margin: 0.5rem 0;
-  line-height: 1;
+  line-height: 1.1;
   text-shadow: 0 0 13px rgba(247, 246, 246, 0.418);
   text-align: center;
+  word-wrap: break-word;
+  max-width: 100%;
 }
 
 .sponsors-subtitle {
-  display: flex;              /* 👈 центрируем содержимое ShinyText */
-  justify-content: center;    /* 👈 по центру по горизонтали */
-  align-items: center;        /* 👈 по центру по вертикали (если нужно) */
-  font-size: 1.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(0.9rem, 3vw, 1.6rem);
   letter-spacing: 0.05em;
   font-weight: 400;
   color: rgb(119, 119, 119);
   margin: 6px auto 30px auto;
   max-width: 100%;
   text-align: center;
+  padding: 0 1rem;
 }
-
 
 /* ========= SPONSORS GRID ========= */
 .sponsors-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2.5rem;
-  margin-bottom: 6rem;
-}
-
-/* Make 7th sponsor centered in last row */
-.sponsor-card:nth-child(7) {
-  grid-column: 2 / 3;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  margin-bottom: clamp(3rem, 6vw, 6rem);
+  width: 100%;
+  justify-items: center;
 }
 
 /* ========= SPONSOR CARD ========= */
 .sponsor-card {
   position: relative;
-  border-radius: 20px;
+  border-radius: clamp(15px, 2vw, 20px);
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
-  padding: 2.5rem;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
   transition: all 0.4s ease;
   cursor: pointer;
   overflow: hidden;
-  width: 390px;
-  min-height: 475px;
+  width: 100%;
+  max-width: 390px;
+  min-height: clamp(320px, 50vw, 475px);
+  display: flex;
+  flex-direction: column;
 }
 
 .sponsor-card::before {
@@ -143,6 +148,7 @@ a:hover {
   flex-direction: column;
   justify-content: flex-end;
   height: 100%;
+  width: 100%;
 }
 
 /* ========= SPONSOR LOGO ========= */
@@ -151,11 +157,14 @@ a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 1rem;
 }
 
 .sponsor-logo {
-  max-width: 200px;
-  max-height: 200px;
+  max-width: clamp(120px, 30vw, 200px);
+  max-height: clamp(120px, 30vw, 200px);
+  width: 100%;
+  height: auto;
   object-fit: contain;
   transition: transform 0.3s ease;
 }
@@ -163,31 +172,34 @@ a:hover {
 /* ========= SPONSOR INFO ========= */
 .sponsor-info {
   text-align: center;
+  width: 100%;
 }
 
 .sponsor-name {
-  font-size: 1.75rem;
+  font-size: clamp(1.25rem, 3.5vw, 1.75rem);
   font-weight: 400;
   margin-bottom: 0.8rem;
   letter-spacing: 0.04rem;
   color: #e8e8e8;
+  word-wrap: break-word;
 }
 
 .sponsor-description {
-  font-size: 1.1rem;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
   font-weight: 350;
   line-height: 1.6;
   color: #b0b0b0;
   letter-spacing: 0.02rem;
+  word-wrap: break-word;
 }
 
 /* ========= CALL TO ACTION ========= */
 .sponsors-cta {
   position: relative;
   text-align: center;
-  margin: 5rem 0;
-  padding: 5rem 2rem;
-  border-radius: 30px;
+  margin: clamp(3rem, 6vw, 5rem) 0;
+  padding: clamp(2.5rem, 5vw, 5rem) clamp(1rem, 3vw, 2rem);
+  border-radius: clamp(20px, 3vw, 30px);
   background: radial-gradient(
     circle at 20% 0%,
     rgba(255, 255, 255, 0.06),
@@ -200,6 +212,7 @@ a:hover {
   overflow: hidden;
   transform-style: preserve-3d;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
 }
 
 .sponsors-cta:hover {
@@ -210,8 +223,8 @@ a:hover {
 .sponsors-cta::before {
   content: "";
   position: absolute;
-  inset: 14px;
-  border-radius: 24px;
+  inset: clamp(8px, 1.5vw, 14px);
+  border-radius: clamp(16px, 2.5vw, 24px);
   background: radial-gradient(
     circle at 50% 120%,
     rgba(255, 255, 255, 0.03),
@@ -227,8 +240,8 @@ a:hover {
   content: "";
   position: absolute;
   top: 10px;
-  left: 38px;
-  right: 38px;
+  left: clamp(20px, 5vw, 38px);
+  right: clamp(20px, 5vw, 38px);
   height: 2px;
   background: linear-gradient(
     90deg,
@@ -254,25 +267,29 @@ a:hover {
 .cta-content {
   position: relative;
   z-index: 2;
+  width: 100%;
 }
 
 .cta-title {
-  font-size: 3.5rem;
+  font-size: clamp(1.8rem, 7vw, 3.5rem);
   font-weight: 500;
-  letter-spacing: 0.07em;
+  letter-spacing: clamp(0.04em, 0.5vw, 0.07em);
   margin: 0.5rem 0;
-  line-height: 1;
+  line-height: 1.1;
   text-shadow: 0 0 13px rgba(247, 246, 246, 0.418);
+  word-wrap: break-word;
 }
 
 .cta-text {
   text-align: center;
-  font-size: 1.2rem;
+  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
   letter-spacing: 0.05em;
   font-weight: 400;
   max-width: 45rem;
   color: rgb(119, 119, 119);
   margin: 6px auto 30px auto;
+  padding: 0 1rem;
+  word-wrap: break-word;
 }
 
 .cta-button {
@@ -304,14 +321,15 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem 1.3rem;
+  padding: clamp(0.4rem, 1vw, 0.5rem) clamp(1rem, 2vw, 1.3rem);
   border-radius: 50px;
   background: #000;
   color: #c9c9c9;
   font-weight: 700;
-  letter-spacing: 0.2rem;
-  font-size: 1.3rem;
+  letter-spacing: clamp(0.1rem, 0.3vw, 0.2rem);
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .cta-button:hover .cta-button-inner {
@@ -325,8 +343,82 @@ a:hover {
   }
 }
 
-/* Kill unwanted bg overlays from other pages, but DON'T kill CTA */
+/* Kill unwanted bg overlays from other pages */
 body:not(.sponsors-page) *::before,
 body:not(.sponsors-page) *::after {
   background-image: none !important;
+}
+
+/* ========= RESPONSIVE TWEAKS ========= */
+/* Large screens: 3 columns */
+@media (min-width: 1200px) {
+  .sponsors-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Medium screens: 2 columns */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .sponsors-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Small screens: 1 column */
+@media (max-width: 767px) {
+  .sponsors-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .sponsors-hero {
+    padding-bottom: 1.5rem;
+  }
+  
+  .sponsor-card {
+    max-width: 100%;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 400px) {
+  .sponsors-main {
+    padding: 1rem 0;
+  }
+  
+  .sponsors-hero {
+    margin-top: 60px;
+  }
+  
+  .cta-button-inner {
+    font-size: 0.95rem;
+    padding: 0.4rem 0.9rem;
+  }
+}
+
+/* Disable hover effects on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .sponsor-card:hover {
+    transform: none;
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: none;
+  }
+  
+  .sponsor-card:active {
+    transform: scale(0.98);
+  }
+  
+  .sponsors-cta:hover {
+    transform: none;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.65), 0 0 50px rgba(255, 255, 255, 0.02);
+  }
+  
+  .cta-button:hover {
+    transform: none;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.25);
+  }
+  
+  .cta-button:active {
+    transform: scale(0.95);
+  }
 }

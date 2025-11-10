@@ -27,7 +27,7 @@ export default function Header() {
           <div className="contact-tag">
             <span className="dot"></span> CONTACT US
           </div>
-        </a>
+          </a>
         </div>
       </header>
     </div>
