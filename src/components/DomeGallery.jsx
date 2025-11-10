@@ -3,8 +3,82 @@ import { useGesture } from "@use-gesture/react";
 import "./DomeGallery.css";
 
 const IMAGES = [
-  "/team/indian2.png",
+  "/team/Vedarsh Mishra.jpg",
+  "/team/Austin Kinnealey.jpg",
+  "/team/Lucas DiMarco.jpg",
+  "/team/Ambrose McCullough.jpg",
+  "/team/Samuel Kaiser.jpg",
+
+  // === Science ===
   "/team/Vlad.jpg",
+  "/team/Armand Koochekzadeh.jpg",
+  "/team/Jack Dauphinais.jpg",
+  "/team/Si Hyun Lee.jpg",
+  "/team/Vincent Zemrani.jpg",
+  "/team/Christian Roth.jpg",
+  "/team/Matthew Hark.jpg",
+  "/team/Deven Creeth.jpg",
+  "/team/Atharva Naik.jpg",
+  "/team/Marguerite (Meg) Fabian.jpg",
+
+  // === Programmatics ===
+  "/team/Maxwell Crawford.jpg",
+  "/team/Juan (Carlos) Contreras.jpg",
+  "/team/Jack Tommaney.jpg",
+  "/team/Matt Mahan.jpg",
+  "/team/Thomas Ogrodnik.jpg",
+  "/team/Jonathan Jiao.jpg",
+  "/team/Alex Lee.jpg",
+  "/team/Marcos Garay.jpg",
+  "/team/featured4.jpg",
+  "/team/Brett McDowell.jpg",
+  "/team/benson .jpg",
+  "/team/Emmanuel Bamgbala.jpg",
+
+  // === Engineering ===
+  "/team/Troy Sterling.jpg",
+  "/team/Taein Kang.jpg",
+  "/team/Matthew Bristing.jpg",
+  "/team/Tobin Ting.jpg",
+  "/team/Dat Ho.jpg",
+  "/team/Devin Dear.jpg",
+  "/team/Colin Noble.jpg",
+  "/team/Max Pohl.jpg",
+  "/team/Jack DelGrande.jpg",
+  "/team/Kyle Phillips.jpg",
+  "/team/Effie Hatzopoulos.jpg",
+  "/team/Hunter Valentine.jpg",
+  "/team/Paulino Gin.jpg",
+  "/team/Asad Faquirzada.jpg",
+  "/team/Jack Brogan.jpg",
+  "/team/Lucas Jeff.jpg",
+  "/team/Michael Kester.jpg",
+  "/team/Rudolph DeMeo.jpg",
+  "/team/Daniel Martin.jpg",
+
+  "/team/Vlad.jpg",
+  "/team/Armand Koochekzadeh.jpg",
+  "/team/Jack Dauphinais.jpg",
+  "/team/Si Hyun Lee.jpg",
+  "/team/Vincent Zemrani.jpg",
+  "/team/Christian Roth.jpg",
+  "/team/Matthew Hark.jpg",
+  "/team/Deven Creeth.jpg",
+  "/team/Atharva Naik.jpg",
+  "/team/Marguerite (Meg) Fabian.jpg",
+
+  "/team/Vlad.jpg",
+  "/team/Armand Koochekzadeh.jpg",
+  "/team/Jack Dauphinais.jpg",
+  "/team/science1.jpg",
+  "/team/Si Hyun Lee.jpg",
+  "/team/Vincent Zemrani.jpg",
+  "/team/Christian Roth.jpg",
+  "/team/Matthew Hark.jpg",
+  "/team/Deven Creeth.jpg",
+  "/team/Atharva Naik.jpg",
+  "/team/Marguerite (Meg) Fabian.jpg",
+
 ];
 
 export default function DomeGallery() {
