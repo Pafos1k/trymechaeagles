@@ -4,7 +4,7 @@ import "./RollingGallery.css";
 
 const IMGS = [
   "/BajaSide.png",
-  "/CarRender13.JPG",
+  "/BajaBack.png",
   "/CarRender1.JPG",
   "/BajaSide.png",
   "/CarRender1.JPG",
