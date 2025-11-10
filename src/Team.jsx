@@ -51,13 +51,13 @@ export default function Team() {
       { id: "p13", name: "Michael Maurice", role: "Head of Marketing", img: "/team/featured4.jpg" },
       { id: "p14", name: "Brett McDowell", role: "Marketing", img: "/team/Brett McDowell.jpg", link:"https://www.linkedin.com/in/brett-mcdowell-560148326/" },
       { id: "p15", name: "Charles Anderson", role: "Marketing", img: "/team/programmatics2.jpg" },
-      { id: "p18", name: "Madeleine Choe", role: "Marketing", img: "/team/featured4.jpg" },
-      { id: "p19", name: "Benson Lin", role: "Marketing", img: "/team/benson .jpg", link:"https://www.linkedin.com/in/benson-lin-527b8335a/" },
+      { id: "p16", name: "Madeleine Choe", role: "Marketing", img: "/team/featured4.jpg" },
+      { id: "p17", name: "Benson Lin", role: "Marketing", img: "/team/benson .jpg", link:"https://www.linkedin.com/in/benson-lin-527b8335a/" },
     ],
 
     engineering: [
       { id: "e1", name: "Troy Sterling", role: "Head of Suspension", img: "/team/Troy Sterling.jpg", link:"https://www.linkedin.com/in/troy-sterling-69a835305/"},
-      { id: "e2", name: "Brian Robles", role: "Suspension Engineer", img: "/team/engineering1.jpg" },
+      { id: "e2", name: "Jack Brogman", role: "Drive Train Engineer", img: "/team/Jack Brogan.jpg", link:"https://www.linkedin.com/in/jack-brogan-19893020b/" },
       { id: "e3", name: "Joseph Rusnak", role: "Suspension Engineer", img: "/team/engineering2.jpg" },
       { id: "e4", name: "Taein Kang", role: "Suspension Engineer", img: "/team/Taein Kang.jpg", link: "https://www.linkedin.com/in/taein-kang-05b68323b/"},
       { id: "e5", name: "Matthew Bristing", role: "Suspension Engineer", img: "/team/Matthew Bristing.jpg", link:"" },
@@ -73,11 +73,10 @@ export default function Team() {
       { id: "e15", name: "Hunter Valentine", role: "Roll Cage Engineer", img: "/team/Hunter Valentine.jpg", link:"https://www.linkedin.com/in/hunter-valentine-b77910359/"},
       { id: "e16", name: "Paul Gin", role: "Roll Cage Engineer", img: "/team/Paulino Gin.jpg", link:"https://www.linkedin.com/in/paul-gin/" },
       { id: "e17", name: "Asad Faqirzada", role: "Head of Drive Train", img: "/team/Asad Faquirzada.jpg", link:"https://www.linkedin.com/in/asadfaqirzada/"},
-      { id: "e18", name: "Jack Brogman", role: "Drive Train Engineer", img: "/team/Jack Brogan.jpg", link:"https://www.linkedin.com/in/jack-brogan-19893020b/" },
-      { id: "e19", name: "Lucas Jeff", role: "Drive Train Engineer", img: "/team/Lucas Jeff.jpg", link:"https://www.linkedin.com/in/lucas-jeff-90919629b/" },
-      { id: "e2", name: "Michael Kester", role: "Drive Train Engineer", img: "/team/Michael Kester.jpg", link:"https://www.linkedin.com/in/michael-kester-121740350/" },
-      { id: "e21", name: "Rudolph DeMeo", role: "Drive Train Engineer", img: "/team/Rudolph DeMeo.jpg" },
-      { id: "e22", name: "Daniel Martin", role: "Drive Train Engineer", img: "/team/Daniel Martin.jpg", link:"https://www.linkedin.com/in/djzmusicborn/" },
+      { id: "e18", name: "Lucas Jeff", role: "Drive Train Engineer", img: "/team/Lucas Jeff.jpg", link:"https://www.linkedin.com/in/lucas-jeff-90919629b/" },
+      { id: "e19", name: "Michael Kester", role: "Drive Train Engineer", img: "/team/Michael Kester.jpg", link:"https://www.linkedin.com/in/michael-kester-121740350/" },
+      { id: "e20", name: "Rudolph DeMeo", role: "Drive Train Engineer", img: "/team/Rudolph DeMeo.jpg" },
+      { id: "e21", name: "Daniel Martin", role: "Drive Train Engineer", img: "/team/Daniel Martin.jpg", link:"https://www.linkedin.com/in/djzmusicborn/" },
     ],
   };
 
