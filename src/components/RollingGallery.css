@@ -21,7 +21,7 @@
   height: 100%;
   align-items: center;
   justify-content: center;
-  perspective: 2300px;
+  perspective: 2150px;
   transform-style: preserve-3d;
 }
 
@@ -62,8 +62,8 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   background: #000;
   display: block;
-  filter: grayscale(10%); /*HOW GREY IT IS*/
-  opacity: 0.35; /* optional: softens the image slightly */
+  filter: grayscale(65%); /*HOW GREY IT IS*/
+  opacity: 0.65; /* optional: softens the image slightly */
 
   /* animated gradient border 👇 */
   border: 3px solid transparent;

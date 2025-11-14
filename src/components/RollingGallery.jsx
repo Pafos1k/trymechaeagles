@@ -3,20 +3,20 @@ import { motion, useMotionValue, useAnimation, useTransform } from "motion/react
 import "./RollingGallery.css";
 
 const IMGS = [
-  "/BajaSide.png",
-  "/BajaBack.png",
-  "/CarRender1.JPG",
-  "/BajaSide.png",
-  "/CarRender1.JPG",
-  "/BajaSide.png",
-  "/CarRender14.JPG",
+  "/GROUP1.png",
+  "/GROUP2.png",
+  "/GROUP3.png",
+  "/LOGO1.png",
+  "/LOGO2.png",
+  "/GROUP5.png",
+  "/GROUP4.png",
 ];
 
 const RollingGallery = ({ autoplay = true, pauseOnHover = true }) => {
   const faceCount = IMGS.length;
   const faceWidth = 380;
   const cylinderWidth = 2400;
-  const dragFactor = 0.1;
+  const dragFactor = 0.02;
   const radius = cylinderWidth / (2 * Math.PI);
 
   const rotation = useMotionValue(0);
@@ -32,11 +32,11 @@ const RollingGallery = ({ autoplay = true, pauseOnHover = true }) => {
       const next = rotation.get() - 360 / faceCount;
       controls.start({
         rotateY: next,
-        transition: { duration: 2, ease: "easeInOut" },
+        transition: { duration: 4500, ease: "easeInOut" },
       });
       rotation.set(next);
     };
-    autoplayRef.current = setInterval(rotate, 3000);
+    autoplayRef.current = setInterval(rotate, 4500);
     return () => clearInterval(autoplayRef.current);
   }, [autoplay, faceCount, rotation, controls]);
 
