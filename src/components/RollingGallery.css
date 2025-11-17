@@ -119,17 +119,3 @@
   }
 }
 
-/* ===== SMALL PHONES (max-width 480px) ===== */
-@media (max-width: 480px) {
-  .gallery-container {
-    top: 50%;
-    right: 0;
-    width: 82vw;
-    transform: translateY(-50%) scale(0.52);
-  }
-  .gallery-img {
-    height: 200px;
-    width: 185px;
-  }
-}
-
