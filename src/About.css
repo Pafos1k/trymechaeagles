@@ -11,21 +11,21 @@
 
 /* ----- MAIN CONTENT OFFSET ----- */
 main.container {
+  padding-top: clamp(160px, 15vh, 160px);
   width: 100%;
-  padding-top: 140px;
   text-align: center;
 }
 
 /* ----- WHO WE ARE HEADER ----- */
 .who-we-are-title {
-  font-size: 4.4rem;
+  font-size: clamp(2.5rem, 5vw, 4.4rem); /* адаптивный размер шрифта */
   font-weight: 500;
   letter-spacing: 0.07em;
   margin: 0.5rem 0;
   line-height: 1;
   text-shadow: 0 0 20px rgba(247, 246, 246, 0.418);
   z-index: 10;
-  margin-bottom: 100px;
+  margin-bottom: clamp(1px, 8vw, 110px); /* адаптивное расстояние до глобуса */
   margin-left: 10px;
 }
 
@@ -36,10 +36,11 @@ main.container {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 70px;
+  margin-bottom: clamp(1px, 7vw, 100px); /* адаптивный отступ до статистики */
 }
 
 /* ----- STATS SECTION ----- */
+/* НЕ ТРОГАЕМ, оставляем полностью как есть */
 .stats-section {
   display: flex;
   justify-content: center;
@@ -81,9 +82,6 @@ main.container {
   transform-origin: center;
 }
 
-
-
-
 /* ЛЕВОЕ МЕНЮ */
 .menu-left {
   display: flex;
@@ -110,13 +108,11 @@ main.container {
   box-sizing: border-box;
 }
 
-/* ПРЯМОУГОЛЬНИК ПРИ HOVER - ОТ ЛИНИИ ДО ЛИНИИ */
 .menu-item:hover {
   color: rgba(255, 255, 255, 0.9);
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* АКТИВНЫЙ ЭЛЕМЕНТ - БЕЛАЯ ЛИНИЯ СЛЕВА */
 .menu-item.active {
   color: white;
   background: rgba(151, 151, 151, 0.12);
@@ -176,5 +172,50 @@ main.container {
   .menu-right {
     padding: 2rem 1.5rem;
     text-align: center;
+  }
+
+  /* СТАТЫ В СТОЛБИК */
+  .stats-section {
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-left: 0;
+    align-items: center;
+  }
+
+  .stats-section .stat {
+    flex: none;
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 1200px) and (min-width: 901px) {
+  .gallery-section {
+    margin-bottom: 20px; /* подтягиваем глобус к статистике */
+  }
+
+  .who-we-are-title {
+    margin-bottom: 20px; /* минимальный отступ сверху глобуса */
+  }
+}
+
+/* Только для маленьких экранов */
+@media (max-width: 900px) {
+  .gallery-section {
+    margin-bottom: -40px; /* подтягиваем глобус к статистике */
+  }
+
+  .who-we-are-title {
+    margin-bottom: -40px; /* минимальный отступ сверху глобуса */
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery-section {
+    margin-bottom: -70px; /* подтягиваем глобус к статистике */
+  }
+
+  .who-we-are-title {
+    margin-bottom: -70px; /* минимальный отступ сверху глобуса */
   }
 }

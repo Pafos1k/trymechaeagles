@@ -8,7 +8,7 @@
   min-width: 380px;
   height: 220px;
   overflow: visible;
-  z-index: 100;
+  z-index: 5000 !important;
   perspective: 3500px;
   pointer-events: auto;
 }
@@ -33,6 +33,7 @@
   transform-style: preserve-3d;
   cursor: grab;
   user-select: none;
+  transform-origin: center;
 }
 
 .gallery-track:active {
@@ -88,4 +89,47 @@
 
 
 
+
+
+/* ===== LARGE TABLETS (max-width 1200px) ===== */
+@media (max-width: 1300px) {
+  .gallery-container {
+    transform: translateY(-50%) scale(0.55);
+    right: 5%;
+    width: 48vw;
+  }
+  .gallery-img {
+    height: 350px;
+    width: 335px;
+  }
+}
+
+
+/* ===== LARGE PHONES (max-width 650px) ===== */
+@media (max-width: 650px) {
+  .gallery-container {
+    top: 52%;
+    right: 2%;
+    width: 30vw;
+    transform: translateY(-50%) scale(0.4);
+  }
+  .gallery-img {
+    height: 285px;
+    width: 300px;
+  }
+}
+
+/* ===== SMALL PHONES (max-width 480px) ===== */
+@media (max-width: 480px) {
+  .gallery-container {
+    top: 50%;
+    right: 0;
+    width: 82vw;
+    transform: translateY(-50%) scale(0.52);
+  }
+  .gallery-img {
+    height: 200px;
+    width: 185px;
+  }
+}
 

@@ -20,7 +20,7 @@ const App = () => {
       <Header />
 
       {/* --- FIRST SECTION (Hero) --- */}
-      <section className="w-full h-screen relative flex justify-center items-center overflow-hidden">
+      <section className="w-full h-screen relative flex justify-center items-center overflow-visible">
         {/* --- BACKGROUND EFFECT --- */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <LightRays
@@ -91,8 +91,8 @@ const App = () => {
             direction="left"
             logoHeight={140}
             gap={28}
-            pauseOnHover={true}
-            scaleOnHover={true}
+            pauseOnHover={false}
+            scaleOnHover={false}
             ariaLabel="Our sponsors"
           />
         </div>

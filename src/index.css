@@ -365,13 +365,14 @@ main{
 
 
 /* Малые экраны — центрируем и опускаем под JOIN US */
-@media (max-width: 900px) {
+@media (max-width: 1300px) {
   .gallery-container {
+    position: absolute;
     left: 50%;
     right: auto;
     top: auto;
     transform: translateX(-50%) scale(0.65);
-    margin-top: 65rem; /* или подгоняй под JOIN US */
+    margin-top: 50rem; /* или подгоняй под JOIN US */
     width: 80%;
     max-width: 500px;
     min-width: 300px;
@@ -379,7 +380,7 @@ main{
   .content {
     margin: 0 auto; /* убираем смещение влево */
     text-align: center;
-    padding-top: 17rem; /* чуть меньше отступ сверху */
+    padding-top: 10rem; /* чуть меньше отступ сверху */
     max-width: 90%; /* чтобы текст не растягивался */
   }
   .tag-box {
@@ -422,26 +423,13 @@ main{
   .spec-image {
     width: 80%;
     height: auto;
-    transform: none; /* не трогаем sliding car */
+    transform: none; 
   }
 
   .spec-title { font-size: 22px; margin-top: 10px; }
   .spec-text { font-size: 18px; }
 
-  .gallery-container {
-    left: 50%;
-    top: auto;
-    transform: translateX(-50%) scale(0.65);
-    margin-top: 65rem; /* под JOIN US */
-    width: 80%;
-    max-width: 500px;
-    min-width: 300px;
-  }
 
-
-    .sponsors-section {
-    margin-top: 55rem;
-  }
 }
 
 /* --- Ещё меньше экраны 600px --- */
@@ -452,7 +440,7 @@ main{
   .spec-title { font-size: 20px; }
   .spec-text { font-size: 16px; }
   .sponsors-section {
-    margin-top: 45rem; /* ещё меньше, чтобы не было огромного пустого места */
+    margin-top: 0rem; /* ещё меньше, чтобы не было огромного пустого места */
   }
 }
 

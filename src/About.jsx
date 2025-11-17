@@ -13,10 +13,10 @@ export default function About() {
   }, []);
 
   const content = {
-    who: ` MechaEagles is a high-powered vehicle racing and building team, founded by current Boston College students, with the goal of fueling the creative interests of students through the building and racing of go karts.`,
-    what: `Founded in fall 2024, our team is composed of 60+ active members who are aiming to design, build, and optimize high-performance vehicles while fostering a collaborative and hands-on engineering experience.`,
-    ethos: `We believe in collaboration, curiosity, and pushing the limits of student engineering. Every failure is an opportunity to learn.`,
-    legacy: `Our legacy is built on mentorship, persistence, and the drive to create something extraordinary together.`,
+    who: ` MechaEagles is a collegiate BAJA SAE racing and engineering team founded by Boston College students, with the goal of fueling the creative interests of students through constructing & racing karts and other ambitious engineering projects we hope to fulfill down the road.`,
+    what: `Founded in fall 2024, the MechaEagles team currently has 60+ active members who are aiming to design, build, and optimize high-performance racing vehicles while our organization fosters and creates an educational, collaborative, and hands-on engineering experience.`,
+    ethos: `Within every failure is an opportunity to learn. MechaEagles believes in the values of collaboration, imagination, curiosity, and, of course, execution. We want our members to be able to flex both an understanding of hard science and the skill set of vivid creativity.`,
+    legacy: `The legacy of MechaEagles is centered around mentorship and its fruits. We seek to teach future teachers who are always willing to learn, and we seek to use the community we have made to create something powerful.`,
   };
 
   return (

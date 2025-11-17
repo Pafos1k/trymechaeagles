@@ -271,8 +271,9 @@
     gap: 10px;
   }
   .sponsors-section__label {
-    font-size: 1.8rem;
+    font-size: 1.9rem;
     letter-spacing: 0.1em;
+    margin-top: 20px;
   }
 }
 
