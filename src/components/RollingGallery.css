@@ -7,6 +7,7 @@
   max-width: 600px;
   min-width: 380px;
   height: 350px;
+  min-height: 350px;
   overflow: visible;
   z-index: 5000 !important;
   perspective: 3500px;
@@ -112,6 +113,8 @@
     right: 2%;
     width: 30vw;
     transform: translateY(-50%) scale(0.4);
+    height: 285px; 
+    min-height: 285px;
   }
   .gallery-img {
     height: 285px;
