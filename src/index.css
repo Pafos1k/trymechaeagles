@@ -365,7 +365,7 @@ main{
 
 
 /* Малые экраны — центрируем и опускаем под JOIN US */
-@media (max-width: 1300px) {
+@media (max-width: 850px) {
   .gallery-container {
     position: absolute;
     left: 50%;
@@ -389,12 +389,12 @@ main{
   }
 
   .content h1 {
-    font-size: 2.8rem;
+    font-size: 2.4rem;
     line-height: 1.3;
   }
 
   .description {
-    font-size: 1.25rem;
+    font-size: 1.05rem;
     margin: 0 auto 1rem auto;
   }
 
