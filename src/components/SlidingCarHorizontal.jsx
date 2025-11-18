@@ -9,7 +9,7 @@ const SlidingCarHorizontal = ({ imageSrc = "/BajaSide.png", alt = "Baja Car" }) 
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: isMobile
-      ? ["start 1.1", "end 0.85"]   // 📱 телефонам — быстрее
+      ? ["start 1", "end 0.8"]   // 📱 телефонам — быстрее
       : ["start 2.5", "end 1.1"],   // 💻 компьютерам — как раньше
     layoutEffect: false,
   });
