@@ -7,14 +7,14 @@ const SlidingCarHorizontal = ({ imageSrc = "/BajaSide.png", alt = "Baja Car" }) 
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start 2.2", "end 0.9"],
-    layoutEffect:false,
+    layoutEffect: false,
   });
 
   // Car motion (left → right)
   const x = useTransform(scrollYProgress, [0, 1], ["-130vw", "130vw"]);
   const carOpacity = useTransform(scrollYProgress, [0, 0.08, 0.85, 1], [0, 1, 1, 0]);
 
-  // Mask trails *behind* car slightly
+  // Mask trails behind car
   const maskX = useTransform(scrollYProgress, [0, 1], ["-180vw", "80vw"]);
 
   return (
@@ -60,16 +60,32 @@ const SlidingCarHorizontal = ({ imageSrc = "/BajaSide.png", alt = "Baja Car" }) 
         style={{
           x,
           opacity: carOpacity,
-          scale: 1.2,
+          scale: 1.2, // default
         }}
-        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none"
+        className="
+          fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
+          z-50 pointer-events-none
+
+          /* --- RESPONSIVE CAR SCALING --- */
+          sm:scale-[1.35]
+          md:scale-[1.25]
+          lg:scale-[1.15]
+          xl:scale-[1.1]
+        "
       >
         <img
           src={imageSrc}
           alt={alt}
           draggable={false}
+          className="
+            /* --- RESPONSIVE WIDTHS --- */
+            w-[85vw]     /* mobile: biggest */
+            sm:w-[70vw]
+            md:w-[55vw]
+            lg:w-[45vw]
+            xl:w-[35vw]
+          "
           style={{
-            width: "50vw",
             maxWidth: "none",
             transformOrigin: "center center",
           }}

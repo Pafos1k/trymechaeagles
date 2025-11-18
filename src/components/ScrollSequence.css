@@ -119,15 +119,15 @@
     /* inner soft glow */ 0 0 7.5px rgba(255, 255, 255, 0.8); /* crisp edge */
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   .scroll-title {
-    font-size: 9vw;
+    font-size: 12vw;
   }
   .scroll-subtitle {
-    font-size: 8vw;
+    font-size: 12vw;
   }
   .scroll-number-bg {
-    font-size: 50vw;
+    font-size: 80vw;
   }
 }
 

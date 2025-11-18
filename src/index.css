@@ -365,7 +365,7 @@ main{
 
 
 /* Малые экраны — центрируем и опускаем под JOIN US */
-@media (max-width: 850px) {
+@media (max-width: 1300px) {
   .gallery-container {
     position: absolute;
     left: 50%;
