@@ -4,11 +4,16 @@ import { motion, useScroll, useTransform } from "framer-motion";
 const SlidingCarHorizontal = ({ imageSrc = "/BajaSide.png", alt = "Baja Car" }) => {
   const ref = useRef(null);
 
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start 2.2", "end 0.9"],
+    offset: isMobile
+      ? ["start 1.1", "end 0.85"]   // 📱 телефонам — быстрее
+      : ["start 2.5", "end 1.1"],   // 💻 компьютерам — как раньше
     layoutEffect: false,
   });
+
 
   // Car motion
   const x = useTransform(scrollYProgress, [0, 1], ["-130vw", "130vw"]);
