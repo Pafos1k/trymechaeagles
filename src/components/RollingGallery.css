@@ -1,5 +1,5 @@
 .gallery-container {
-  position: absolute;
+  position: relative;
   right: 7%;
   top: 58dvh;
   transform: translateY(-50%) scale(0.65); /*SIZE*/

@@ -351,6 +351,7 @@
 }
 
 /* Large phones */
+/* Large phones */
 @media (max-width: 640px) {
   .title-wrap {
     margin-top: 100px;
@@ -375,13 +376,25 @@
     margin-bottom: 30px;
   }
 
+  /* ===== FIX: featured leads all in one row ===== */
   .featured-row.top,
   .featured-row.bottom {
-    flex-wrap: wrap;
-    gap: 25px;
+    flex-wrap: nowrap;        /* one line */
+    justify-content: center;
+    gap: 18px;
     margin-top: 0;
     margin-bottom: 25px;
   }
+
+  .featured-item {
+    width: 120px;             /* so 3 can fit */
+  }
+
+  .featured-photo {
+    width: 115px;
+    height: 115px;
+  }
+  /* ============================================== */
 
   .featured-photo, .member-circle {
     width: 140px;
