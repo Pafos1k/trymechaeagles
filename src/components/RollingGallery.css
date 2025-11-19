@@ -1,7 +1,7 @@
 .gallery-container {
   position: absolute;
   right: 7%;
-  top: 58%;
+  top: 58dvh;
   transform: translateY(-50%) scale(0.65); /*SIZE*/
   width: 40vw;
   max-width: 600px;

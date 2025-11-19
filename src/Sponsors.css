@@ -394,7 +394,7 @@ body:not(.sponsors-page) *::after {
   }
   
   .cta-button-inner {
-    font-size: 0.95rem;
+    font-size: 1rem;
     padding: 0.4rem 0.9rem;
   }
 }
