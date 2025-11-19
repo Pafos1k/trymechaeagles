@@ -21,7 +21,7 @@ html {
 }
 
 #root, #root > div {
-  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 
@@ -51,7 +51,7 @@ body {
   color: #e7e7e7;
   margin: 0;
   padding: 0;
-  min-height: 100vh;
+  min-height: 100dvh;
   line-height: 1.5;
 }
 
@@ -144,7 +144,7 @@ main{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: calc(90vh - 6rem);
+  min-height: calc(90dvh - 6rem);
 }
 
 .content {
@@ -297,7 +297,7 @@ main{
   background: black;
   color: white;
   padding: 1px 1px;/*Upper and lower padding*/
-  top: -65vh; /*Distance between photos and car sliding*/
+  top: -65dvh; /*Distance between photos and car sliding*/
   margin-bottom: -175px; 
   display: flex;
   justify-content: center;
