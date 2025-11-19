@@ -212,10 +212,10 @@ main.container {
 
 @media (max-width: 600px) {
   .gallery-section {
-    margin-bottom: -70px; /* подтягиваем глобус к статистике */
+    margin-bottom: -20px; /* подтягиваем глобус к статистике */
   }
 
   .who-we-are-title {
-    margin-bottom: -70px; /* минимальный отступ сверху глобуса */
+    margin-bottom: -20px; /* минимальный отступ сверху глобуса */
   }
 }

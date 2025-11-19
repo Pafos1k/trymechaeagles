@@ -4,6 +4,45 @@
   --muted: #bdbdbd;
   --card-border: rgba(255,255,255,0.08);
 }
+/* ========== HERO AREA (MATCH TEAM PAGE) ========== */
+
+.sponsors-page {
+  background: var(--bg);
+  color: #ebebeb;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* Matching spacing from Team page */
+.sponsors-main {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 28px 20px 80px;  /* EXACT SAME AS TEAM */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Title styles identical to TEAM */
+.sponsors-title {
+  font-size: clamp(2rem, 4vw, 3.2rem);  /* SAME */
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-top: 40px;                    /* SAME */
+  margin-bottom: 6px;
+  text-align: center;
+  color: var(--ink);
+}
+
+.sponsors-subtitle {
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  margin-bottom: 40px;
+  text-align: center;
+  color: var(--muted);
+}
 
 .team-page {
   background: var(--bg);

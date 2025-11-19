@@ -366,6 +366,10 @@ body:not(.sponsors-page) *::after {
 
 /* Small screens: 1 column */
 @media (max-width: 767px) {
+  .sponsors-title {
+    margin-top: 80px;
+    font-size: 1.8rem ;
+  }
   .sponsors-grid {
     grid-template-columns: 1fr;
   }
