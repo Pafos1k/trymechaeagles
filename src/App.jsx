@@ -65,7 +65,7 @@ const App = () => {
 
               <div className="buttons">
                 <a href="#about" className="btn-get-started">
-                  JOIN US PLEASE
+                  JOIN US
                 </a>
               </div>
             </div>
