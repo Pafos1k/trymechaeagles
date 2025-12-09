@@ -1,0 +1,136 @@
+.scroll-sequence-section {
+  position: relative;
+  height: 220vh;
+  background: black;
+  overflow: hidden;
+}
+
+.scroll-content-fixed {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  transition: opacity 0.3s ease-out;
+  z-index: 2;
+}
+
+.scroll-text-overlay {
+  text-align: center;
+  z-index: 3;
+}
+
+.scroll-title {
+  font-size: 4vw;
+  font-weight: 600;
+}
+
+.scroll-subtitle {
+  font-size: 3vw;
+  opacity: 0.8;
+}
+
+.scroll-number-bg {
+  position: absolute;
+  font-size: 40vw;
+  font-weight: 800;
+  color: rgba(255, 0, 0, 0.08);
+  z-index: 1;
+}
+
+.scroll-black-fade {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    black 30%,
+    rgba(0, 0, 0, 0.9) 50%,
+    transparent 90%
+  );
+  z-index: 5;
+  pointer-events: none;
+  transition: opacity 0.4s ease-out;
+}
+
+.scroll-sequence-section {
+  position: relative;
+  height: 200vh;
+  background: black;
+  overflow: hidden;
+  margin-top: -20vh; /* adjust spacing from logo loop */
+  color: white;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  z-index: 1; /* sits above normal page, below scroll content */
+}
+
+.scroll-content-fixed {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  z-index: 10; /* makes sure it's on top and visible */
+}
+
+.scroll-number-bg {
+  font-size: 45vw;
+  font-weight: 350;
+  color: rgba(66, 0, 0, 0.9);
+  line-height: 1;
+  letter-spacing: -0.09em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  z-index: 1;
+  user-select: none;
+  text-shadow: 0 0 10px rgba(118, 1, 1, 0.42),
+    /* inner soft glow */ 0 0 7.5px rgba(122, 1, 1, 0.8);
+}
+
+.scroll-title {
+  font-size: 7vw;
+  font-weight: 450;
+  color: #e1e1e1;
+  margin: 0;
+  opacity: 0;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-shadow: 0 0 10px rgba(247, 246, 246, 0.42),
+    /* inner soft glow */ 0 0 7.5px rgba(255, 255, 255, 0.8); /* crisp edge */
+}
+
+.scroll-subtitle {
+  font-size: 7vw;
+  font-weight: 450;
+  color: #fdfdfd;
+  margin: 0;
+  opacity: 0;
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 10px rgba(247, 246, 246, 0.42),
+    /* inner soft glow */ 0 0 7.5px rgba(255, 255, 255, 0.8); /* crisp edge */
+}
+
+@media (max-width: 800px) {
+  .scroll-title {
+    font-size: 12vw;
+  }
+  .scroll-subtitle {
+    font-size: 12vw;
+  }
+  .scroll-number-bg {
+    font-size: 80vw;
+  }
+}
+
+.scroll-content-fixed {
+  pointer-events: none; /* 👈 allows interactions to pass through */
+}

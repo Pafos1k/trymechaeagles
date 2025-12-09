@@ -1,0 +1,221 @@
+@import url("https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single+Ink:wght@100..900&family=Roboto+Slab:wght@100..900&family=Tangerine:wght@400;700&display=swap");
+
+.about-page {
+  background-color: black;
+  color: white;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ----- MAIN CONTENT OFFSET ----- */
+main.container {
+  padding-top: clamp(160px, 15dvh, 160px);
+  width: 100%;
+  text-align: center;
+}
+
+/* ----- WHO WE ARE HEADER ----- */
+.who-we-are-title {
+  font-size: clamp(2.5rem, 5vw, 4.4rem); /* адаптивный размер шрифта */
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  margin: 0.5rem 0;
+  line-height: 1;
+  text-shadow: 0 0 20px rgba(247, 246, 246, 0.418);
+  z-index: 10;
+  margin-bottom: clamp(1px, 8vw, 110px); /* адаптивное расстояние до глобуса */
+  margin-left: 10px;
+}
+
+/* ----- SPHERE SECTION ----- */
+.gallery-section {
+  width: 100%;
+  height: 70dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: clamp(1px, 7vw, 100px); /* адаптивный отступ до статистики */
+}
+
+/* ----- STATS SECTION ----- */
+/* НЕ ТРОГАЕМ, оставляем полностью как есть */
+.stats-section {
+  display: flex;
+  justify-content: center;
+  gap: 2.2rem;
+  margin-bottom: px;
+  margin-left: 25px;
+  z-index: 10;
+}
+
+.stats-section .stat h2 {
+  font-size: 3.1rem;
+  font-weight: 375;
+  margin-bottom: 0.5rem;
+  color: #dcdcdc;
+  text-shadow: 0 0 10px rgba(247, 246, 246, 0.418);
+}
+
+.stats-section .stat .shiny-text {
+  margin-top: -15px;
+  font-size: 1.4rem;
+  letter-spacing: 0.5px;
+  font-weight: 350;
+}
+
+/* ----- MENU SECTION ----- */
+.menu-section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0;
+  margin-top: 10rem;
+  margin-bottom: 10rem;
+  text-align: left;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  transform: scale(1.15);
+  transform-origin: center;
+}
+
+/* ЛЕВОЕ МЕНЮ */
+.menu-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: 0 0 300px;
+  padding-left: 7rem;
+  border-right: 3px solid rgba(255, 255, 255, 0.1);
+}
+
+.menu-item {
+  position: relative;
+  cursor: pointer;
+  color: rgba(227, 227, 227, 0.5);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 400;
+  font-size: 1.05rem;
+  padding: 1.2rem 1.2rem;
+  background: transparent;
+  width: 100%;
+  word-wrap: break-word;
+  box-sizing: border-box;
+}
+
+.menu-item:hover {
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.menu-item.active {
+  color: white;
+  background: rgba(151, 151, 151, 0.12);
+  font-weight: 450;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  border-left: 2.5px solid white;
+  padding-left: calc(2rem - 3px);
+}
+
+/* ПРАВЫЙ ТЕКСТ */
+.menu-right {
+  flex: 1;
+  max-width: 800px;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 400;
+  padding: 0.5rem 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Adaptive */
+@media (max-width: 900px) {
+  .menu-section::before,
+  .menu-section::after {
+    display: none;
+  }
+
+  .menu-section {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    max-width: 90%;
+  }
+
+  .menu-left {
+    flex: none;
+    border-right: none;
+    border-top: 2px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    padding-left: 0;
+  }
+
+  .menu-item {
+    padding: 1rem 1.5rem;
+    text-align: center;
+  }
+
+  .menu-item.active {
+    border-left: none;
+    border-bottom: 3px solid white;
+    padding-left: 1.5rem;
+    padding-bottom: calc(1rem - 3px);
+  }
+
+  .menu-right {
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+
+  /* СТАТЫ В СТОЛБИК */
+  .stats-section {
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-left: 0;
+    align-items: center;
+  }
+
+  .stats-section .stat {
+    flex: none;
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 1200px) and (min-width: 901px) {
+  .gallery-section {
+    margin-bottom: 20px; /* подтягиваем глобус к статистике */
+  }
+
+  .who-we-are-title {
+    margin-bottom: 20px; /* минимальный отступ сверху глобуса */
+  }
+}
+
+/* Только для маленьких экранов */
+@media (max-width: 900px) {
+  .gallery-section {
+    margin-bottom: -40px; /* подтягиваем глобус к статистике */
+  }
+
+  .who-we-are-title {
+    margin-bottom: -40px; /* минимальный отступ сверху глобуса */
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery-section {
+    margin-bottom: -20px; /* подтягиваем глобус к статистике */
+  }
+
+  .who-we-are-title {
+    margin-bottom: -20px; /* минимальный отступ сверху глобуса */
+  }
+}

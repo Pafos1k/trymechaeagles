@@ -1,0 +1,124 @@
+.gallery-container {
+  position: relative;
+  right: 7%;
+  top: 58dvh;
+  transform: translateY(-50%) scale(0.65); /*SIZE*/
+  width: 40vw;
+  max-width: 600px;
+  min-width: 380px;
+  height: 350px;
+  min-height: 350px;
+  overflow: visible;
+  z-index: 5000 !important;
+  perspective: 3500px;
+  pointer-events: auto;
+}
+
+
+
+.gallery-content {
+  position: relative;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  perspective: 2150px;
+  transform-style: preserve-3d;
+}
+
+.gallery-track {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+  cursor: grab;
+  user-select: none;
+  transform-origin: center;
+}
+
+.gallery-track:active {
+  cursor: grabbing;
+}
+
+.gallery-item {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+/*SIZE OF IMAGES*/
+.gallery-img {
+  pointer-events: none;
+  height: 350px;
+  width: 335px;
+  border-radius: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  object-fit: cover;
+  box-shadow: 
+    0 2px 10px rgba(255, 255, 255, 0.7),
+    0 2px 10px rgba(252, 252, 252, 0.5);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #000;
+  display: block;
+  filter: grayscale(65%); /*HOW GREY IT IS*/
+  opacity: 0.65; /* optional: softens the image slightly */
+
+  /* animated gradient border 👇 */
+  border: 3px solid transparent;
+  background-image: 
+    linear-gradient(#000, #000), 
+    linear-gradient(to right, #ffffff, #d2d1d1, #959595, #cdcccc, #d4d3d3, #ffffff);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  background-size: 200%;
+  animation: animationGradient 3s linear infinite;
+  transition: all 0.4s ease;
+}
+
+
+@keyframes animationGradient {
+  to {
+    background-position: 150%;
+  }
+
+  
+}
+
+
+
+
+
+/* ===== LARGE TABLETS (max-width 1200px) ===== */
+@media (max-width: 1300px) {
+  .gallery-container {
+    transform: translateY(-50%) scale(0.55);
+    right: 5%;
+    width: 48vw;
+  }
+  .gallery-img {
+    height: 350px;
+    width: 335px;
+  }
+}
+
+
+/* ===== LARGE PHONES (max-width 650px) ===== */
+@media (max-width: 650px) {
+  .gallery-container {
+    top: 52%;
+    right: 2%;
+    width: 30vw;
+    transform: translateY(-50%) scale(0.4);
+    height: 285px; 
+    min-height: 285px;
+  }
+  .gallery-img {
+    height: 285px;
+    width: 300px;
+  }
+}
+

@@ -1,0 +1,283 @@
+
+.logoloop {
+  position: relative;
+  overflow-x: hidden;
+
+  --logoloop-gap: 32px;
+  --logoloop-logoHeight: 28px;
+  --logoloop-fadeColorAuto: #ffffff;
+}
+
+.logoloop--scale-hover {
+  padding-top: calc(var(--logoloop-logoHeight) * 0.1);
+  padding-bottom: calc(var(--logoloop-logoHeight) * 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  .logoloop {
+    --logoloop-fadeColorAuto: #0b0b0b;
+  }
+}
+
+.logoloop__track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  user-select: none;
+}
+
+.logoloop__list {
+  display: flex;
+  align-items: center;
+}
+
+/* Each logo item */
+.logoloop__item {
+  flex: 0 0 auto;
+  margin-right: var(--logoloop-gap);
+  font-size: var(--logoloop-logoHeight);
+  line-height: 1;
+  /*THESE LINES FOR EQUAL SPACING: */
+  width: 210px; /* Fixed width container */
+  min-width: 210px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoloop__item:last-child {
+  margin-right: var(--logoloop-gap);
+}
+
+.logoloop__item img,
+.logoloop__item .logoloop__node img {
+  height: var(--logoloop-logoHeight);
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  filter: grayscale(100%) brightness(1.1) invert(1);
+  opacity: 0.9;
+  transition: opacity 0.4s ease, filter 0.4s ease;
+}
+
+.logoloop__node {
+  display: inline-flex;
+  align-items: center;
+}
+
+.logoloop__item img {
+  height: var(--logoloop-logoHeight);
+  width: auto;
+  display: block;
+  object-fit: contain;
+  image-rendering: -webkit-optimize-contrast;
+  -webkit-user-drag: none;
+  pointer-events: none;
+  /* Links handle interaction */
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logoloop--scale-hover .logoloop__item {
+  overflow: visible;
+}
+
+.logoloop--scale-hover .logoloop__item:hover img,
+.logoloop--scale-hover .logoloop__item:hover .logoloop__node {
+  transform: scale(1.2);
+  transform-origin: center center;
+}
+
+.logoloop--scale-hover .logoloop__node {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logoloop__link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: opacity 0.2s ease;
+}
+
+.logoloop__link:hover {
+  opacity: 0.8;
+}
+
+.logoloop__link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.logoloop--fade::before,
+.logoloop--fade::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: clamp(24px, 8%, 120px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.logoloop--fade::before {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    var(--logoloop-fadeColor, var(--logoloop-fadeColorAuto)) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.logoloop--fade::after {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    var(--logoloop-fadeColor, var(--logoloop-fadeColorAuto)) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logoloop__track {
+    transform: translate3d(0, 0, 0) !important;
+  }
+
+  .logoloop__item img,
+  .logoloop__node {
+    transition: none !important;
+  }
+}
+
+
+.logoloop {
+  --logoloop-gap: 50px;
+  --logoloop-logoHeight: 25px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  gap: var(--logoloop-gap);
+  width: 100%;
+  position: relative;
+}
+
+/* Each looping list (sequence) */
+.logoloop__list {
+  display: flex;
+  align-items: center;
+  gap: var(--logoloop-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Each logo item */
+.logoloop__item img,
+.logoloop__item .logoloop__node img {
+  height: var(--logoloop-logoHeight);
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(100%) brightness(1.2) invert(1); /*RESPONSIBLE FOR BRIGTNESS OF LOGOS*/
+  opacity: 0.70;
+  transition: opacity 0.4s ease, filter 0.4s ease;
+}
+
+/* Optional: brighten on hover */
+.logoloop__item img:hover {
+  filter: grayscale(100%) brightness(0.9);
+  opacity: 0.9;
+}
+
+
+.logoloop--fade::before {
+  left: 0;
+  background: linear-gradient(to right, var(--logoloop-fadeColor, #ffffff) 0%, transparent 100%);
+}
+
+.logoloop--fade::after {
+  right: 0;
+  background: linear-gradient(to left, var(--logoloop-fadeColor, #ffffff) 0%, transparent 100%);
+}
+
+.sponsors-section {
+  width: 100%;
+  /* position of LOGO LOOP*/
+  padding: 12rem 0;
+  background: transparent; /*Color gradient on the logo loop*/
+}
+
+.sponsors-section__container {
+  max-width: 1700px;
+  margin: 0 auto;
+  padding: 0 0.1rem;
+}
+
+.sponsors-section__spacer {
+  /* spacing between text*/
+  margin-bottom: 3px;
+}
+
+.sponsors-section__label {
+  text-align: center;
+  color: #cfcfcf;
+  font-size: 2.8rem;
+  letter-spacing: 0.15em;/*Spaing between letters*/
+  margin-bottom: 3rem;/*Disrance between text and loop*/
+  text-transform: uppercase;
+  font-weight: 480;
+  line-height: 1;/*position of the text and loop from the main page*/
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.418);
+}
+
+/* Большие экраны — исходная версия */
+.logoloop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  gap: var(--logoloop-gap);
+  width: 100%;
+  position: relative;
+}
+
+/* Логотипы */
+.logoloop__item img {
+  height: var(--logoloop-logoHeight);
+  width: auto;
+}
+
+/* Малые экраны */
+@media (max-width: 900px) {
+  .logoloop {
+    justify-content: center; /* центрируем весь ряд */
+    gap: 10px; /* уменьшаем отступы */
+  }
+  .logoloop__item img {
+    height: 110px; /* уменьшаем логотипы */
+  }
+  .sponsors-section__label {
+    font-size: 2.2rem; /* уменьшает "POWERING MECHAEAGLES" */
+    letter-spacing: 0.12em;
+  }
+}
+
+/* Ещё меньше экран — например, 600px */
+@media (max-width: 600px) {
+  .logoloop__item img {
+    height: 100px; /* ещё меньше */
+  }
+  .logoloop {
+    gap: 10px;
+  }
+  .sponsors-section__label {
+    font-size: 2rem;
+    font-weight: 6000;
+    letter-spacing: 0.25em;
+    margin-top: 70px;
+  }
+}
+
+
+
+

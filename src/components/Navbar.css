@@ -1,0 +1,113 @@
+/* Navbar Styles */
+.site-header-container {
+  width: 100%;
+}
+
+.navbar-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  width: 100%;
+  padding: 1.5rem 2rem;
+  margin: 0;
+  background: transparent;
+}
+
+.navbar-logo-link {
+  margin-left: 0.5rem;
+  padding-left: 0;
+  justify-self: start;
+  text-decoration: none;
+}
+
+.navbar-logo {
+  display: block;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.7rem;
+  justify-self: center;
+  width: max-content;
+  z-index: 60;
+}
+
+.navbar-nav a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: #d8d8d8;
+  border-radius: 30px;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 15px rgba(185, 185, 185, 0.95);
+  transition: all 0.3s ease;
+}
+
+.navbar-nav a:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Contact Us Button */
+.navbar-contact-box {
+  position: relative;
+  width: 8rem;
+  height: 2.5rem;
+  border-radius: 50px;
+  background: linear-gradient(to right, #717171, #e2e2e2, #7a7a7a, #cdcccc, #8d8d8d, #656565);
+  background-size: 200%;
+  animation: contactGradient 2.5s linear infinite;
+  padding: 3px;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+  z-index: 60;
+}
+
+@keyframes contactGradient {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 150%;
+  }
+}
+
+.navbar-contact-tag {
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 3, 3, 0);
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: white;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  font-family: inherit;
+}
+
+.navbar-contact-tag:hover {
+  color: #8a8a8a;
+}
+
+.navbar-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #d5d5d5;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #fcfcfc;
+}
+
+
