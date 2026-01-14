@@ -64,7 +64,7 @@ const App = () => {
               />
 
               <div className="buttons">
-                <a href="#about" className="btn-get-started">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdOunUSR7l-q5qoLFwdAk3kbL_Radpw5x2goj_70lSLZm_vgQ/viewform?usp=header" className="btn-get-started">
                   JOIN US
                 </a>
               </div>

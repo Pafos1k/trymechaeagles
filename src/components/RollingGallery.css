@@ -33,7 +33,6 @@
   align-items: center;
   transform-style: preserve-3d;
   cursor: grab;
-  user-select: none;
   transform-origin: center;
 }
 
