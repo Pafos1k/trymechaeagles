@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import LightRays from './LightRays';
 import ShinyText from './components/ShinyText';
-import MoonRover3D from './components/MoonRover3D';
+import MoonRover3D from './components/MoonRover3d';
 import LogoLoop from './components/LogoLoop';
 import SlidingCarHorizontal from './components/SlidingCarHorizontal';
 import ScrollSequence from './components/ScrollSequence';
