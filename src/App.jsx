@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import LightRays from './LightRays';
 import ShinyText from './components/ShinyText';
-import RollingGallery from './components/RollingGallery';
+import MoonRover3D from './components/MoonRover3D';
 import LogoLoop from './components/LogoLoop';
 import SlidingCarHorizontal from './components/SlidingCarHorizontal';
 import ScrollSequence from './components/ScrollSequence';
@@ -40,7 +40,7 @@ const App = () => {
         </div>
 
         {/* --- GALLERY (positioned absolutely) --- */}
-        <RollingGallery />
+        <MoonRover3D />
 
         {/* --- MAIN CONTAINER (no Header here) --- */}
         <div className="container relative z-50">

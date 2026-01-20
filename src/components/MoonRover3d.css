@@ -1,0 +1,42 @@
+.moon-rover-container {
+  position: absolute;
+  inset: 0;
+   z-index: 5000 !important;
+  pointer-events: none; 
+}
+
+.moon-rover-viewer {
+  position: absolute;
+  
+  /* EXACT POSITIONING - Change these values */
+  top: 55%;      /* 0% = top, 50% = center, 100% = bottom (or use px like 100px) */
+  right: 15%;    /* Distance from right edge (or use left: 10% for left side) */
+  
+  transform: translate(0, -50%); /* Centers vertically relative to top value */
+  
+  /* Size */
+  width: 350px;
+  height: 350px;
+  background-color: transparent;
+  
+  pointer-events: auto; /* Re-enables interaction on the model */
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .moon-rover-viewer {
+    width: 350px;
+    height: 350px;
+    right: 5%;
+  }
+}
+
+@media (max-width: 650px) {
+  .moon-rover-viewer {
+    top: 115%;
+    right: -12.5%;
+    width: 500px;
+    height: 500px;
+    transform: translateY(-50%) scale(0.4);
+  }
+}
