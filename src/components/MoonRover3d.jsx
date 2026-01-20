@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import './MoonRover3D.css';
+import './MoonRover3d.css';
 
 const MoonRover3D = () => {
   useEffect(() => {
