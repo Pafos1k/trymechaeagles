@@ -8,6 +8,7 @@ import SlidingCarHorizontal from './components/SlidingCarHorizontal';
 import ScrollSequence from './components/ScrollSequence';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import RollingGallery from './components/RollingGallery';
 
 const App = () => {
   useEffect(() => {
@@ -40,7 +41,7 @@ const App = () => {
         </div>
 
         {/* --- GALLERY (positioned absolutely) --- */}
-        <MoonRover3D />
+        <RollingGallery />
 
         {/* --- MAIN CONTAINER (no Header here) --- */}
         <div className="container relative z-50">

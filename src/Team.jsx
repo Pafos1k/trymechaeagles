@@ -38,14 +38,14 @@ export default function Team() {
 
       Science : {
         head: [
-          { id: 'r1', name: 'Christian Roth', role: 'Head of Spec. Compliance', image: '/team/Christian Roth.jpg', link: 'https://www.linkedin.com/in/christian-roth-198708368/' },
-          { id: 'r2', name: 'Jack Dauphinais', role: 'Head Research Analyst', image: '/team/Jack Dauphinais.jpg', link: 'https://www.linkedin.com/in/jack-dauphinais-8a7b54294/'},
-          { id: 'r3', name: 'Atharva Naik', role: 'Head of HCD', image: '/team/Atharva Naik.jpg', link: 'https://www.linkedin.com/in/atharva-naik-732326257/'},
+          { id: 's7', name: 'Christian Roth', role: 'Head of Spec. Compliance', image: '/team/Christian Roth.jpg', link: 'https://www.linkedin.com/in/christian-roth-198708368/' },
+          { id: 's8', name: 'Jack Dauphinais', role: 'Head Research Analyst', image: '/team/Jack Dauphinais.jpg', link: 'https://www.linkedin.com/in/jack-dauphinais-8a7b54294/'},
+          { id: 's9', name: 'Atharva Naik', role: 'Head of HCD', image: '/team/Atharva Naik.jpg', link: 'https://www.linkedin.com/in/atharva-naik-732326257/'},
         ],
         members: [
-          { id: 's7', name: 'Vincent Zermani', role: 'Research Analyst', image: '/team/Vincent Zemrani.jpg', link: 'https://www.linkedin.com/in/vincentzermani/' },
-          { id: 'r8', name: 'Joshua Rydzewski', role: 'Research Analyst', image: '/team/Joshua Rudzewski.jpg', link: 'https://www.linkedin.com/in/joshua-rydzewski-3a1b51374/'},
-          { id: 'r9', name: 'Jinwon Hwang', role: 'Research Analyst', image: '/team/JinwonHwang.jpg', link: 'https://www.linkedin.com/in/jinwon-hwang-bba469342/'}
+          { id: 's10', name: 'Vincent Zermani', role: 'Research Analyst', image: '/team/Vincent Zemrani.jpg', link: 'https://www.linkedin.com/in/vincentzermani/' },
+          { id: 's11', name: 'Joshua Rydzewski', role: 'Research Analyst', image: '/team/Joshua Rudzewski.jpg', link: 'https://www.linkedin.com/in/joshua-rydzewski-3a1b51374/'},
+          { id: 's12', name: 'Jinwon Hwang', role: 'Research Analyst', image: '/team/JinwonHwang.jpg', link: 'https://www.linkedin.com/in/jinwon-hwang-bba469342/'}
         ]
       },
     },
@@ -60,25 +60,25 @@ export default function Team() {
         ]
       },
       'Scheduling': {
-        head: {id: 'p4', name: 'Carlos Contreras', role: 'Scheduling', image: '/team/Juan (Carlos) Contreras.jpg', link: 'https://www.linkedin.com/in/juan-contreras-884b69267/'},
+        head: {id: 'p5', name: 'Carlos Contreras', role: 'Scheduling', image: '/team/Juan (Carlos) Contreras.jpg', link: 'https://www.linkedin.com/in/juan-contreras-884b69267/'},
         members: [
-          { id: 'p5', name: 'Eric Xie', role: 'Scheduling', image: '/team/EricXie.jpg', link: 'https://www.linkedin.com/in/eric-xie-68a620385/' },
-          { id: 'p6', name: 'Jack Tommaney', role: 'Scheduling', image: '/team/Jack Tommaney.jpg', link: 'https://www.linkedin.com/in/jack-tommaney-19a598255/' },
+          { id: 'p6', name: 'Eric Xie', role: 'Scheduling', image: '/team/EricXie.jpg', link: 'https://www.linkedin.com/in/eric-xie-68a620385/' },
+          { id: 'p7', name: 'Jack Tommaney', role: 'Scheduling', image: '/team/Jack Tommaney.jpg', link: 'https://www.linkedin.com/in/jack-tommaney-19a598255/' },
         ]
       },
       'Finance': {
         head: [
-          { id: 'p7', name: 'Matt Mahan', role: 'Co-Head of Finance', image: '/team/Matt Mahan.jpg', link: 'https://www.linkedin.com/in/matt-mahan-88853a327/' },
-          { id: 'p8', name: 'Marcos Garay', role: 'Co-Head of Finance', image: '/team/Marcos Garay.jpg', link: 'https://www.linkedin.com/in/marcos-garay-723b48330/'},
+          { id: 'p8', name: 'Matt Mahan', role: 'Co-Head of Finance', image: '/team/Matt Mahan.jpg', link: 'https://www.linkedin.com/in/matt-mahan-88853a327/' },
+          { id: 'p9', name: 'Marcos Garay', role: 'Co-Head of Finance', image: '/team/Marcos Garay.jpg', link: 'https://www.linkedin.com/in/marcos-garay-723b48330/'},
         ],
         members: [
-          { id: 'p9', name: '', role: '', image: '/team/Apply.jpg', link: 'https://docs.google.com/forms/d/e/1FAIpQLSdOunUSR7l-q5qoLFwdAk3kbL_Radpw5x2goj_70lSLZm_vgQ/viewform' },
+          { id: 'p10', name: '', role: '', image: '/team/Apply.jpg', link: 'https://docs.google.com/forms/d/e/1FAIpQLSdOunUSR7l-q5qoLFwdAk3kbL_Radpw5x2goj_70lSLZm_vgQ/viewform' },
         ]
       },
       'Marketing': {
-        head: { id: 'p10', name: 'Michael Maurice', role: 'Head of Marketing', image: '/team/MichaelMaurice.jpg', link: 'https://www.linkedin.com/in/mg-maurice/' },
+        head: { id: 'p11', name: 'Michael Maurice', role: 'Head of Marketing', image: '/team/MichaelMaurice.jpg', link: 'https://www.linkedin.com/in/mg-maurice/' },
         members: [
-          { id: 'p11', name: 'Benson Lin', role: 'Marketing', image: '/team/benson .jpg', link: 'https://www.linkedin.com/in/benson-lin-527b8335a/' },
+          { id: 'p12', name: 'Benson Lin', role: 'Marketing', image: '/team/benson .jpg', link: 'https://www.linkedin.com/in/benson-lin-527b8335a/' },
         ]
       },
     },
