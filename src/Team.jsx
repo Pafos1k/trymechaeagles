@@ -52,7 +52,7 @@ export default function Team() {
 
     programmatics: {
       'Outreach': {
-        head: {id: 'p1', name: 'Maxwell Crawford', role: 'Head of Scheduling', image: '/team/Maxwell Crawford.jpg', link: 'https://www.linkedin.com/in/maxwell-crawford-38b5b4281/' },
+        head: {id: 'p1', name: 'Maxwell Crawford', role: 'Head of Outreach', image: '/team/Maxwell Crawford.jpg', link: 'https://www.linkedin.com/in/maxwell-crawford-38b5b4281/' },
         members: [
           { id: 'p2', name: 'Zack Donohue', role: 'Outreach', image: '/team/ZackDonohue.jpg', link: 'https://www.linkedin.com/in/zack-donohue-702082354/' },
           { id: 'p3', name: 'Chloe Rhee', role: 'Outreach', image: '/team/ChloeRhee.jpg', link: 'https://www.linkedin.com/in/chloerhee07/'},
