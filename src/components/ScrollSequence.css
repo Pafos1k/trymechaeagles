@@ -91,7 +91,6 @@
   transform: translate(-50%, -50%);
   opacity: 0;
   z-index: 1;
-  user-select: none;
   text-shadow: 0 0 10px rgba(118, 1, 1, 0.42),
     /* inner soft glow */ 0 0 7.5px rgba(122, 1, 1, 0.8);
 }

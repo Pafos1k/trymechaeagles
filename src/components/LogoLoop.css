@@ -23,7 +23,6 @@
   display: flex;
   width: max-content;
   will-change: transform;
-  user-select: none;
 }
 
 .logoloop__list {
