@@ -115,14 +115,14 @@ a:hover {
 
 .sponsor-tier-title {
   font-size: clamp(2.2rem, 5vw, 3.2rem);
-  font-weight: 500;
+  font-weight: 800;
   letter-spacing: clamp(0.04em, 0.5vw, 0.07em);
   margin: 0;
   line-height: 1.1;
   word-wrap: break-word;
   max-width: 100%;
-  color: #f7f7f7;
-  text-shadow: 0 0 14px rgba(0, 0, 0, 0.7);
+  color: #1a1a2e;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.4);
 }
 
 .sponsor-tier-group {
@@ -134,6 +134,11 @@ a:hover {
 }
 
 /* PLATINUM - Blue-ish diamond shine and group tint */
+.sponsor-tier-banner-platinum .sponsor-tier-title {
+  color: #0a1a3e;
+  text-shadow: 0 1px 4px rgba(160, 210, 255, 0.5);
+}
+
 .sponsor-tier-banner-platinum {
   background: linear-gradient(
     120deg,
@@ -152,6 +157,11 @@ a:hover {
 }
 
 /* GOLD - Golden shine and group tint */
+.sponsor-tier-banner-gold .sponsor-tier-title {
+  color: #3a2400;
+  text-shadow: 0 1px 4px rgba(255, 225, 90, 0.5);
+}
+
 .sponsor-tier-banner-gold {
   background: linear-gradient(
     120deg,
@@ -170,6 +180,11 @@ a:hover {
 }
 
 /* SILVER - Silver shine and group tint */
+.sponsor-tier-banner-silver .sponsor-tier-title {
+  color: #1a1a1a;
+  text-shadow: 0 1px 4px rgba(255, 255, 255, 0.5);
+}
+
 .sponsor-tier-banner-silver {
   background: linear-gradient(
     120deg,
