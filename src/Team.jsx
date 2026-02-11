@@ -31,7 +31,7 @@ export default function Team() {
           { id: 's2', name: 'Sofi Le', role: 'Full-Stack Developer', image: '/team/Sofi Le.jpg', link: 'https://www.linkedin.com/in/sofile/' },
           { id: 's3', name: 'Sophia Tsepenyuk', role: 'Full-Stack Developer', image: '/team/Sophia Tsepenyuk.jpg', link: 'https://www.linkedin.com/in/sophia-tsepenyuk-4529632b9/' },
           { id: 's4', name: 'Armand Koochekzadeh', role: 'Full-Stack Developer', image: '/team/Armand Koochekzadeh.jpg', link: 'https://www.linkedin.com/in/armand-koochekzadeh-140236311/' },
-          { id: 's5', name: 'Patrick Hartanto', role: 'Full-Stack Developer', image: '/team/placeholder.jpg', link: '' },
+          { id: 's5', name: 'Patrick Ayrton', role: 'Full-Stack Developer', image: '/team/Patrick Ayrton.jpg', link: 'https://www.linkedin.com/in/patrick-ayrton-b111a21a0/' },
           { id: 's6', name: 'Ayomidi Bamgbala', role: 'Full-Stack Developer', image: '/team/Ayomidi Bamgbala.jpg', link: 'https://www.linkedin.com/in/bamgbala/' },
         ]
       },
@@ -56,7 +56,9 @@ export default function Team() {
         members: [
           { id: 'p2', name: 'Zack Donohue', role: 'Outreach', image: '/team/ZackDonohue.jpg', link: 'https://www.linkedin.com/in/zack-donohue-702082354/' },
           { id: 'p3', name: 'Chloe Rhee', role: 'Outreach', image: '/team/ChloeRhee.jpg', link: 'https://www.linkedin.com/in/chloerhee07/'},
-          { id: 'p3', name: 'Jaden Han', role: 'Outreach', image: '/team/placeholder.jpg', link: 'https://www.linkedin.com/in/jaden-han-33b02b292/'},
+          { id: 'p4', name: 'Jaden Han', role: 'Outreach', image: '/team/placeholder.jpg', link: 'https://www.linkedin.com/in/jaden-han-33b02b292/'},
+          { id: 'p5', name: 'Arhant Jajodia', role: 'Outreach', image: '/team/placeholder.jpg', link: ''},
+          
         ]
       },
       'Scheduling': {
@@ -66,6 +68,13 @@ export default function Team() {
           { id: 'p7', name: 'Jack Tommaney', role: 'Scheduling', image: '/team/Jack Tommaney.jpg', link: 'https://www.linkedin.com/in/jack-tommaney-19a598255/' },
         ]
       },
+      'Marketing': {
+        head: { id: 'p11', name: 'Michael Maurice', role: 'Head of Marketing', image: '/team/MichaelMaurice.jpg', link: 'https://www.linkedin.com/in/mg-maurice/' },
+        members: [
+          { id: 'p12', name: 'Benson Lin', role: 'Marketing', image: '/team/benson .jpg', link: 'https://www.linkedin.com/in/benson-lin-527b8335a/' },
+          { id: 'p13', name: 'AshleyZhang', role: 'Marketing', image: '/team/AshleyZhang.jpg', link: 'https://www.linkedin.com/in/ashley-zhang-65037a239/' },
+        ]
+      },
       'Finance': {
         head: [
           { id: 'p8', name: 'Matt Mahan', role: 'Co-Head of Finance', image: '/team/Matt Mahan.jpg', link: 'https://www.linkedin.com/in/matt-mahan-88853a327/' },
@@ -73,12 +82,6 @@ export default function Team() {
         ],
         members: [
           { id: 'p10', name: '', role: '', image: '/team/Apply.jpg', link: 'https://docs.google.com/forms/d/e/1FAIpQLSdOunUSR7l-q5qoLFwdAk3kbL_Radpw5x2goj_70lSLZm_vgQ/viewform' },
-        ]
-      },
-      'Marketing': {
-        head: { id: 'p11', name: 'Michael Maurice', role: 'Head of Marketing', image: '/team/MichaelMaurice.jpg', link: 'https://www.linkedin.com/in/mg-maurice/' },
-        members: [
-          { id: 'p12', name: 'Benson Lin', role: 'Marketing', image: '/team/benson .jpg', link: 'https://www.linkedin.com/in/benson-lin-527b8335a/' },
         ]
       },
     },
