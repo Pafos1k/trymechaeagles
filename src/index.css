@@ -88,14 +88,15 @@ body {
 
 
 
-.container{
-  /* use 100% to avoid adding viewport-scrollbar width which creates horizontal overflow */
+.container {
   width: 100%;
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  position: relative;
-  overflow: visible;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 5%;
 }
 
 .logo {
@@ -160,14 +161,15 @@ main{
   width: 15rem;
   height: 2.5rem;
   border-radius: 50px;
+
   background: linear-gradient(to right, #717171, #e2e2e2, #7a7a7a, #cdcccc, #8d8d8d, #656565);
   background-size: 200%;
   animation: animationGradient 2.5s linear infinite;
-  padding: 3px; /* this makes room for the inner black background */
-  box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
-  left: 45%;
-  transform: translateX(-70%);
 
+  padding: 3px;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+
+  margin: 0 auto;
 }
 
 @keyframes animationGradient {
@@ -210,11 +212,10 @@ main{
 }
 
 .buttons{
-  display:  flex;
+  display: flex;
   justify-content: center;
   gap: 1rem;
-  margin-top: 2.1rem;
-  transform: translateX(-72px);
+  margin-top: 2rem;
 }
 
 .btn-get-started {
@@ -231,7 +232,7 @@ main{
   backdrop-filter: blur(10px);
   box-shadow: 0 0 15px rgba(185, 185, 185, 0.95);
   transition: all 0.3s ease;
-  margin-left: -40px;
+  margin-left: 0;
 }
 
 .btn-get-started:hover {
@@ -346,19 +347,15 @@ main{
 
 
 .gallery-container {
-  position: absolute;
-  right: 7%;
-  top: 58%;
-  transform: translateY(-50%) scale(0.65);
-  width: 40vw;
+  position: relative;      /* instead of absolute */
+  width: 40%;
   max-width: 600px;
-  min-width: 380px;
-  height: 220px;
-  overflow: visible;
-  z-index: 5;
+  min-width: 320px;
+  height: auto;
+
   perspective: 3500px;
+  overflow: visible;
   pointer-events: auto;
-  z-index: 9999 !important;
 }
 
 
@@ -367,14 +364,14 @@ main{
 /* Малые экраны — центрируем и опускаем под JOIN US */
 @media (max-width: 1300px) {
   .gallery-container {
-    position: absolute;
-    left: 50%;
+    position: relative;          /* in the normal flow */
+    left: auto;
     right: auto;
     top: auto;
-    transform: translateX(-50%) scale(0.65);
-    margin-top: 50rem; /* или подгоняй под JOIN US */
-    width: 80%;
-    max-width: 500px;
+
+    margin: 3rem auto 0;         /* normal spacing below text */
+    transform: scale(0.65);      /* keep your scale */
+    width: min(80%, 500px);
     min-width: 300px;
   }
   .content {
@@ -434,6 +431,12 @@ main{
 
 /* --- Ещё меньше экраны 600px --- */
 @media (max-width: 600px) {
+  .gallery-container {
+    transform: scale(0.55);
+    width: 90%;
+    min-width: 0;          /* allow shrinking on tiny screens */
+    height: auto;          /* avoids forcing a fixed small height */
+  }
   .content h1 { font-size: 2.2rem; }
   .description { font-size: 0.95rem; padding: 0 10px; }
   .spec-image { width: 90%; }
