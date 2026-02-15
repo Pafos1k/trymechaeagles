@@ -71,7 +71,7 @@ export default function Header() {
           {/* Desktop Links */}
           <nav className="desktop-nav">
             <Link to="/">HOME</Link>
-            <Link to="/about">ABOT</Link>
+            <Link to="/about">ABOUT</Link>
             <Link to="/team">TEAM</Link>
             <Link to="/sponsors">SPONSORS</Link>
           </nav>
@@ -94,7 +94,7 @@ export default function Header() {
 
         <nav className="mobile-nav">
           <Link to="/" onClick={closeMenu}>HOME</Link>
-          <Link to="/about" onClick={closeMenu}>ABOT</Link>
+          <Link to="/about" onClick={closeMenu}>ABOUT</Link>
           <Link to="/team" onClick={closeMenu}>TEAM</Link>
           <Link to="/sponsors" onClick={closeMenu}>SPONSORS</Link>
           <a href="mailto:mechaeagles@bc.edu" className="mobile-contact-link" onClick={closeMenu}>
