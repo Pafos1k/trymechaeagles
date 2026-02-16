@@ -26,7 +26,7 @@ const App = () => {
         <div className="absolute inset-0 z-0 pointer-events-none">
           <LightRays
             raysOrigin="top-center"
-            raysColor="white"
+            raysColor="#751522"
             raysSpeed={0.9}
             lightSpread={0.9}
             rayLength={2.8}
