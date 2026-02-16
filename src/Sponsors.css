@@ -179,9 +179,9 @@ a:hover {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
   gap: clamp(1.5rem, 3vw, 2.5rem);
-  margin-bottom: clamp(3rem, 6vw, 6rem);
   width: 100%;
   justify-items: center;
+  align-items: start;
 }
 
 /* ========= SPONSOR CARD ========= */
@@ -200,6 +200,8 @@ a:hover {
   min-height: clamp(320px, 50vw, 475px);
   display: flex;
   flex-direction: column;
+  justify-self: center;
+  align-self: stretch;
 }
 
 .sponsor-card::before {
