@@ -142,6 +142,14 @@ export default function Sponsors() {
         donatedAmount: "$...",
       },
     ],
+    bronze: [
+      {
+        name: "Bronze Supporter",
+        desc: "Supporting our team's journey with valuable contributions",
+        image: "/placeholder.png",
+        donatedAmount: "$...",
+      },
+    ],
   };
 
   return (
@@ -269,6 +277,52 @@ export default function Sponsors() {
               <div className="sponsors-grid">
                 {sponsorTiers.silver.map((s, i) => (
                   <div className="sponsor-card reveal" key={`silver-${i}`}>
+                    <div className="sponsor-card-inner">
+                      <div className="sponsor-logo-container">
+                        <img
+                          src={s.image}
+                          alt={s.name}
+                          className="sponsor-logo"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div className="sponsor-info">
+                        <h3 className="sponsor-name">{s.name}</h3>
+                        <p className="sponsor-description">
+                          <ShinyText
+                            text={s.desc}
+                            color1="#ffffff"
+                            speed={5}
+                          />
+                        </p>
+                      </div>
+                    </div>
+                    <div className="sponsor-donation-overlay" aria-hidden="true">
+                      <span className="sponsor-donation-icon">♥</span>
+                      <span className="sponsor-donation-label">Donated to us</span>
+                      <span className="sponsor-donation-amount">{s.donatedAmount}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* BRONZE TIER */}
+          <section className="sponsor-tier-section reveal">
+            <div className="sponsor-tier-banner sponsor-tier-banner-bronze">
+              <h2 className="sponsor-tier-title">
+                <ShinyText
+                  text="Bronze Sponsors"
+                  color1="rgba(205, 127, 50, 1)"
+                  speed={4}
+                />
+              </h2>
+            </div>
+            <div className="sponsor-tier-group sponsor-tier-group-bronze">
+              <div className="sponsors-grid">
+                {sponsorTiers.bronze.map((s, i) => (
+                  <div className="sponsor-card reveal" key={`bronze-${i}`}>
                     <div className="sponsor-card-inner">
                       <div className="sponsor-logo-container">
                         <img
