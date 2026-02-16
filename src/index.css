@@ -1,3 +1,7 @@
+:root {
+  --bc-maroon: #8C1D2C;
+  --bc-maroon-glow: rgba(140, 29, 44, 0.6);
+}
 @import url('https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single+Ink:wght@100..900&family=Roboto+Slab:wght@100..900&family=Tangerine:wght@400;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -205,7 +209,9 @@ main{
   letter-spacing: 0.07em;
   margin: 2rem 0;
   line-height: 1.2;
-  text-shadow: 0 0 13px rgba(247, 246, 246, 0.418);
+  text-shadow:
+    0 0 10px rgba(255,255,255,0.3),
+    0 0 25px var(--bc-maroon-glow);
 }
 
 .description{
@@ -226,23 +232,24 @@ main{
 
 .btn-get-started {
   text-decoration: none;
-  color:rgb(223, 223, 223);
-  border: 1px solid #2a2a2a;
+  color: white;
+  border: 1px solid var(--bc-maroon);
   padding: 0.3rem 0.8rem;
   border-radius: 50px;
   font-size: 1.2rem;
   font-weight: 400;
   letter-spacing: 0.1em;
-  background: rgba(163, 131, 131, 0.05);
+  background: var(--bc-maroon);
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
-  box-shadow: 0 0 15px rgba(185, 185, 185, 0.95);
+  box-shadow: 0 0 15px var(--bc-maroon-glow);
   transition: all 0.3s ease;
   margin-left: 0;
 }
 
 .btn-get-started:hover {
-  background-color: #7d7d7d;
+  background: #a3263a;
+  box-shadow: 0 0 25px var(--bc-maroon);
 }
 
 
