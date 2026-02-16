@@ -1,17 +1,13 @@
 .gallery-container {
   position: relative;
-  right: 7%;
-  top: 58dvh;
-  transform: translateY(-50%) scale(0.65); /*SIZE*/
-  width: 40vw;
+  transform: scale(0.65);
+  width: 100%;
   max-width: 600px;
   min-width: 380px;
   height: 350px;
   min-height: 350px;
   overflow: visible;
-  z-index: 5000 !important;
   perspective: 3500px;
-  pointer-events: auto;
 }
 
 
@@ -90,34 +86,13 @@
 
 
 
-
-/* ===== LARGE TABLETS (max-width 1200px) ===== */
-@media (max-width: 1300px) {
-  .gallery-container {
-    transform: translateY(-50%) scale(0.55);
-    right: 5%;
-    width: 48vw;
-  }
-  .gallery-img {
-    height: 350px;
-    width: 335px;
-  }
-}
-
-
 /* ===== LARGE PHONES (max-width 650px) ===== */
 @media (max-width: 650px) {
   .gallery-container {
-    top: 52%;
-    right: 2%;
-    width: 30vw;
-    transform: translateY(-50%) scale(0.4);
-    height: 285px; 
-    min-height: 285px;
-  }
-  .gallery-img {
+    width: 100%;
+    transform: scale(0.45);
     height: 285px;
-    width: 300px;
+    min-width: 0;
   }
 }
 
