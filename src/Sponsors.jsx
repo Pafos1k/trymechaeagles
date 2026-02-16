@@ -105,13 +105,13 @@ export default function Sponsors() {
         name: "Premier Partner",
         desc: "Leading innovation in robotics and engineering excellence",
         image: "/SAE.png",
-        donatedAmount: "$12,500",
+        donatedAmount: "$...",
       },
       {
         name: "Technology Leader",
         desc: "Advancing mechanical engineering through cutting-edge solutions",
         image: "/NASA.png",
-        donatedAmount: "$8,750",
+        donatedAmount: "$...",
       },
     ],
     gold: [
@@ -119,13 +119,13 @@ export default function Sponsors() {
         name: "Innovation Partner",
         desc: "Supporting the next generation of engineers and innovators",
         image: "/SOLIDWORK.png",
-        donatedAmount: "$15,000",
+        donatedAmount: "$...",
       },
       {
         name: "Strategic Ally",
         desc: "Empowering teams with resources and technical expertise",
         image: "/IGOS.png",
-        donatedAmount: "$6,200",
+        donatedAmount: "$...",
       },
     ],
     silver: [
@@ -133,13 +133,13 @@ export default function Sponsors() {
         name: "Technical Partner",
         desc: "Providing state-of-the-art tools and manufacturing support",
         image: "/FUSION365.png",
-        donatedAmount: "$10,000",
+        donatedAmount: "$...",
       },
       {
         name: "Community Supporter",
         desc: "Building the future through educational partnerships",
         image: "/BCEngeeniring.png",
-        donatedAmount: "$5,500",
+        donatedAmount: "$...",
       },
     ],
   };
@@ -165,7 +165,13 @@ export default function Sponsors() {
           {/* PLATINUM TIER */}
           <section className="sponsor-tier-section reveal">
             <div className="sponsor-tier-banner sponsor-tier-banner-platinum">
-              <h2 className="sponsor-tier-title">Platinum Sponsors</h2>
+              <h2 className="sponsor-tier-title">
+                <ShinyText
+                  text="Platinum Sponsors"
+                  color1="rgba(160, 210, 255, 1)"
+                  speed={4}
+                />
+              </h2>
             </div>
             <div className="sponsor-tier-group sponsor-tier-group-platinum">
               <div className="sponsors-grid">
@@ -205,7 +211,13 @@ export default function Sponsors() {
           {/* GOLD TIER */}
           <section className="sponsor-tier-section reveal">
             <div className="sponsor-tier-banner sponsor-tier-banner-gold">
-              <h2 className="sponsor-tier-title">Gold Sponsors</h2>
+              <h2 className="sponsor-tier-title">
+                <ShinyText
+                  text="Gold Sponsors"
+                  color1="rgba(255, 225, 90, 1)"
+                  speed={4}
+                />
+              </h2>
             </div>
             <div className="sponsor-tier-group sponsor-tier-group-gold">
               <div className="sponsors-grid">
@@ -245,7 +257,13 @@ export default function Sponsors() {
           {/* SILVER TIER */}
           <section className="sponsor-tier-section reveal">
             <div className="sponsor-tier-banner sponsor-tier-banner-silver">
-              <h2 className="sponsor-tier-title">Silver Sponsors</h2>
+              <h2 className="sponsor-tier-title">
+                <ShinyText
+                  text="Silver Sponsors"
+                  color1="rgba(255, 255, 255, 1)"
+                  speed={4}
+                />
+              </h2>
             </div>
             <div className="sponsor-tier-group sponsor-tier-group-silver">
               <div className="sponsors-grid">

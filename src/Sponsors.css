@@ -103,10 +103,6 @@ a:hover {
 .sponsor-tier-banner {
   padding: clamp(0.9rem, 2vw, 1.2rem) clamp(1.2rem, 3vw, 1.8rem);
   border-radius: clamp(18px, 3vw, 24px);
-  background-size: 200% 100%;
-  animation: tierShine 3s linear infinite;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65);
-  border: 1px solid rgba(255, 255, 255, 0.18);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -133,21 +129,10 @@ a:hover {
   background: radial-gradient(circle at top, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.9));
 }
 
-/* PLATINUM - Blue-ish diamond shine and group tint */
+/* PLATINUM: diamond shine and group tint */
 .sponsor-tier-banner-platinum .sponsor-tier-title {
-  color: #0a1a3e;
-  text-shadow: 0 1px 4px rgba(160, 210, 255, 0.5);
-}
-
-.sponsor-tier-banner-platinum {
-  background: linear-gradient(
-    120deg,
-    rgba(90, 140, 255, 0.7) 20%,
-    rgba(160, 210, 255, 1) 40%,
-    rgba(110, 190, 255, 0.95) 50%,
-    rgba(160, 210, 255, 1) 60%,
-    rgba(90, 140, 255, 0.7) 80%
-  );
+  color: rgba(160, 210, 255, 1);
+  text-shadow: 0 0 20px rgba(160, 210, 255, 0.6), 0 0 40px rgba(160, 210, 255, 0.3);
 }
 
 .sponsor-tier-group-platinum {
@@ -156,21 +141,10 @@ a:hover {
   background: radial-gradient(circle at top, rgba(130, 180, 255, 0.15), rgba(0, 0, 0, 0.9));
 }
 
-/* GOLD - Golden shine and group tint */
+/* GOLD: gold shine and group tint */
 .sponsor-tier-banner-gold .sponsor-tier-title {
-  color: #3a2400;
-  text-shadow: 0 1px 4px rgba(255, 225, 90, 0.5);
-}
-
-.sponsor-tier-banner-gold {
-  background: linear-gradient(
-    120deg,
-    rgba(210, 160, 60, 0.8) 20%,
-    rgba(255, 225, 90, 1) 40%,
-    rgba(255, 205, 40, 0.98) 50%,
-    rgba(255, 225, 90, 1) 60%,
-    rgba(210, 160, 60, 0.8) 80%
-  );
+  color: rgba(255, 225, 90, 1);
+  text-shadow: 0 0 20px rgba(255, 225, 90, 0.6), 0 0 40px rgba(255, 225, 90, 0.3);
 }
 
 .sponsor-tier-group-gold {
@@ -179,21 +153,10 @@ a:hover {
   background: radial-gradient(circle at top, rgba(255, 215, 120, 0.15), rgba(0, 0, 0, 0.9));
 }
 
-/* SILVER - Silver shine and group tint */
+/* SILVER: silver shine and group tint */
 .sponsor-tier-banner-silver .sponsor-tier-title {
-  color: #1a1a1a;
-  text-shadow: 0 1px 4px rgba(255, 255, 255, 0.5);
-}
-
-.sponsor-tier-banner-silver {
-  background: linear-gradient(
-    120deg,
-    rgba(190, 190, 190, 0.8) 20%,
-    rgba(255, 255, 255, 1) 40%,
-    rgba(225, 225, 225, 0.98) 50%,
-    rgba(255, 255, 255, 1) 60%,
-    rgba(190, 190, 190, 0.8) 80%
-  );
+  color: rgba(255, 255, 255, 1);
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.6), 0 0 40px rgba(255, 255, 255, 0.3);
 }
 
 .sponsor-tier-group-silver {
