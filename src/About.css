@@ -29,15 +29,6 @@ main.container {
   margin-left: 10px;
 }
 
-/* ----- SPHERE SECTION ----- */
-.gallery-section {
-  width: 100%;
-  height: 70dvh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: clamp(1px, 7vw, 100px); /* адаптивный отступ до статистики */
-}
 
 /* ----- STATS SECTION ----- */
 /* НЕ ТРОГАЕМ, оставляем полностью как есть */
@@ -188,34 +179,33 @@ main.container {
     max-width: 300px;
   }
 }
-
-@media (max-width: 1200px) and (min-width: 901px) {
-  .gallery-section {
-    margin-bottom: 20px; /* подтягиваем глобус к статистике */
-  }
-
-  .who-we-are-title {
-    margin-bottom: 20px; /* минимальный отступ сверху глобуса */
-  }
+/* ----- HALLWAY GALLERY SECTION ----- */
+.gallery-section {
+  width: 100%;
+  margin: 60px 0 120px 0;
+  display: block;
 }
 
-/* Только для маленьких экранов */
+.hallway-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 80px 0;
+}
+
 @media (max-width: 900px) {
   .gallery-section {
-    margin-bottom: -40px; /* подтягиваем глобус к статистике */
+    margin: 40px 0 90px 0;
   }
-
-  .who-we-are-title {
-    margin-bottom: -40px; /* минимальный отступ сверху глобуса */
+  .hallway-section {
+    margin: 60px 0;
   }
 }
-
-@media (max-width: 600px) {
-  .gallery-section {
-    margin-bottom: -20px; /* подтягиваем глобус к статистике */
-  }
-
-  .who-we-are-title {
-    margin-bottom: -20px; /* минимальный отступ сверху глобуса */
-  }
+.hallway-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 80px 0;
+  position: relative;
+  z-index: 1;
 }

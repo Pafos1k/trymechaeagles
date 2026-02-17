@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import DomeGallery from "./components/DomeGallery";
 import ShinyText from "./components/ShinyText";
+import HallwayGallery from "./components/HallwayGallery";
 import "./About.css";
 
 export default function About() {
@@ -24,13 +24,11 @@ export default function About() {
       <Header fixed={true} />
 
       <main className="container text-center">
+        
         {/* WHO WE ARE */}
         <h1 className="who-we-are-title">WHO WE ARE</h1>
 
-        {/* DOME GALLERY */}
-        <div className="gallery-section">
-          <DomeGallery />
-        </div>
+
 
         {/* STATS SECTION */}
         <section className="stats-section">
@@ -51,6 +49,14 @@ export default function About() {
             <ShinyText text="RETENTION Y/Y" />
           </div>
         </section>
+                {/* HALLWAY GALLERY */}
+
+        <div className="gallery-section">
+          <HallwayGallery />
+        </div>
+
+
+        
 
         {/* SIDE MENU SECTION */}
         <section className="menu-section">
