@@ -27,6 +27,11 @@ export default function About() {
         
         {/* WHO WE ARE */}
         <h1 className="who-we-are-title">WHO WE ARE</h1>
+        {/* HALLWAY GALLERY */}
+
+        <div className="gallery-section">
+          <HallwayGallery />
+        </div>
 
 
 
@@ -49,11 +54,7 @@ export default function About() {
             <ShinyText text="RETENTION Y/Y" />
           </div>
         </section>
-                {/* HALLWAY GALLERY */}
-
-        <div className="gallery-section">
-          <HallwayGallery />
-        </div>
+  
 
 
         
