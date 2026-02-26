@@ -5,6 +5,9 @@
   --ink: #ffffff;
   --muted: #d6d6d6;
   --card: #000000;
+  --card-w: 280px;
+  --card-h: 340px;
+  --card-gap: clamp(3rem, 5vw, 4rem);
 }
 
 * {
@@ -20,30 +23,20 @@ body {
   overflow-x: hidden;
 }
 
-a {
-  color: #fff;
-  text-decoration: none;
-}
-a:hover {
-  color: #eaeaea;
-}
+a { color: #fff; text-decoration: none; }
+a:hover { color: #eaeaea; }
 
 /* ========= LAYOUT ========= */
-#react-header {
-  position: relative;
-  z-index: 1000;
-}
+#react-header { position: relative; z-index: 1000; }
 #react-header > header {
   position: relative !important;
   z-index: 101;
   pointer-events: auto;
 }
 
-/* Main Container */
 .sponsors-main {
   min-height: 100vh;
   padding: 2rem 0;
-  padding-bottom: 2rem;
   z-index: 1;
   width: 100%;
   overflow-x: hidden;
@@ -56,7 +49,18 @@ a:hover {
   width: 100%;
 }
 
-/* ========= HERO SECTION ========= */
+/* ========= REVEAL ========= */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========= HERO ========= */
 .sponsors-hero {
   display: flex;
   flex-direction: column;
@@ -71,10 +75,11 @@ a:hover {
 .sponsors-title {
   font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 500;
+  color:rgba(84, 7, 0, 0.9);
   letter-spacing: clamp(0.04em, 0.5vw, 0.07em);
   margin: 0.5rem 0;
   line-height: 1.1;
-  text-shadow: 0 0 13px rgba(247, 246, 246, 0.418);
+  text-shadow: 0 0 13px rgba(166, 0, 0, 0.418);
   text-align: center;
   word-wrap: break-word;
   max-width: 100%;
@@ -94,30 +99,118 @@ a:hover {
   padding: 0 1rem;
 }
 
-/* ========= SPONSORS GRID ========= */
-.sponsors-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
-  gap: clamp(1.5rem, 3vw, 2.5rem);
-  margin-bottom: clamp(3rem, 6vw, 6rem);
+/* ========= TIER SECTIONS ========= */
+.sponsor-tier-section {
+  margin: clamp(3rem, 6vw, 5rem) 0;
   width: 100%;
-  justify-items: center;
 }
 
-/* ========= SPONSOR CARD ========= */
+/* ========= TIER DIVIDER ========= */
+.sponsor-tier-divider {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.8rem, 2vw, 1.5rem);
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  width: 100%;
+}
+
+.tier-line {
+  flex: 1;
+  height: 2px;
+  border-radius: 2px;
+}
+
+.sponsor-tier-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: clamp(0.08em, 0.6vw, 0.14em);
+  margin: 0;
+  line-height: 1;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* PLATINUM */
+.sponsor-tier-divider-platinum .tier-line {
+  background: linear-gradient(90deg, transparent, rgba(150, 190, 255, 0.85), transparent);
+  box-shadow: 0 0 8px rgba(150, 190, 255, 0.5);
+}
+.sponsor-tier-divider-platinum .sponsor-tier-title {
+  color: rgba(160, 210, 255, 1);
+  text-shadow: 0 0 20px rgba(160, 210, 255, 0.7), 0 0 40px rgba(160, 210, 255, 0.35);
+}
+
+/* GOLD */
+.sponsor-tier-divider-gold .tier-line {
+  background: linear-gradient(90deg, transparent, rgba(240, 210, 80, 0.85), transparent);
+  box-shadow: 0 0 8px rgba(240, 210, 80, 0.5);
+}
+.sponsor-tier-divider-gold .sponsor-tier-title {
+  color: rgba(255, 225, 90, 1);
+  text-shadow: 0 0 20px rgba(255, 225, 90, 0.7), 0 0 40px rgba(255, 225, 90, 0.35);
+}
+
+/* SILVER */
+.sponsor-tier-divider-silver .tier-line {
+  background: linear-gradient(90deg, transparent, rgba(210, 210, 210, 0.85), transparent);
+  box-shadow: 0 0 8px rgba(210, 210, 210, 0.45);
+}
+.sponsor-tier-divider-silver .sponsor-tier-title {
+  color: rgba(220, 220, 220, 1);
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.7), 0 0 40px rgba(255, 255, 255, 0.3);
+}
+
+/* BRONZE */
+.sponsor-tier-divider-bronze .tier-line {
+  background: linear-gradient(90deg, transparent, rgba(205, 127, 50, 0.85), transparent);
+  box-shadow: 0 0 8px rgba(205, 127, 50, 0.5);
+}
+.sponsor-tier-divider-bronze .sponsor-tier-title {
+  color: rgba(205, 127, 50, 1);
+  text-shadow: 0 0 20px rgba(205, 127, 50, 0.7), 0 0 40px rgba(205, 127, 50, 0.35);
+}
+
+.sponsor-tier-group {
+  padding: 0;
+  border: none;
+  background: transparent;
+  margin-top: clamp(5rem, 3vw, 2.5rem);
+  margin-bottom: clamp(5rem, 3vw, 2.5rem);
+}
+
+/* ========= SPONSORS GRID — FLEXBOX, ALWAYS CENTERED, MAX 3 PER ROW ========= */
+.sponsors-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--card-gap);
+  width: 100%;
+  max-width: calc(3 * var(--card-w) + 2 * clamp(2.5rem, 5vw, 4rem));
+  margin: 0 auto;
+}
+
+/* ========= SPONSOR CARD — FIXED SIZE, NEVER CHANGES SHAPE ========= */
 .sponsor-card {
   position: relative;
-  border-radius: clamp(15px, 2vw, 20px);
+  border-radius: 16px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
-  padding: clamp(1.5rem, 3vw, 2.5rem);
-  transition: all 0.4s ease;
+  padding: 1.4rem;
+  transition: transform 0.4s ease, border-color 0.4s ease,
+              box-shadow 0.4s ease, background 0.4s ease;
   cursor: pointer;
   overflow: hidden;
-  width: 100%;
-  max-width: 390px;
-  min-height: clamp(320px, 50vw, 475px);
+
+  /* ✅ Fixed dimensions — never stretch or shrink */
+  width: var(--card-w);
+  height: var(--card-h);
+  min-width: var(--card-w);
+  max-width: var(--card-w);
+  min-height: var(--card-h);
+  max-height: var(--card-h);
+  flex: 0 0 var(--card-w);
+
   display: flex;
   flex-direction: column;
 }
@@ -131,66 +224,181 @@ a:hover {
   height: 100%;
   transition: left 0.6s ease;
 }
+.sponsor-card:hover::before { left: 100%; }
 
-.sponsor-card:hover::before {
-  left: 100%;
+/* PLATINUM */
+.sponsor-card-platinum {
+  border-color: rgba(150, 190, 255, 0.55);
+  box-shadow: 0 6px 20px rgba(100, 160, 255, 0.15);
+  background: radial-gradient(circle at top, rgba(130, 180, 255, 0.06), rgba(0,0,0,0.92));
+}
+.sponsor-card-platinum:hover {
+  transform: translateY(-6px);
+  border-color: rgba(160, 210, 255, 0.9);
+  box-shadow: 0 14px 38px rgba(100, 160, 255, 0.45), 0 0 24px rgba(160, 210, 255, 0.2);
+  background: radial-gradient(circle at top, rgba(130, 180, 255, 0.13), rgba(0,0,0,0.92));
 }
 
-.sponsor-card:hover {
-  transform: translateY(-8px);
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 12px 35px rgba(255, 255, 255, 0.15);
+/* GOLD */
+.sponsor-card-gold {
+  border-color: rgba(240, 210, 120, 0.55);
+  box-shadow: 0 6px 20px rgba(240, 200, 80, 0.15);
+  background: radial-gradient(circle at top, rgba(255, 215, 120, 0.06), rgba(0,0,0,0.92));
+}
+.sponsor-card-gold:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 225, 90, 0.9);
+  box-shadow: 0 14px 38px rgba(240, 200, 80, 0.45), 0 0 24px rgba(255, 225, 90, 0.2);
+  background: radial-gradient(circle at top, rgba(255, 215, 120, 0.13), rgba(0,0,0,0.92));
+}
+
+/* SILVER */
+.sponsor-card-silver {
+  border-color: rgba(210, 210, 210, 0.55);
+  box-shadow: 0 6px 20px rgba(210, 210, 210, 0.12);
+  background: radial-gradient(circle at top, rgba(230, 230, 230, 0.06), rgba(0,0,0,0.92));
+}
+.sponsor-card-silver:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 14px 38px rgba(210, 210, 210, 0.4), 0 0 24px rgba(255, 255, 255, 0.18);
+  background: radial-gradient(circle at top, rgba(230, 230, 230, 0.13), rgba(0,0,0,0.92));
+}
+
+/* BRONZE */
+.sponsor-card-bronze {
+  border-color: rgba(205, 127, 50, 0.55);
+  box-shadow: 0 6px 20px rgba(205, 127, 50, 0.12);
+  background: radial-gradient(circle at top, rgba(205, 127, 50, 0.06), rgba(0,0,0,0.92));
+}
+.sponsor-card-bronze:hover {
+  transform: translateY(-6px);
+  border-color: rgba(205, 127, 50, 0.9);
+  box-shadow: 0 14px 38px rgba(205, 127, 50, 0.4), 0 0 24px rgba(205, 127, 50, 0.18);
+  background: radial-gradient(circle at top, rgba(205, 127, 50, 0.13), rgba(0,0,0,0.92));
 }
 
 .sponsor-card-inner {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   height: 100%;
   width: 100%;
 }
 
-/* ========= SPONSOR LOGO ========= */
+/* ========= LOGO ========= */
 .sponsor-logo-container {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
+  overflow: hidden;
 }
 
 .sponsor-logo {
-  max-width: clamp(120px, 30vw, 200px);
-  max-height: clamp(120px, 30vw, 200px);
-  width: 100%;
-  height: auto;
+  width: 130px;
+  height: 130px;
   object-fit: contain;
-  transition: transform 0.3s ease;
 }
 
 /* ========= SPONSOR INFO ========= */
 .sponsor-info {
   text-align: center;
   width: 100%;
+  flex-shrink: 0;
 }
 
 .sponsor-name {
-  font-size: clamp(1.25rem, 3.5vw, 1.75rem);
+  font-size: 1.1rem;
   font-weight: 400;
-  margin-bottom: 0.8rem;
-  letter-spacing: 0.04rem;
+  margin: 0 0 0.4rem 0;
+  letter-spacing: 0.03rem;
   color: #e8e8e8;
-  word-wrap: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .sponsor-description {
-  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  font-size: 0.82rem;
   font-weight: 350;
-  line-height: 1.6;
+  line-height: 1.5;
   color: #b0b0b0;
   letter-spacing: 0.02rem;
-  word-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ========= DONATION OVERLAY ========= */
+.sponsor-donation-overlay {
+  position: absolute;
+  inset: 0;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(12px);
+  border-radius: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+              transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+  z-index: 2;
+}
+.sponsor-card:hover .sponsor-donation-overlay {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.sponsor-donation-icon {
+  font-size: 1.5rem;
+  color: rgba(255, 100, 100, 0.95);
+  opacity: 0;
+  transform: scale(0.3) rotate(-180deg);
+  transition: opacity 0.4s ease 0.1s,
+              transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s;
+  filter: drop-shadow(0 0 10px rgba(255, 100, 100, 0.5));
+}
+.sponsor-card:hover .sponsor-donation-icon {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+.sponsor-donation-label {
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.35s ease 0.2s, transform 0.4s ease 0.2s;
+}
+.sponsor-card:hover .sponsor-donation-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sponsor-donation-amount {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: #fff;
+  text-shadow: 0 0 30px rgba(255,255,255,0.4), 0 0 60px rgba(255,255,255,0.2);
+  opacity: 0;
+  transform: translateY(20px) scale(0.8);
+  transition: opacity 0.4s ease 0.3s,
+              transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s;
+}
+.sponsor-card:hover .sponsor-donation-amount {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 /* ========= CALL TO ACTION ========= */
@@ -202,40 +410,32 @@ a:hover {
   border-radius: clamp(20px, 3vw, 30px);
   background: radial-gradient(
     circle at 20% 0%,
-    rgba(255, 255, 255, 0.06),
-    rgba(0, 0, 0, 0.9) 55%,
+    rgba(255,255,255,0.06),
+    rgba(0,0,0,0.9) 55%,
     #000 100%
   );
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.65), 0 0 50px rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255,255,255,0.16);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.65), 0 0 50px rgba(255,255,255,0.02);
   backdrop-filter: blur(6px);
   overflow: hidden;
-  transform-style: preserve-3d;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 100%;
 }
-
 .sponsors-cta:hover {
   transform: translateY(-8px);
-  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.7), 0 0 60px rgba(255, 255, 255, 0.03);
+  box-shadow: 0 40px 80px rgba(0,0,0,0.7), 0 0 60px rgba(255,255,255,0.03);
 }
-
 .sponsors-cta::before {
   content: "";
   position: absolute;
   inset: clamp(8px, 1.5vw, 14px);
   border-radius: clamp(16px, 2.5vw, 24px);
-  background: radial-gradient(
-    circle at 50% 120%,
-    rgba(255, 255, 255, 0.03),
-    rgba(0, 0, 0, 1)
-  );
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.45);
+  background: radial-gradient(circle at 50% 120%, rgba(255,255,255,0.03), rgba(0,0,0,1));
+  border: 1px solid rgba(255,255,255,0.05);
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.45);
   pointer-events: none;
   z-index: 0;
 }
-
 .sponsors-cta::after {
   content: "";
   position: absolute;
@@ -243,25 +443,10 @@ a:hover {
   left: clamp(20px, 5vw, 38px);
   right: clamp(20px, 5vw, 38px);
   height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.25),
-    transparent
-  );
-  filter: drop-shadow(0 4px 8px rgba(255, 255, 255, 0.35));
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  filter: drop-shadow(0 4px 8px rgba(255,255,255,0.35));
   pointer-events: none;
   z-index: 1;
-}
-
-.sponsors-cta-shadow {
-  position: absolute;
-  inset: auto 16%;
-  bottom: -45px;
-  height: 50px;
-  background: radial-gradient(circle, rgba(0, 0, 0, 0.35), transparent 70%);
-  filter: blur(10px);
-  pointer-events: none;
 }
 
 .cta-content {
@@ -292,136 +477,117 @@ a:hover {
   word-wrap: break-word;
 }
 
+.cta-buttons-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  flex-wrap: wrap;
+}
+
 .cta-button {
   position: relative;
   padding: 4px;
   border: none;
   border-radius: 50px;
-  background: linear-gradient(
-    90deg,
-    #7b7b7b,
-    #e5e5e5,
-    #7b7b7b,
-    #cdcccc,
-    #8d8d8d
-  );
+  background: linear-gradient(90deg, #7b7b7b, #e5e5e5, #7b7b7b, #cdcccc, #8d8d8d);
   background-size: 200%;
   animation: ctaBtnGradient 2.5s linear infinite;
-  box-shadow: 0 0 25px rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 25px rgba(255,255,255,0.25);
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
 .cta-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 35px rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 35px rgba(255,255,255,0.35);
 }
 
 .cta-button-inner {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(0.4rem, 1vw, 0.5rem) clamp(1rem, 2vw, 1.3rem);
+  padding: 0.45rem 1.2rem;
   border-radius: 50px;
   background: #000;
   color: #c9c9c9;
   font-weight: 700;
-  letter-spacing: clamp(0.1rem, 0.3vw, 0.2rem);
-  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  letter-spacing: 0.15rem;
+  font-size: 1.1rem;
   transition: all 0.2s ease;
   white-space: nowrap;
 }
-
 .cta-button:hover .cta-button-inner {
   background: #111;
   color: #ffffff;
 }
 
 @keyframes ctaBtnGradient {
-  to {
-    background-position: 200% 0;
-  }
+  to { background-position: 200% 0; }
 }
 
-/* Kill unwanted bg overlays from other pages */
+@keyframes rippleEffect {
+  to { width: 200px; height: 200px; opacity: 0; }
+}
+
+/* Kill unwanted bg overlays */
 body:not(.sponsors-page) *::before,
 body:not(.sponsors-page) *::after {
   background-image: none !important;
 }
 
-/* ========= RESPONSIVE TWEAKS ========= */
-/* Large screens: 3 columns */
-@media (min-width: 1200px) {
-  .sponsors-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
+/* ========= RESPONSIVE — only the page/container scales,
+   cards themselves NEVER change size ========= */
 
-/* Medium screens: 2 columns */
-@media (min-width: 768px) and (max-width: 1199px) {
-  .sponsors-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Small screens: 1 column */
-@media (max-width: 767px) {
+/* On very small screens where cards don't fit, allow horizontal scroll
+   inside the grid rather than crushing the cards */
+@media (max-width: 640px) {
   .sponsors-title {
     margin-top: 80px;
-    font-size: 1.8rem ;
+    font-size: 1.8rem;
   }
-  .sponsors-grid {
-    grid-template-columns: 1fr;
-  }
-  
   .sponsors-hero {
     padding-bottom: 1.5rem;
   }
-  
-  .sponsor-card {
-    max-width: 100%;
+  .sponsors-container {
+    padding: 0 0.75rem;
   }
-}
-
-/* Very small screens */
-@media (max-width: 400px) {
-  .sponsors-main {
-    padding: 1rem 0;
+  .sponsors-grid {
+    /* Still centered, but allow wrapping on tiny screens */
+    justify-content: center;
   }
-  
-  .sponsors-hero {
-    margin-top: 60px;
+  .cta-buttons-row {
+    flex-direction: column;
+    align-items: center;
   }
-  
   .cta-button-inner {
     font-size: 1rem;
     padding: 0.4rem 0.9rem;
   }
 }
 
-/* Disable hover effects on touch devices */
+@media (max-width: 400px) {
+  .sponsors-main {
+    padding: 1rem 0;
+  }
+  .sponsors-hero {
+    margin-top: 60px;
+  }
+}
+
+/* Touch devices — disable hover effects */
 @media (hover: none) and (pointer: coarse) {
   .sponsor-card:hover {
     transform: none;
-    background: rgba(255, 255, 255, 0.03);
-    border-color: rgba(255, 255, 255, 0.1);
-    box-shadow: none;
   }
-  
   .sponsor-card:active {
-    transform: scale(0.98);
+    transform: scale(0.97);
   }
-  
   .sponsors-cta:hover {
     transform: none;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.65), 0 0 50px rgba(255, 255, 255, 0.02);
   }
-  
   .cta-button:hover {
     transform: none;
-    box-shadow: 0 0 25px rgba(255, 255, 255, 0.25);
   }
-  
   .cta-button:active {
     transform: scale(0.95);
   }

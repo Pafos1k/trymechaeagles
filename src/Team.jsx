@@ -13,7 +13,7 @@ export default function Team() {
   }, []);
 
   const pms = [
-    { id: 'pm1', name: 'Vedarsh Mishra', role: 'Project Manager', image: '/team/Vedarsh Mishra1.jpg', link: 'https://www.linkedin.com/in/vedarsh/' },
+    { id: 'pm1', name: 'Vedarsh Mishra', role: 'Project Manager', image: '/team/VedarshMishra.jpg', link: 'https://www.linkedin.com/in/vedarsh/' },
     { id: 'pm2', name: 'Austin Kinnealey', role: 'Project Manager', image: '/team/Austin Kinnealey.jpg', link: 'https://www.linkedin.com/in/austin-kinnealey-9a9755243/' },
   ];
 
@@ -31,8 +31,9 @@ export default function Team() {
           { id: 's2', name: 'Sofi Le', role: 'Full-Stack Developer', image: '/team/Sofi Le.jpg', link: 'https://www.linkedin.com/in/sofile/' },
           { id: 's3', name: 'Sophia Tsepenyuk', role: 'Full-Stack Developer', image: '/team/Sophia Tsepenyuk.jpg', link: 'https://www.linkedin.com/in/sophia-tsepenyuk-4529632b9/' },
           { id: 's4', name: 'Armand Koochekzadeh', role: 'Full-Stack Developer', image: '/team/Armand Koochekzadeh.jpg', link: 'https://www.linkedin.com/in/armand-koochekzadeh-140236311/' },
-          { id: 's5', name: 'Patrick Ayrton', role: 'Full-Stack Developer', image: '/team/Patrick Ayrton.jpg', link: 'https://www.linkedin.com/in/patrick-ayrton-b111a21a0/' },
+          { id: 's5', name: 'Patrick Ayrton', role: 'Full-Stack Developer', image: '/team/Patrick Hartanto.jpg', link: 'https://www.linkedin.com/in/patrick-hartanto-b111a21a0/' },
           { id: 's6', name: 'Ayomidi Bamgbala', role: 'Full-Stack Developer', image: '/team/Ayomidi Bamgbala.jpg', link: 'https://www.linkedin.com/in/bamgbala/' },
+          { id: 's7', name: 'Calvin Wang', role: 'Full-Stack Developer', image: '/team/CalvinWang.jpg', link: 'https://www.linkedin.com/in/calvinwang0394/' },
         ]
       },
 

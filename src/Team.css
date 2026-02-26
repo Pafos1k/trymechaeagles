@@ -491,7 +491,7 @@
 @media (min-width: 768px) {
   .subteam-members-grid {
     gap: 3.5rem;
-    width: 80rem; /*CONTROLS SUBTEAM LINE*/
+    width: 60rem; /*CONTROLS SUBTEAM LINE*/
   }
 }
 

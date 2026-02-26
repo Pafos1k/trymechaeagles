@@ -52,7 +52,7 @@ export default function Header() {
         <header>
           {/* BC Logo */}
           <Link to="/" className="logo-link" onClick={closeMenu}>
-            <img src="/eagle.png" alt="BC MechaEagles Logo" className="logo" />
+            <img src="/Eagle1.png" alt="BC MechaEagles Logo" className="logo" />
           </Link>
 
           {/* Hamburger Menu (Mobile) */}

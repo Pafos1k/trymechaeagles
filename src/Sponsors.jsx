@@ -31,7 +31,7 @@ export default function Sponsors() {
 
     function addRevealTargets(scope = document) {
       scope
-        .querySelectorAll(".sponsor-card, .sponsors-hero, .sponsors-cta")
+        .querySelectorAll(".sponsor-card, .sponsors-hero, .sponsors-cta, .sponsor-tier-section")
         .forEach((el) => el.classList.add("reveal"));
     }
 
@@ -47,7 +47,6 @@ export default function Sponsors() {
       document.querySelectorAll(".reveal").forEach((el) => el.classList.add("in"));
     }
 
-    // Card interactions
     const cards = document.querySelectorAll(".sponsor-card");
     cards.forEach((card) => {
       card.addEventListener("click", function (e) {
@@ -80,7 +79,7 @@ export default function Sponsors() {
         const centerY = rect.height / 2;
         const rotateX = (y - centerY) / 20;
         const rotateY = (centerX - x) / 20;
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
       });
 
       card.addEventListener("mouseleave", function () {
@@ -88,49 +87,94 @@ export default function Sponsors() {
       });
     });
 
-    // CTA button animation
-    const ctaButton = document.querySelector(".cta-button");
-    if (ctaButton) {
-      ctaButton.addEventListener("click", function () {
+    document.querySelectorAll(".cta-button").forEach((btn) => {
+      btn.addEventListener("click", function () {
         this.style.animation = "buttonPulse 0.5s ease";
         setTimeout(() => (this.style.animation = ""), 500);
       });
-    }
+    });
   }, []);
 
-  // 🖼️ Sponsor Data
-  const sponsors = [
-    {
-      name: "Premier Partner",
-      desc: "Leading innovation in robotics and engineering excellence",
-      image: "/SAE.png",
-    },
-    {
-      name: "Technology Leader",
-      desc: "Advancing mechanical engineering through cutting-edge solutions",
-      image: "/NASA.png",
-    },
-    {
-      name: "Innovation Partner",
-      desc: "Supporting the next generation of engineers and innovators",
-      image: "/SOLIDWORK.png",
-    },
-    {
-      name: "Strategic Ally",
-      desc: "Empowering teams with resources and technical expertise",
-      image: "/IGOS.png",
-    },
-    {
-      name: "Technical Partner",
-      desc: "Providing state-of-the-art tools and manufacturing support",
-      image: "/FUSION365.png",
-    },
-    {
-      name: "Community Supporter",
-      desc: "Building the future through educational partnerships",
-      image: "/BCEngeeniring.png",
-    },
-  ];
+  const sponsorTiers = {
+    platinum: [
+      {
+        name: "Premier Partner",
+        desc: "Leading innovation in robotics and engineering excellence",
+        image: "/SAE.png",
+        donatedAmount: "$...",
+      },
+      {
+        name: "Technology Leader",
+        desc: "Advancing mechanical engineering through cutting-edge solutions",
+        image: "/NASA.png",
+        donatedAmount: "$...",
+      },
+    ],
+    gold: [
+      {
+        name: "Innovation Partner",
+        desc: "Supporting the next generation of engineers and innovators",
+        image: "/SOLIDWORK.png",
+        donatedAmount: "$...",
+      },
+      {
+        name: "Strategic Ally",
+        desc: "Empowering teams with resources and technical expertise",
+        image: "/IGOS.png",
+        donatedAmount: "$...",
+      },
+      {
+        name: "Technical Partner",
+        desc: "Providing state-of-the-art tools and manufacturing support",
+        image: "/FUSION365.png",
+        donatedAmount: "$...",
+      },
+    ],
+    silver: [
+      {
+        name: "Technical Partner",
+        desc: "Providing state-of-the-art tools and manufacturing support",
+        image: "/FUSION365.png",
+        donatedAmount: "$...",
+      },
+      {
+        name: "Community Supporter",
+        desc: "Building the future through educational partnerships",
+        image: "/BCEngeeniring.png",
+        donatedAmount: "$...",
+      },
+    ],
+    bronze: [
+      {
+        name: "Bronze Supporter",
+        desc: "Supporting our team's journey with valuable contributions",
+        image: "/placeholder.png",
+        donatedAmount: "$...",
+      },
+    ],
+  };
+
+  const renderCards = (tier) =>
+    sponsorTiers[tier].map((s, i) => (
+      <div className={`sponsor-card sponsor-card-${tier} reveal`} key={`${tier}-${i}`}>
+        <div className="sponsor-card-inner">
+          <div className="sponsor-logo-container">
+            <img src={s.image} alt={s.name} className="sponsor-logo" loading="lazy" />
+          </div>
+          <div className="sponsor-info">
+            <h3 className="sponsor-name">{s.name}</h3>
+            <p className="sponsor-description">
+              <ShinyText text={s.desc} color1="#ffffff" speed={5} />
+            </p>
+          </div>
+        </div>
+        <div className="sponsor-donation-overlay" aria-hidden="true">
+          <span className="sponsor-donation-icon">♥</span>
+          <span className="sponsor-donation-label">Donated to us</span>
+          <span className="sponsor-donation-amount">{s.donatedAmount}</span>
+        </div>
+      </div>
+    ));
 
   return (
     <div className="sponsors-page">
@@ -141,54 +185,76 @@ export default function Sponsors() {
           <section className="sponsors-hero reveal">
             <h1 className="sponsors-title">OUR SPONSORS</h1>
             <p className="sponsors-subtitle">
-              <ShinyText
-                text="Powering Innovation Through Partnership"
-                color1="#ffffff"
-                speed={4}
-              />
+              <ShinyText text="Powering Innovation Through Partnership" color1="#ffffff" speed={4} />
             </p>
           </section>
 
-
-          <section className="sponsors-grid">
-            {sponsors.map((s, i) => (
-              <div className="sponsor-card reveal" key={i}>
-                <div className="sponsor-card-inner">
-                  <div className="sponsor-logo-container">
-                    <img
-                      src={s.image}
-                      alt={s.name}
-                      className="sponsor-logo"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="sponsor-info">
-                    <h3 className="sponsor-name">{s.name}</h3>
-                    <p className="sponsor-description">
-                      <ShinyText
-                        text={s.desc}
-                        color1="#ffffff"
-                        speed={5}
-                      />
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
+          {/* PLATINUM TIER */}
+          <section className="sponsor-tier-section reveal">
+            <div className="sponsor-tier-divider sponsor-tier-divider-platinum">
+              <div className="tier-line" />
+              <h2 className="sponsor-tier-title">PLATINUM</h2>
+              <div className="tier-line" />
+            </div>
+            <div className="sponsor-tier-group">
+              <div className="sponsors-grid">{renderCards("platinum")}</div>
+            </div>
           </section>
 
+          {/* GOLD TIER */}
+          <section className="sponsor-tier-section reveal">
+            <div className="sponsor-tier-divider sponsor-tier-divider-gold">
+              <div className="tier-line" />
+              <h2 className="sponsor-tier-title">GOLD</h2>
+              <div className="tier-line" />
+            </div>
+            <div className="sponsor-tier-group">
+              <div className="sponsors-grid">{renderCards("gold")}</div>
+            </div>
+          </section>
+
+          {/* SILVER TIER */}
+          <section className="sponsor-tier-section reveal">
+            <div className="sponsor-tier-divider sponsor-tier-divider-silver">
+              <div className="tier-line" />
+              <h2 className="sponsor-tier-title">SILVER</h2>
+              <div className="tier-line" />
+            </div>
+            <div className="sponsor-tier-group">
+              <div className="sponsors-grid">{renderCards("silver")}</div>
+            </div>
+          </section>
+
+          {/* BRONZE TIER */}
+          <section className="sponsor-tier-section reveal">
+            <div className="sponsor-tier-divider sponsor-tier-divider-bronze">
+              <div className="tier-line" />
+              <h2 className="sponsor-tier-title">BRONZE</h2>
+              <div className="tier-line" />
+            </div>
+            <div className="sponsor-tier-group">
+              <div className="sponsors-grid">{renderCards("bronze")}</div>
+            </div>
+          </section>
+
+          {/* BECOME A SPONSOR CTA */}
           <section className="sponsors-cta reveal">
             <div className="cta-content">
               <h2 className="cta-title">BECOME A SPONSOR</h2>
               <p className="cta-text">
                 <ShinyText
-                text="Join us in shaping the future of robotics and engineering"
-                speed={3}
+                  text="Join us in shaping the future of robotics and engineering"
+                  speed={3}
                 />
               </p>
-              <button className="cta-button">
-                <span className="cta-button-inner">SPONSOR US</span>
-              </button>
+              <div className="cta-buttons-row">
+                <button className="cta-button">
+                  <span className="cta-button-inner">SPONSOR INFO</span>
+                </button>
+                <button className="cta-button">
+                  <span className="cta-button-inner">SPONSOR US</span>
+                </button>
+              </div>
             </div>
           </section>
         </div>
