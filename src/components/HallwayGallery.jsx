@@ -4,138 +4,267 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// ox is now NEGATIVE — shadows offset away from center (outward, toward screen edge)
-// so depth stacks behind the primary, not poking into the text area
+// 3 depth layers per side. ox values step far enough outward that no layer
+// ever visually obstructs a closer one. vy shifts the primary up/down on the
+// wall; shadow oy is its own independent vertical offset.
 const SLOTS = [
-  { side: "left",  src: "/GROUP1.png", shadows: [
-    { src: "/GROUP3.png", ox: -160, oz: -90,  sc: 0.95 },
-    { src: "/GROUP5.png", ox: -300, oz: -170, sc: 0.90 },
+  { side: "left",  src: "/GROUP1.png",        vy:   100, shadows: [
+    { src: "/NASA.png",          ox: -400, oz: -90,  oy:  -90, sc: 0.95 },
+    { src: "/SOLIDWORK.png",     ox: -600, oz: -120, oy:  110, sc: 0.90 },
   ]},
-  { side: "right", src: "/GROUP2.png", shadows: [
-    { src: "/GROUP4.png", ox: -160, oz: -90, sc: 0.95 },
+  { side: "right", src: "/FUSION.png",         vy:  400, shadows: [
+    { src: "/GROUP4.png",        ox: -400, oz: -90,  oy:   70, sc: 0.95 },
+    { src: "/SAE.png",        ox: -600, oz: -120, oy: -100, sc: 0.90 },
   ]},
-  { side: "left",  src: "/GROUP5.png", shadows: [] },
-  { side: "right", src: "/GROUP4.png", shadows: [
-    { src: "/BCEngeeniring.png", ox: -160, oz: -90,  sc: 0.95 },
-    { src: "/GROUP2.png",        ox: -300, oz: -170, sc: 0.90 },
+  { side: "left",  src: "/NASA.png",           vy: -300, shadows: [
+    { src: "/GROUP5.png",        ox: -400, oz: -90,  oy:  100, sc: 0.95 },
   ]},
-  { side: "left",  src: "/GROUP3.png", shadows: [
-    { src: "/GROUP1.png", ox: -160, oz: -90, sc: 0.95 },
+  { side: "right", src: "/GROUP4.png",         vy:  300, shadows: [
+    { src: "/BCEngeeniring.png", ox: -400, oz: -90,  oy:  -85, sc: 0.95 },
+    { src: "/GROUP2.png",        ox: -600, oz: -120, oy:  105, sc: 0.90 },
   ]},
-  { side: "right", src: "/BCEngeeniring.png", shadows: [] },
-  { side: "left",  src: "/GROUP1.png", shadows: [
-    { src: "/GROUP5.png", ox: -160, oz: -90,  sc: 0.95 },
-    { src: "/GROUP3.png", ox: -300, oz: -170, sc: 0.90 },
+  { side: "left",  src: "/GROUP3.png",         vy: 250, shadows: [
+    { src: "/SAW\E.png",        ox: -400, oz: -90,  oy: -200, sc: 0.95 },
+    { src: "/GROUP5.png",        ox: -600, oz: -120, oy:   200, sc: 0.90 },
   ]},
-  { side: "right", src: "/GROUP2.png", shadows: [
-    { src: "/GROUP4.png", ox: -160, oz: -90, sc: 0.95 },
+  { side: "right", src: "/BCEngeeniring.png",  vy: -350, shadows: [
+    { src: "/GROUP4.png",        ox: -400, oz: -90,  oy:  110, sc: 0.95 },
   ]},
-  { side: "left",  src: "/GROUP5.png", shadows: [] },
-  { side: "right", src: "/GROUP4.png", shadows: [
-    { src: "/GROUP2.png",        ox: -160, oz: -90,  sc: 0.95 },
-    { src: "/BCEngeeniring.png", ox: -300, oz: -170, sc: 0.90 },
+  { side: "left",  src: "/GROUP1.png",         vy: -200, shadows: [
+    { src: "/SAE.png",        ox: -400, oz: -90,  oy:   85, sc: 0.95 },
+    { src: "/GROUP3.png",        ox: -600, oz: -120, oy: -115, sc: 0.90 },
   ]},
-  { side: "left",  src: "/GROUP3.png", shadows: [
-    { src: "/GROUP1.png", ox: -160, oz: -90, sc: 0.95 },
+  { side: "right", src: "/GROUP2.png",         vy:  300, shadows: [
+    { src: "/GROUP4.png",        ox: -400, oz: -90,  oy:  -80, sc: 0.95 },
+    { src: "/NASA.png",          ox: -600, oz: -120, oy:  105, sc: 0.90 },
   ]},
-  { side: "right", src: "/GROUP2.png", shadows: [] },
-  { side: "left",  src: "/GROUP1.png", shadows: [
-    { src: "/GROUP3.png", ox: -160, oz: -90,  sc: 0.95 },
-    { src: "/GROUP5.png", ox: -300, oz: -170, sc: 0.90 },
+  { side: "left",  src: "/GROUP5.png",         vy: -300, shadows: [
+    { src: "/NASA.png",          ox: -400, oz: -90,  oy:   95, sc: 0.95 },
   ]},
-  { side: "right", src: "/BCEngeeniring.png", shadows: [
-    { src: "/GROUP4.png", ox: -160, oz: -90, sc: 0.95 },
+  { side: "right", src: "/GROUP4.png",         vy:  400, shadows: [
+    { src: "/eagle.png",         ox: -400, oz: -90,  oy: -100, sc: 0.95 },
+    { src: "/BCEngeeniring.png", ox: -600, oz: -120, oy:  120, sc: 0.90 },
+  ]},
+  { side: "left",  src: "/GROUP3.png",         vy:  400, shadows: [
+    { src: "/GROUP1.png",        ox: -400, oz: -90,  oy: -110, sc: 0.95 },
+    { src: "/SOLIDWORK.png",     ox: -600, oz: -120, oy:   80, sc: 0.90 },
+  ]},
+  { side: "right", src: "/GROUP2.png",         vy: -250, shadows: [
+    { src: "/GROUP3.png",        ox: -400, oz: -90,  oy:   90, sc: 0.95 },
+  ]},
+  { side: "left",  src: "/GROUP1.png",         vy:  55, shadows: [
+    { src: "/SAE.png",        ox: -400, oz: -90,  oy:   90, sc: 0.95 },
+    { src: "/GROUP5.png",        ox: -600, oz: -120, oy: -120, sc: 0.90 },
+  ]},
+  { side: "right", src: "/BCEngeeniring.png",  vy: -300, shadows: [
+    { src: "/GROUP4.png",        ox: -400, oz: -90,  oy:  -90, sc: 0.95 },
+    { src: "/SAE.png",        ox: -600, oz: -120, oy:  110, sc: 0.90 },
+  ]},
+  { side: "left",  src: "/GROUP2.png",         vy:  60, shadows: [
+    { src: "/GROUP4.png",        ox: -400, oz: -90,  oy: -100, sc: 0.95 },
+    { src: "/NASA.png",          ox: -600, oz: -120, oy:   85, sc: 0.90 },
+  ]},
+  { side: "right", src: "/GROUP5.png",         vy: -100, shadows: [
+    { src: "/GROUP1.png",        ox: -400, oz: -90,  oy:  105, sc: 0.95 },
+  ]},
+  { side: "left",  src: "/eagle.png",          vy:  200, shadows: [
+    { src: "/GROUP3.png",        ox: -400, oz: -90,  oy:  -95, sc: 0.95 },
+    { src: "/FUSION.png",        ox: -600, oz: -120, oy:  115, sc: 0.90 },
+  ]},
+  { side: "right", src: "/GROUP1.png",         vy:  90, shadows: [
+    { src: "/SOLIDWORK.png",     ox: -400, oz: -90,  oy:  -80, sc: 0.95 },
+    { src: "/GROUP5.png",        ox: -600, oz: -120, oy:  100, sc: 0.90 },
+  ]},
+  { side: "left",  src: "/GROUP4.png",         vy: -400, shadows: [
+    { src: "/GROUP2.png",        ox: -400, oz: -90,  oy:   90, sc: 0.95 },
+  ]},
+  { side: "right", src: "/NASA.png",           vy:  300, shadows: [
+    { src: "/SAE.png",        ox: -400, oz: -90,  oy: -110, sc: 0.95 },
+    { src: "/GROUP1.png",        ox: -600, oz: -120, oy:   80, sc: 0.90 },
+  ]},
+  { side: "left",  src: "/SOLIDWORK.png",      vy: -250, shadows: [
+    { src: "/eagle.png",         ox: -400, oz: -90,  oy:  100, sc: 0.95 },
+    { src: "/GROUP4.png",        ox: -600, oz: -120, oy:  -90, sc: 0.90 },
+  ]},
+  { side: "right", src: "/GROUP3.png",         vy:  190, shadows: [
+    { src: "/GROUP5.png",        ox: -400, oz: -90,  oy:  -85, sc: 0.95 },
+  ]},
+  { side: "left",  src: "/GROUP2.png",         vy: -400, shadows: [
+    { src: "/BCEngeeniring.png", ox: -400, oz: -90,  oy:  115, sc: 0.95 },
+    { src: "/GROUP1.png",        ox: -600, oz: -120, oy:  -95, sc: 0.90 },
+  ]},
+  { side: "right", src: "/FUSION.png",         vy:  200, shadows: [
+    { src: "/GROUP4.png",        ox: -400, oz: -90,  oy:   75, sc: 0.95 },
+    { src: "/NASA.png",          ox: -600, oz: -120, oy: -105, sc: 0.90 },
+  ]},
+  { side: "left",  src: "/GROUP5.png",         vy:  400, shadows: [
+    { src: "/GROUP3.png",        ox: -400, oz: -90,  oy:  -90, sc: 0.95 },
+  ]},
+  { side: "right", src: "/GROUP4.png",         vy: -200, shadows: [
+    { src: "/GROUP2.png",        ox: -400, oz: -90,  oy:   95, sc: 0.95 },
+    { src: "/eagle.png",         ox: -600, oz: -120, oy:  -80, sc: 0.90 },
+  ]},
+  { side: "left",  src: "/NASA.png",           vy:  35, shadows: [
+    { src: "/SOLIDWORK.png",     ox: -400, oz: -90,  oy: -100, sc: 0.95 },
+    { src: "/GROUP3.png",        ox: -600, oz: -120, oy:   90, sc: 0.90 },
+  ]},
+  { side: "left",  src: "/GROUP4.png",         vy: -55, shadows: [
+    { src: "/GROUP2.png",        ox: -400, oz: -90,  oy:   95, sc: 0.95 },
+    { src: "/eagle.png",         ox: -600, oz: -120, oy:  -80, sc: 0.90 },
+  ]},
+  { side: "right", src: "/NASA.png",           vy:  35, shadows: [
+    { src: "/SOLIDWORK.png",     ox: -400, oz: -90,  oy: -100, sc: 0.95 },
+    { src: "/GROUP3.png",        ox: -600, oz: -120, oy:   90, sc: 0.90 },
+  ]},
+  { side: "left",  src: "/GROUP2.png",         vy:  70, shadows: [
+    { src: "/GROUP5.png",        ox: -400, oz: -90,  oy:  -85, sc: 0.95 },
+  ]},
+  { side: "right", src: "/GROUP1.png",         vy: -200, shadows: [
+    { src: "/BCEngeeniring.png", ox: -400, oz: -90,  oy:  110, sc: 0.95 },
+    { src: "/GROUP4.png",        ox: -600, oz: -120, oy:  -95, sc: 0.90 },
+  ]},
+  { side: "left",  src: "/FUSION.png",         vy:  90, shadows: [
+    { src: "/GROUP3.png",        ox: -400, oz: -90,  oy:  -75, sc: 0.95 },
+    { src: "/NASA.png",          ox: -600, oz: -120, oy:  105, sc: 0.90 },
+  ]},
+  { side: "right", src: "/GROUP5.png",         vy: -80, shadows: [
+    { src: "/GROUP2.png",        ox: -400, oz: -90,  oy:   90, sc: 0.95 },
+  ]},
+  { side: "left",  src: "/GROUP3.png",         vy:  45, shadows: [
+    { src: "/eagle.png",         ox: -400, oz: -90,  oy: -110, sc: 0.95 },
+    { src: "/GROUP1.png",        ox: -600, oz: -120, oy:   80, sc: 0.90 },
+  ]},
+  { side: "right", src: "/SOLIDWORK.png",      vy: -150, shadows: [
+    { src: "/GROUP4.png",        ox: -400, oz: -90,  oy:  100, sc: 0.95 },
+    { src: "/GROUP3.png",        ox: -600, oz: -120, oy:  -90, sc: 0.90 },
+  ]},
+  { side: "left",  src: "/eagle.png",          vy:  200, shadows: [
+    { src: "/NASA.png",          ox: -400, oz: -90,  oy:  -95, sc: 0.95 },
+  ]},
+  { side: "right", src: "/GROUP2.png",         vy: -300, shadows: [
+    { src: "/GROUP5.png",        ox: -400, oz: -90,  oy:  115, sc: 0.95 },
+    { src: "/FUSION.png",        ox: -600, oz: -120, oy:  -85, sc: 0.90 },
+  ]},
+  { side: "left",  src: "/GROUP1.png",         vy: -300, shadows: [
+    { src: "/BCEngeeniring.png", ox: -400, oz: -90,  oy:   85, sc: 0.95 },
+    { src: "/GROUP4.png",        ox: -600, oz: -120, oy: -105, sc: 0.90 },
+  ]},
+  { side: "right", src: "/NASA.png",           vy:  400, shadows: [
+    { src: "/GROUP3.png",        ox: -400, oz: -90,  oy:  -80, sc: 0.95 },
+  ]},
+  { side: "left",  src: "/GROUP5.png",         vy:  300, shadows: [
+    { src: "/GROUP2.png",        ox: -400, oz: -90,  oy:  100, sc: 0.95 },
+    { src: "/eagle.png",         ox: -600, oz: -120, oy:  -90, sc: 0.90 },
+  ]},
+  { side: "right", src: "/GROUP4.png",         vy: -200, shadows: [
+    { src: "/GROUP1.png",        ox: -400, oz: -90,  oy:  -95, sc: 0.95 },
+    { src: "/SOLIDWORK.png",     ox: -600, oz: -120, oy:  110, sc: 0.90 },
   ]},
 ];
 
-const QUOTE = "MechaEagles is so cool and everyone should join bc its an amazing club and we do really cool stuff. please join mechaeagles we love this club hahaha its really cool ok";
+const QUOTE =
+  "MechaEagles is so cool and everyone should join bc its an amazing club and we do really cool stuff. please join mechaeagles we love this club hahaha its really cool ok";
 
 export default function HallwayGallery() {
-  const stageRef       = useRef(null);
-  const trackRef       = useRef(null);
-  const centerViewRef  = useRef(null);
+  const stageRef = useRef(null);
+  const trackRef = useRef(null);
+  const centerViewRef = useRef(null);
   const centerInnerRef = useRef(null);
 
-  const testimonials = useMemo(() => [
-    { name: "PAUL DAVIDSON",   role: "Head of Product", company: "Neon Bank",    avatar: "/FUSION.png",  quote: QUOTE },
-    { name: "KATE WELLINGTON", role: "CMO",             company: "Alder Home",   avatar: "/NASA.png",    quote: QUOTE },
-    { name: "MAYA RONAN",      role: "Founder",         company: "Vello Bikes",  avatar: "/SAE.png",     quote: QUOTE },
-    { name: "JAMES FORD",      role: "CEO",             company: "Stacklane",    avatar: "/GROUP1.png",  quote: QUOTE },
-    { name: "SARA LINDQVIST",  role: "VP Design",       company: "Orbit Health", avatar: "/GROUP2.png",  quote: QUOTE },
-  ], []);
+  const testimonials = useMemo(
+    () => [
+      { name: "PAUL DAVIDSON", role: "Head of Product", company: "Neon Bank", avatar: "/LOGO1.png", quote: QUOTE },
+      { name: "KATE WELLINGTON", role: "CMO", company: "Alder Home", avatar: "/NASA.png", quote: QUOTE },
+      { name: "MAYA RONAN", role: "Founder", company: "Vello Bikes", avatar: "/SAE.png", quote: QUOTE },
+      { name: "JAMES FORD", role: "CEO", company: "Stacklane", avatar: "/GROUP1.png", quote: QUOTE },
+      { name: "SARA LINDQVIST", role: "VP Design", company: "Orbit Health", avatar: "/NASA.png", quote: QUOTE },
+    ],
+    []
+  );
 
   useEffect(() => {
-    const stageEl       = stageRef.current;
-    const trackEl       = trackRef.current;
-    const centerViewEl  = centerViewRef.current;
+    const stageEl = stageRef.current;
+    const trackEl = trackRef.current;
+    const centerViewEl = centerViewRef.current;
     const centerInnerEl = centerInnerRef.current;
     if (!stageEl || !trackEl || !centerViewEl || !centerInnerEl) return;
 
-    const primaryEls  = Array.from(trackEl.querySelectorAll("[data-primary]"));
-    const shadowEls   = Array.from(trackEl.querySelectorAll("[data-shadow]"));
+    const primaryEls = Array.from(trackEl.querySelectorAll("[data-primary]"));
+    const shadowEls = Array.from(trackEl.querySelectorAll("[data-shadow]"));
     const allFrameEls = Array.from(trackEl.querySelectorAll("[data-primary],[data-shadow]"));
     if (!primaryEls.length) return;
 
-    const spacingZ = 380;
-    const startZ   = -6000;
+    const spacingZ = 700;
+    const startZ = -26000;
     const WARMUP_Z = 1200;
-    const wallX    = 480;
-    const wallRotY = 62;
+    const wallX = 750;
+    const wallRotY = 71;
 
     const totalDepth = primaryEls.length * spacingZ;
-    const travel     = totalDepth * 1.1;
+    const travel = totalDepth * 1.1;
 
     gsap.set(trackEl, { transformStyle: "preserve-3d" });
 
-    primaryEls.forEach((el, i) => {
-      const side   = el.getAttribute("data-side");
-      const isLeft = side === "left";
+    const placePrimary = (el, i) => {
+      const isLeft = el.getAttribute("data-side") === "left";
+      const vy = parseFloat(el.getAttribute("data-vy") || "0");
       gsap.set(el, {
         x: isLeft ? -wallX : wallX,
-        y: 0,
+        y: vy,
         z: startZ + i * spacingZ + WARMUP_Z,
         rotationY: isLeft ? wallRotY : -wallRotY,
       });
-    });
+    };
 
-    shadowEls.forEach((el) => {
-      const idx    = parseInt(el.getAttribute("data-idx"));
-      const side   = el.getAttribute("data-side");
-      const isLeft = side === "left";
-      const ox     = parseFloat(el.getAttribute("data-ox")); // already signed correctly
-      const oz     = parseFloat(el.getAttribute("data-oz"));
-      const sc     = parseFloat(el.getAttribute("data-sc"));
-      const baseX  = isLeft ? -wallX : wallX;
-      const baseZ  = startZ + idx * spacingZ + WARMUP_Z;
+    const placeShadow = (el) => {
+      const idx = parseInt(el.getAttribute("data-idx"), 10);
+      const isLeft = el.getAttribute("data-side") === "left";
+      const ox = parseFloat(el.getAttribute("data-ox"));
+      const oz = parseFloat(el.getAttribute("data-oz"));
+      const oy = parseFloat(el.getAttribute("data-oy"));
+      const sc = parseFloat(el.getAttribute("data-sc"));
+      const baseX = isLeft ? -wallX : wallX;
+      const baseZ = startZ + idx * spacingZ + WARMUP_Z;
+
       gsap.set(el, {
-        // For left wall: negative ox moves further left (outward/away from center)
-        // For right wall: positive ox moves further right (outward/away from center)
-        // ox in data is negative, so: left adds negative (goes left), right subtracts negative (goes right)
         x: baseX + (isLeft ? ox : -ox),
-        y: 0,
+        y: oy,
         z: baseZ + oz,
         rotationY: isLeft ? wallRotY : -wallRotY,
         scale: sc,
       });
-    });
+    };
+
+    primaryEls.forEach(placePrimary);
+    shadowEls.forEach(placeShadow);
 
     let rafId;
+    let opacityRaf;
+    let resizeTimer;
     let currentScrollTriggers = [];
 
     const buildTimelines = () => {
-      // Kill previous ScrollTriggers before rebuilding
       currentScrollTriggers.forEach((st) => st.kill());
       currentScrollTriggers = [];
+
+      gsap.killTweensOf(allFrameEls);
       gsap.killTweensOf(centerInnerEl);
 
-      // Reset centerInner position before measuring
+      primaryEls.forEach(placePrimary);
+      shadowEls.forEach(placeShadow);
       gsap.set(centerInnerEl, { y: 0 });
 
-      // Measure AFTER layout settles at current viewport size
-      const centerScrollAmount = Math.max(0, centerInnerEl.scrollHeight - centerViewEl.clientHeight);
-      const END_PX = centerScrollAmount + 300; // generous buffer for mobile
-      const PRE_TRAVEL      = travel * 0.12;
+      const centerScrollAmount = Math.max(
+        0,
+        centerInnerEl.scrollHeight - centerViewEl.clientHeight
+      );
+
+      const PRE_TRAVEL = travel * 0.12;
+      const MAIN_TRAVEL = travel * 0.72;
       const preCenterTravel = centerScrollAmount * 0.05;
+      const mainCenterTravel = centerScrollAmount * 0.95;
+
+      const END_PX = Math.max(900, centerScrollAmount * 1.05);
 
       const preTl = gsap.timeline({
         defaults: { ease: "none" },
@@ -147,6 +276,7 @@ export default function HallwayGallery() {
           invalidateOnRefresh: true,
         },
       });
+
       allFrameEls.forEach((el) => preTl.to(el, { z: `+=${PRE_TRAVEL}` }, 0));
       preTl.to(centerInnerEl, { y: -preCenterTravel }, 0);
       currentScrollTriggers.push(preTl.scrollTrigger);
@@ -163,8 +293,9 @@ export default function HallwayGallery() {
           invalidateOnRefresh: true,
         },
       });
-      allFrameEls.forEach((el) => tl.to(el, { z: `+=${travel}` }, 0));
-      tl.to(centerInnerEl, { y: -(centerScrollAmount - preCenterTravel) }, 0);
+
+      allFrameEls.forEach((el) => tl.to(el, { z: `+=${MAIN_TRAVEL}` }, 0));
+      tl.to(centerInnerEl, { y: -mainCenterTravel }, 0);
       currentScrollTriggers.push(tl.scrollTrigger);
 
       ScrollTrigger.refresh();
@@ -172,36 +303,28 @@ export default function HallwayGallery() {
 
     rafId = requestAnimationFrame(buildTimelines);
 
-    let resizeTimer;
+    const FADE_START = -5200;
+    const FADE_FULL = -3200;
+
+    const updateOpacity = () => {
+      allFrameEls.forEach((el) => {
+        const z = Number(gsap.getProperty(el, "z"));
+        if (z >= FADE_FULL) {
+          el.style.opacity = "1";
+        } else if (z <= FADE_START) {
+          el.style.opacity = "0";
+        } else {
+          el.style.opacity = String((z - FADE_START) / (FADE_FULL - FADE_START));
+        }
+      });
+      opacityRaf = requestAnimationFrame(updateOpacity);
+    };
+
+    opacityRaf = requestAnimationFrame(updateOpacity);
+
     const onResize = () => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
-        // Reset frame Z positions before rebuild
-        primaryEls.forEach((el, i) => {
-          const side   = el.getAttribute("data-side");
-          const isLeft = side === "left";
-          gsap.set(el, {
-            x: isLeft ? -wallX : wallX,
-            y: 0,
-            z: startZ + i * spacingZ + WARMUP_Z,
-            rotationY: isLeft ? wallRotY : -wallRotY,
-          });
-        });
-        shadowEls.forEach((el) => {
-          const idx    = parseInt(el.getAttribute("data-idx"));
-          const side   = el.getAttribute("data-side");
-          const isLeft = side === "left";
-          const ox     = parseFloat(el.getAttribute("data-ox"));
-          const oz     = parseFloat(el.getAttribute("data-oz"));
-          const sc     = parseFloat(el.getAttribute("data-sc"));
-          gsap.set(el, {
-            x: (isLeft ? -wallX : wallX) + (isLeft ? ox : -ox),
-            y: 0,
-            z: startZ + idx * spacingZ + WARMUP_Z + oz,
-            rotationY: isLeft ? wallRotY : -wallRotY,
-            scale: sc,
-          });
-        });
         buildTimelines();
       }, 200);
     };
@@ -210,9 +333,10 @@ export default function HallwayGallery() {
 
     return () => {
       cancelAnimationFrame(rafId);
+      cancelAnimationFrame(opacityRaf);
       clearTimeout(resizeTimer);
       window.removeEventListener("resize", onResize);
-      ScrollTrigger.getAll().forEach((st) => st.kill());
+      currentScrollTriggers.forEach((st) => st.kill());
     };
   }, []);
 
@@ -230,17 +354,24 @@ export default function HallwayGallery() {
                   data-side={slot.side}
                   data-ox={sh.ox}
                   data-oz={sh.oz}
+                  data-oy={sh.oy}
                   data-sc={sh.sc}
                   style={{
                     ...styles.frame,
-                    width:  Math.round(340 * sh.sc),
-                    height: Math.round(460 * sh.sc),
+                    width: Math.round(420 * sh.sc),
+                    height: Math.round(560 * sh.sc),
                   }}
                 >
                   <img src={sh.src} alt="" style={styles.img} draggable={false} />
                 </figure>
               ))}
-              <figure data-primary data-side={slot.side} style={styles.frame}>
+
+              <figure
+                data-primary
+                data-side={slot.side}
+                data-vy={slot.vy}
+                style={styles.frame}
+              >
                 <img src={slot.src} alt="" style={styles.img} draggable={false} />
               </figure>
             </React.Fragment>
@@ -259,7 +390,9 @@ export default function HallwayGallery() {
                   <div style={styles.topText}>
                     <div style={styles.name}>{t.name}</div>
                     <div style={styles.meta}>
-                      {t.role}<span style={styles.dot}> · </span>{t.company}
+                      {t.role}
+                      <span style={styles.dot}> · </span>
+                      {t.company}
                     </div>
                   </div>
                 </div>
@@ -294,13 +427,18 @@ const styles = {
     position: "absolute",
     top: "50%",
     left: "50%",
-    width: 340,
-    height: 460,
+    width: 420,
+    height: 560,
     transform: "translate(-50%, -50%)",
     overflow: "hidden",
     background: "transparent",
   },
-  img: { width: "100%", height: "100%", objectFit: "cover", display: "block" },
+  img: {
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    display: "block",
+  },
   fadeTop: {
     position: "absolute",
     top: 0,
@@ -381,7 +519,9 @@ const styles = {
     color: "rgba(255,255,255,0.50)",
     letterSpacing: "0.01em",
   },
-  dot: { opacity: 0.5 },
+  dot: {
+    opacity: 0.5,
+  },
   quote: {
     margin: 0,
     fontSize: 15,
@@ -392,7 +532,8 @@ const styles = {
   vignette: {
     position: "absolute",
     inset: 0,
-    background: "linear-gradient(to right, rgba(0,0,0,0.75) 0%, transparent 28%, transparent 72%, rgba(0,0,0,0.75) 100%)",
+    background:
+      "linear-gradient(to right, rgba(0,0,0,0.85) 0%, transparent 26%, transparent 74%, rgba(0,0,0,0.85) 100%)",
     pointerEvents: "none",
     zIndex: 5,
   },
