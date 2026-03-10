@@ -163,7 +163,7 @@ const SLOTS = [
 ];
 
 const QUOTE =
-  "MechaEagles is so cool and everyone should join bc its an amazing club and we do really cool stuff. please join mechaeagles we love this club hahaha its really cool ok";
+  "MechaEagles is so so cool and everyone should join bc its an amazing club and we do really cool stuff. please join mechaeagles we love this club hahaha its really cool ok";
 
 export default function HallwayGallery() {
   const stageRef = useRef(null);
