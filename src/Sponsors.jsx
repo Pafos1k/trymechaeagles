@@ -183,9 +183,12 @@ export default function Sponsors() {
       <main className="sponsors-main">
         <div className="sponsors-container">
           <section className="sponsors-hero reveal">
-            <h1 className="sponsors-title">OUR SPONSORS</h1>
+            <div className="sponsors-title-wrapper">
+              <div className="sponsors-title-bg">WELCOME!</div>
+              <h1 className="sponsors-title-fg">OUR SPONSORS</h1>
+            </div>
             <p className="sponsors-subtitle">
-              <ShinyText text="Powering Innovation Through Partnership" color1="#ffffff" speed={4} />
+              <ShinyText text="POWERING INNOVATION THROUGH PARTNERSHIP" color1="#ffffff" speed={4} />
             </p>
           </section>
 
