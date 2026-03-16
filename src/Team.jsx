@@ -58,7 +58,6 @@ export default function Team() {
           { id: 'p2', name: 'Zack Donohue', role: 'Outreach', image: '/team/ZackDonohue.jpg', link: 'https://www.linkedin.com/in/zack-donohue-702082354/' },
           { id: 'p3', name: 'Chloe Rhee', role: 'Outreach', image: '/team/ChloeRhee.jpg', link: 'https://www.linkedin.com/in/chloerhee07/'},
           { id: 'p4', name: 'Jaden Han', role: 'Outreach', image: '/team/placeholder.jpg', link: 'https://www.linkedin.com/in/jaden-han-33b02b292/'},
-          { id: 'p4', name: 'Yuhwan Chon', role: 'Outreach', image: '/team/YunwanChon.jpg', link: 'https://www.linkedin.com/in/yuhwan-chon-48014a1a4/'},
           { id: 'p5', name: 'Arhant Jajodia', role: 'Outreach', image: '/team/placeholder.jpg', link: ''},
           
         ]
@@ -68,6 +67,7 @@ export default function Team() {
         members: [
           { id: 'p6', name: 'Eric Xie', role: 'Scheduling', image: '/team/EricXie.jpg', link: 'https://www.linkedin.com/in/eric-xie-68a620385/' },
           { id: 'p7', name: 'Jack Tommaney', role: 'Scheduling', image: '/team/Jack Tommaney.jpg', link: 'https://www.linkedin.com/in/jack-tommaney-19a598255/' },
+          { id: 'p4', name: 'Yuhwan Chon', role: 'Scheduling', image: '/team/YunwanChon.jpg', link: 'https://www.linkedin.com/in/yuhwan-chon-48014a1a4/'},
         ]
       },
       'Marketing': {
