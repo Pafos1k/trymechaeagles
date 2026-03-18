@@ -47,6 +47,7 @@ export default function Sponsors() {
       document.querySelectorAll(".reveal").forEach((el) => el.classList.add("in"));
     }
 
+    // Card interactions
     const cards = document.querySelectorAll(".sponsor-card");
     cards.forEach((card) => {
       card.addEventListener("click", function (e) {
@@ -79,7 +80,7 @@ export default function Sponsors() {
         const centerY = rect.height / 2;
         const rotateX = (y - centerY) / 20;
         const rotateY = (centerX - x) / 20;
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
       });
 
       card.addEventListener("mouseleave", function () {
@@ -87,14 +88,17 @@ export default function Sponsors() {
       });
     });
 
-    document.querySelectorAll(".cta-button").forEach((btn) => {
-      btn.addEventListener("click", function () {
+    // CTA button animation
+    const ctaButton = document.querySelector(".cta-button");
+    if (ctaButton) {
+      ctaButton.addEventListener("click", function () {
         this.style.animation = "buttonPulse 0.5s ease";
         setTimeout(() => (this.style.animation = ""), 500);
       });
-    });
+    }
   }, []);
 
+  // 🖼️ Sponsor Data organized by tiers
   const sponsorTiers = {
     platinum: [
       {
@@ -123,12 +127,6 @@ export default function Sponsors() {
         image: "/IGOS.png",
         donatedAmount: "$...",
       },
-      {
-        name: "Technical Partner",
-        desc: "Providing state-of-the-art tools and manufacturing support",
-        image: "/FUSION365.png",
-        donatedAmount: "$...",
-      },
     ],
     silver: [
       {
@@ -154,28 +152,6 @@ export default function Sponsors() {
     ],
   };
 
-  const renderCards = (tier) =>
-    sponsorTiers[tier].map((s, i) => (
-      <div className={`sponsor-card sponsor-card-${tier} reveal`} key={`${tier}-${i}`}>
-        <div className="sponsor-card-inner">
-          <div className="sponsor-logo-container">
-            <img src={s.image} alt={s.name} className="sponsor-logo" loading="lazy" />
-          </div>
-          <div className="sponsor-info">
-            <h3 className="sponsor-name">{s.name}</h3>
-            <p className="sponsor-description">
-              <ShinyText text={s.desc} color1="#ffffff" speed={5} />
-            </p>
-          </div>
-        </div>
-        <div className="sponsor-donation-overlay" aria-hidden="true">
-          <span className="sponsor-donation-icon">♥</span>
-          <span className="sponsor-donation-label">Donated to us</span>
-          <span className="sponsor-donation-amount">{s.donatedAmount}</span>
-        </div>
-      </div>
-    ));
-
   return (
     <div className="sponsors-page">
       <Header fixed={false} />
@@ -183,81 +159,213 @@ export default function Sponsors() {
       <main className="sponsors-main">
         <div className="sponsors-container">
           <section className="sponsors-hero reveal">
-            <div className="sponsors-title-wrapper">
-              <div className="sponsors-title-bg">WELCOME!</div>
-              <h1 className="sponsors-title-fg">OUR SPONSORS</h1>
-            </div>
+            <h1 className="sponsors-title">OUR SPONSORS</h1>
             <p className="sponsors-subtitle">
-              <ShinyText text="POWERING INNOVATION THROUGH PARTNERSHIP" color1="#ffffff" speed={4} />
+              <ShinyText
+                text="Powering Innovation Through Partnership"
+                color1="#ffffff"
+                speed={4}
+              />
             </p>
           </section>
 
+
           {/* PLATINUM TIER */}
           <section className="sponsor-tier-section reveal">
-            <div className="sponsor-tier-divider sponsor-tier-divider-platinum">
-              <div className="tier-line" />
-              <h2 className="sponsor-tier-title">PLATINUM</h2>
-              <div className="tier-line" />
+            <div className="sponsor-tier-banner sponsor-tier-banner-platinum">
+              <h2 className="sponsor-tier-title">
+                <ShinyText
+                  text="Platinum Sponsors"
+                  color1="rgba(160, 210, 255, 1)"
+                  speed={4}
+                />
+              </h2>
             </div>
-            <div className="sponsor-tier-group">
-              <div className="sponsors-grid">{renderCards("platinum")}</div>
+            <div className="sponsor-tier-group sponsor-tier-group-platinum">
+              <div className="sponsors-grid">
+                {sponsorTiers.platinum.map((s, i) => (
+                  <div className="sponsor-card reveal" key={`platinum-${i}`}>
+                    <div className="sponsor-card-inner">
+                      <div className="sponsor-logo-container">
+                        <img
+                          src={s.image}
+                          alt={s.name}
+                          className="sponsor-logo"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div className="sponsor-info">
+                        <h3 className="sponsor-name">{s.name}</h3>
+                        <p className="sponsor-description">
+                          <ShinyText
+                            text={s.desc}
+                            color1="#ffffff"
+                            speed={5}
+                          />
+                        </p>
+                      </div>
+                    </div>
+                    <div className="sponsor-donation-overlay" aria-hidden="true">
+                      <span className="sponsor-donation-icon">♥</span>
+                      <span className="sponsor-donation-label">Donated to us</span>
+                      <span className="sponsor-donation-amount">{s.donatedAmount}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </section>
 
           {/* GOLD TIER */}
           <section className="sponsor-tier-section reveal">
-            <div className="sponsor-tier-divider sponsor-tier-divider-gold">
-              <div className="tier-line" />
-              <h2 className="sponsor-tier-title">GOLD</h2>
-              <div className="tier-line" />
+            <div className="sponsor-tier-banner sponsor-tier-banner-gold">
+              <h2 className="sponsor-tier-title">
+                <ShinyText
+                  text="Gold Sponsors"
+                  color1="rgba(255, 225, 90, 1)"
+                  speed={4}
+                />
+              </h2>
             </div>
-            <div className="sponsor-tier-group">
-              <div className="sponsors-grid">{renderCards("gold")}</div>
+            <div className="sponsor-tier-group sponsor-tier-group-gold">
+              <div className="sponsors-grid">
+                {sponsorTiers.gold.map((s, i) => (
+                  <div className="sponsor-card reveal" key={`gold-${i}`}>
+                    <div className="sponsor-card-inner">
+                      <div className="sponsor-logo-container">
+                        <img
+                          src={s.image}
+                          alt={s.name}
+                          className="sponsor-logo"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div className="sponsor-info">
+                        <h3 className="sponsor-name">{s.name}</h3>
+                        <p className="sponsor-description">
+                          <ShinyText
+                            text={s.desc}
+                            color1="#ffffff"
+                            speed={5}
+                          />
+                        </p>
+                      </div>
+                    </div>
+                    <div className="sponsor-donation-overlay" aria-hidden="true">
+                      <span className="sponsor-donation-icon">♥</span>
+                      <span className="sponsor-donation-label">Donated to us</span>
+                      <span className="sponsor-donation-amount">{s.donatedAmount}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </section>
 
           {/* SILVER TIER */}
           <section className="sponsor-tier-section reveal">
-            <div className="sponsor-tier-divider sponsor-tier-divider-silver">
-              <div className="tier-line" />
-              <h2 className="sponsor-tier-title">SILVER</h2>
-              <div className="tier-line" />
+            <div className="sponsor-tier-banner sponsor-tier-banner-silver">
+              <h2 className="sponsor-tier-title">
+                <ShinyText
+                  text="Silver Sponsors"
+                  color1="rgba(255, 255, 255, 1)"
+                  speed={4}
+                />
+              </h2>
             </div>
-            <div className="sponsor-tier-group">
-              <div className="sponsors-grid">{renderCards("silver")}</div>
+            <div className="sponsor-tier-group sponsor-tier-group-silver">
+              <div className="sponsors-grid">
+                {sponsorTiers.silver.map((s, i) => (
+                  <div className="sponsor-card reveal" key={`silver-${i}`}>
+                    <div className="sponsor-card-inner">
+                      <div className="sponsor-logo-container">
+                        <img
+                          src={s.image}
+                          alt={s.name}
+                          className="sponsor-logo"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div className="sponsor-info">
+                        <h3 className="sponsor-name">{s.name}</h3>
+                        <p className="sponsor-description">
+                          <ShinyText
+                            text={s.desc}
+                            color1="#ffffff"
+                            speed={5}
+                          />
+                        </p>
+                      </div>
+                    </div>
+                    <div className="sponsor-donation-overlay" aria-hidden="true">
+                      <span className="sponsor-donation-icon">♥</span>
+                      <span className="sponsor-donation-label">Donated to us</span>
+                      <span className="sponsor-donation-amount">{s.donatedAmount}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </section>
 
           {/* BRONZE TIER */}
           <section className="sponsor-tier-section reveal">
-            <div className="sponsor-tier-divider sponsor-tier-divider-bronze">
-              <div className="tier-line" />
-              <h2 className="sponsor-tier-title">BRONZE</h2>
-              <div className="tier-line" />
+            <div className="sponsor-tier-banner sponsor-tier-banner-bronze">
+              <h2 className="sponsor-tier-title">
+                <ShinyText
+                  text="Bronze Sponsors"
+                  color1="rgba(205, 127, 50, 1)"
+                  speed={4}
+                />
+              </h2>
             </div>
-            <div className="sponsor-tier-group">
-              <div className="sponsors-grid">{renderCards("bronze")}</div>
+            <div className="sponsor-tier-group sponsor-tier-group-bronze">
+              <div className="sponsors-grid">
+                {sponsorTiers.bronze.map((s, i) => (
+                  <div className="sponsor-card reveal" key={`bronze-${i}`}>
+                    <div className="sponsor-card-inner">
+                      <div className="sponsor-logo-container">
+                        <img
+                          src={s.image}
+                          alt={s.name}
+                          className="sponsor-logo"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div className="sponsor-info">
+                        <h3 className="sponsor-name">{s.name}</h3>
+                        <p className="sponsor-description">
+                          <ShinyText
+                            text={s.desc}
+                            color1="#ffffff"
+                            speed={5}
+                          />
+                        </p>
+                      </div>
+                    </div>
+                    <div className="sponsor-donation-overlay" aria-hidden="true">
+                      <span className="sponsor-donation-icon">♥</span>
+                      <span className="sponsor-donation-label">Donated to us</span>
+                      <span className="sponsor-donation-amount">{s.donatedAmount}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </section>
 
-          {/* BECOME A SPONSOR CTA */}
           <section className="sponsors-cta reveal">
             <div className="cta-content">
               <h2 className="cta-title">BECOME A SPONSOR</h2>
               <p className="cta-text">
                 <ShinyText
-                  text="Join us in shaping the future of robotics and engineering"
-                  speed={3}
+                text="Join us in shaping the future of robotics and engineering"
+                speed={3}
                 />
               </p>
-              <div className="cta-buttons-row">
-                <button className="cta-button">
-                  <span className="cta-button-inner">SPONSOR INFO</span>
-                </button>
-                <button className="cta-button">
-                  <span className="cta-button-inner">SPONSOR US</span>
-                </button>
-              </div>
+              <button className="cta-button">
+                <span className="cta-button-inner">SPONSOR US</span>
+              </button>
             </div>
           </section>
         </div>

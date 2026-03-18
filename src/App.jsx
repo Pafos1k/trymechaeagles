@@ -20,12 +20,12 @@ const App = () => {
       <Header />
 
       {/* --- FIRST SECTION (Hero) --- */}
-      <section className="w-full h-screen relative flex justify-center items-center overflow-visible">
+      <section className="w-full relative flex flex-col justify-start items-center overflow-visible pt-32">
         {/* --- BACKGROUND EFFECT --- */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <LightRays
             raysOrigin="top-center"
-            raysColor="white"
+            raysColor="#751522"
             raysSpeed={0.9}
             lightSpread={0.9}
             rayLength={2.8}
@@ -39,12 +39,11 @@ const App = () => {
           />
         </div>
 
-        {/* --- GALLERY (positioned absolutely) --- */}
-        <RollingGallery />
-
-        {/* --- MAIN CONTAINER (no Header here) --- */}
-        <div className="container relative z-50">
-          <main className="relative z-40">
+        {/* --- NEW FLEX WRAPPER --- */}
+        <div className="hero-flex-container relative z-50">
+          
+          {/* --- TEXT CONTENT --- */}
+          <main className="flex-1 relative z-40">
             <div className="content text-white">
               <div className="tag-box">
                 <div className="tag">INTRODUCING</div>
@@ -64,12 +63,18 @@ const App = () => {
               />
 
               <div className="buttons">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdOunUSR7l-q5qoLFwdAk3kbL_Radpw5x2goj_70lSLZm_vgQ/viewform?usp=header" className="btn-get-started">
+                <a href="https://docs.google.com" className="btn-get-started">
                   JOIN US
                 </a>
               </div>
             </div>
           </main>
+
+          {/* --- GALLERY (Now a sibling) --- */}
+          <div className="flex-1 flex justify-center items-center">
+            <RollingGallery />
+          </div>
+
         </div>
       </section>
 
