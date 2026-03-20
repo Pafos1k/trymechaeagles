@@ -98,58 +98,60 @@ export default function Sponsors() {
   const sponsorTiers = {
     platinum: [
       {
-        name: "Premier Partner",
-        desc: "Leading innovation in robotics and engineering excellence",
-        image: "/SAE.png",
-        donatedAmount: "$...",
+        name: "SolidWorks",
+        desc: "Supporting the next generation of engineers and innovators",
+        image: "/SOLIDWORK.png",
+        donatedAmount: "Platinum",
       },
       {
-        name: "Technology Leader",
-        desc: "Advancing mechanical engineering through cutting-edge solutions",
-        image: "/NASA.png",
-        donatedAmount: "$...",
+        name: "Fusion 360",
+        desc: "Providing state-of-the-art tools and manufacturing support",
+        image: "/FUSION365.png",
+        donatedAmount: "Platinum",
+      },
+      {
+        name: "BC Engineering",
+        desc: "Building the future through educational partnerships",
+        image: "/BCEngeeniring.png",
+        donatedAmount: "Platinum",
       },
     ],
     gold: [
       {
-        name: "Innovation Partner",
-        desc: "Supporting the next generation of engineers and innovators",
-        image: "/SOLIDWORK.png",
-        donatedAmount: "$...",
-      },
-      {
-        name: "Strategic Ally",
-        desc: "Empowering teams with resources and technical expertise",
-        image: "/IGOS.png",
-        donatedAmount: "$...",
-      },
-      {
-        name: "Technical Partner",
-        desc: "Providing state-of-the-art tools and manufacturing support",
-        image: "/FUSION365.png",
-        donatedAmount: "$...",
+        name: "DONATE NOW",
+        desc: "Become a Gold Sponsor and support our mission.",
+        image: "/DonateNow.png",
+        donatedAmount: "Gold",
       },
     ],
     silver: [
       {
-        name: "Technical Partner",
-        desc: "Providing state-of-the-art tools and manufacturing support",
-        image: "/FUSION365.png",
-        donatedAmount: "$...",
-      },
-      {
-        name: "Community Supporter",
-        desc: "Building the future through educational partnerships",
-        image: "/BCEngeeniring.png",
-        donatedAmount: "$...",
+        name: "IGOS Welding",
+        desc: "Empowering teams with resources and technical expertise",
+        image: "/IGOS.png",
+        donatedAmount: "Silver",
       },
     ],
     bronze: [
       {
-        name: "Bronze Supporter",
-        desc: "Supporting our team's journey with valuable contributions",
-        image: "/placeholder.png",
-        donatedAmount: "$...",
+        name: "DONATE NOW",
+        desc: "Become a Bronze Sponsor and aid our team's journey.",
+        image: "/DonateNow.png",
+        donatedAmount: "Bronze",
+      },
+    ],
+    affiliates: [
+      {
+        name: "NASA",
+        desc: "Leading innovation in robotics and engineering excellence",
+        image: "/NASA.png",
+        donatedAmount: "Affiliate",
+      },
+      {
+        name: "SAE",
+        desc: "Advancing mechanical engineering through cutting-edge solutions",
+        image: "/SAE.png",
+        donatedAmount: "Affiliate",
       },
     ],
   };
@@ -237,6 +239,18 @@ export default function Sponsors() {
             </div>
             <div className="sponsor-tier-group">
               <div className="sponsors-grid">{renderCards("bronze")}</div>
+            </div>
+          </section>
+
+          {/* AFFILIATES TIER */}
+          <section className="sponsor-tier-section reveal">
+            <div className="sponsor-tier-divider sponsor-tier-divider-affiliates">
+              <div className="tier-line" />
+              <h2 className="sponsor-tier-title">AFFILIATES</h2>
+              <div className="tier-line" />
+            </div>
+            <div className="sponsor-tier-group">
+              <div className="sponsors-grid">{renderCards("affiliates")}</div>
             </div>
           </section>
 
