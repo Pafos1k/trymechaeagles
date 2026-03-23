@@ -76,6 +76,7 @@ export default function HallwayGallery() {
   const trackRef       = useRef(null);
   const centerViewRef  = useRef(null);
   const centerInnerRef = useRef(null);
+  const sentinelRef    = useRef(null);
 
   const testimonials = useMemo(() => [
     { name: "Vedarsh Mishra",     role: "Project Manager",    avatar: "/team/VedarshMishra.jpg",      quote: QUOTE },
@@ -90,7 +91,8 @@ export default function HallwayGallery() {
     const trackEl       = trackRef.current;
     const centerViewEl  = centerViewRef.current;
     const centerInnerEl = centerInnerRef.current;
-    if (!stageEl || !trackEl || !centerViewEl || !centerInnerEl) return;
+    const sentinelEl    = sentinelRef.current;
+    if (!stageEl || !trackEl || !centerViewEl || !centerInnerEl || !sentinelEl) return;
 
     const primaryEls  = Array.from(trackEl.querySelectorAll("[data-primary]"));
     const shadowEls   = Array.from(trackEl.querySelectorAll("[data-shadow]"));
@@ -98,7 +100,7 @@ export default function HallwayGallery() {
     if (!primaryEls.length) return;
 
     const spacingZ   = 500;
-    const startZ     = -9000;
+    const startZ     = -9210;
     const WARMUP_Z   = 1200;
     const wallX      = 750;
     const wallRotY   = 71;
@@ -106,18 +108,29 @@ export default function HallwayGallery() {
     const travel = totalDepth;
     gsap.set(trackEl, { transformStyle: "preserve-3d" });
 
-    const placePrimary = (el, i) => {
+    const getPreProgress = () => {
+      const stageTop  = stageEl.getBoundingClientRect().top + window.scrollY;
+      const winH      = window.innerHeight;
+      const scrollY   = window.scrollY;
+      const preStart  = stageTop - winH;
+      const preEnd    = stageTop;
+      const preRange  = preEnd - preStart;
+      if (preRange <= 0) return 1;
+      return Math.min(1, Math.max(0, (scrollY - preStart) / preRange));
+    };
+
+    const placePrimary = (el, i, preProgress = 0, PRE_TRAVEL = 0) => {
       const isLeft = el.getAttribute("data-side") === "left";
       const vy = parseFloat(el.getAttribute("data-vy") || "0");
       gsap.set(el, {
         x: isLeft ? -wallX : wallX,
         y: vy,
-        z: startZ + i * spacingZ + WARMUP_Z,
+        z: startZ + i * spacingZ + WARMUP_Z + preProgress * PRE_TRAVEL,
         rotationY: isLeft ? wallRotY : -wallRotY,
       });
     };
 
-    const placeShadow = (el) => {
+    const placeShadow = (el, preProgress = 0, PRE_TRAVEL = 0) => {
       const idx    = parseInt(el.getAttribute("data-idx"), 10);
       const isLeft = el.getAttribute("data-side") === "left";
       const ox     = parseFloat(el.getAttribute("data-ox"));
@@ -127,14 +140,14 @@ export default function HallwayGallery() {
       gsap.set(el, {
         x: (isLeft ? -wallX : wallX) + (isLeft ? ox : -ox),
         y: oy,
-        z: startZ + idx * spacingZ + WARMUP_Z + oz,
+        z: startZ + idx * spacingZ + WARMUP_Z + oz + preProgress * PRE_TRAVEL,
         rotationY: isLeft ? wallRotY : -wallRotY,
         scale: sc,
       });
     };
 
-    primaryEls.forEach(placePrimary);
-    shadowEls.forEach(placeShadow);
+    primaryEls.forEach((el, i) => placePrimary(el, i, 0, 0));
+    shadowEls.forEach((el) => placeShadow(el, 0, 0));
     updateOpacity(allFrameEls);
 
     let currentScrollTriggers = [];
@@ -146,11 +159,6 @@ export default function HallwayGallery() {
       gsap.killTweensOf(allFrameEls);
       gsap.killTweensOf(centerInnerEl);
 
-      primaryEls.forEach(placePrimary);
-      shadowEls.forEach(placeShadow);
-      gsap.set(centerInnerEl, { y: 0 });
-      updateOpacity(allFrameEls);
-
       const centerScrollAmount = Math.max(
         0,
         centerInnerEl.scrollHeight - centerViewEl.clientHeight
@@ -158,20 +166,21 @@ export default function HallwayGallery() {
 
       const PRE_TRAVEL        = travel * 0.18;
       const MAIN_TRAVEL       = travel * 0.82;
-      const preCenterTravel   = centerScrollAmount * 0.06;
-      const mainCenterTravel  = centerScrollAmount * 0.94;
-      const OUTRO_TRAVEL      = 1800;
+      const preCenterTravel   = centerScrollAmount * 0.12;
+      const mainCenterTravel  = centerScrollAmount * 2;
+  
+      const OUTRO_TRAVEL      = Math.abs(startZ) * 0.55 + 2400;
+      const OUTRO_SCROLL_PX   = 1600;
       const END_PX            = Math.max(900, centerScrollAmount * 1.05);
+
+      const preProgress = getPreProgress();
+      primaryEls.forEach((el, i) => placePrimary(el, i, preProgress, PRE_TRAVEL));
+      shadowEls.forEach((el) => placeShadow(el, preProgress, PRE_TRAVEL));
+      gsap.set(centerInnerEl, { y: -preProgress * preCenterTravel });
+      updateOpacity(allFrameEls);
 
       const onUpdate = () => updateOpacity(allFrameEls);
 
-      // PRE-SCROLL: move as soon as section enters viewport.
-      // KEY FIX: immediateRender: false prevents GSAP from snapping all
-      // elements to their tween start-state on the first paint, before
-      // the scrub has calculated the correct progress for the current
-      // scroll position. onRefresh forces the correct progress to be
-      // applied immediately after every ScrollTrigger.refresh() call
-      // (including the initial one on page load).
       const preTl = gsap.timeline({
         defaults: { ease: "none" },
         scrollTrigger: {
@@ -179,10 +188,12 @@ export default function HallwayGallery() {
           start: "top bottom",
           end: "top top",
           scrub: true,
-          invalidateOnRefresh: true,
           onUpdate,
-          onRefresh: (self) => {
-            self.animation?.progress(self.progress, false);
+          onRefresh: () => {
+            const pp = getPreProgress();
+            primaryEls.forEach((el, i) => placePrimary(el, i, pp, PRE_TRAVEL));
+            shadowEls.forEach((el) => placeShadow(el, pp, PRE_TRAVEL));
+            gsap.set(centerInnerEl, { y: -pp * preCenterTravel });
             updateOpacity(allFrameEls);
           },
         },
@@ -194,7 +205,6 @@ export default function HallwayGallery() {
       preTl.to(centerInnerEl, { y: -preCenterTravel, immediateRender: false }, 0);
       currentScrollTriggers.push(preTl.scrollTrigger);
 
-      // MAIN PINNED PHASE
       const tl = gsap.timeline({
         defaults: { ease: "none" },
         scrollTrigger: {
@@ -206,10 +216,6 @@ export default function HallwayGallery() {
           pinSpacing: true,
           invalidateOnRefresh: true,
           onUpdate,
-          onRefresh: (self) => {
-            self.animation?.progress(self.progress, false);
-            updateOpacity(allFrameEls);
-          },
         },
       });
 
@@ -217,13 +223,13 @@ export default function HallwayGallery() {
       tl.to(centerInnerEl, { y: -mainCenterTravel }, 0);
       currentScrollTriggers.push(tl.scrollTrigger);
 
-      // OPTIONAL OUTRO
+  
       const outroTl = gsap.timeline({
         defaults: { ease: "none" },
         scrollTrigger: {
-          trigger: stageEl,
-          start: () => `top top+=${END_PX}`,
-          end: () => `top top+=${END_PX + 1400}`,
+          trigger: sentinelEl,
+          start: "top bottom",  
+          end: `+=${OUTRO_SCROLL_PX}`,
           scrub: true,
           invalidateOnRefresh: true,
           onUpdate,
@@ -253,65 +259,69 @@ export default function HallwayGallery() {
   }, []);
 
   return (
-    <section className="hallway-section" ref={stageRef}>
-      <div style={styles.camera}>
-        <div ref={trackRef} style={styles.track}>
-          {SLOTS.map((slot, i) => (
-            <React.Fragment key={i}>
-              {[...slot.shadows].reverse().map((sh, si) => (
+    <>
+      <section className="hallway-section" ref={stageRef}>
+        <div style={styles.camera}>
+          <div ref={trackRef} style={styles.track}>
+            {SLOTS.map((slot, i) => (
+              <React.Fragment key={i}>
+                {[...slot.shadows].reverse().map((sh, si) => (
+                  <figure
+                    key={`sh-${i}-${si}`}
+                    data-shadow
+                    data-idx={i}
+                    data-side={slot.side}
+                    data-ox={sh.ox}
+                    data-oz={sh.oz}
+                    data-oy={sh.oy}
+                    data-sc={sh.sc}
+                    style={{
+                      ...styles.frame,
+                      width: Math.round(420 * sh.sc),
+                      height: Math.round(560 * sh.sc),
+                    }}
+                  >
+                    <img src={sh.src} alt="" style={styles.img} draggable={false} loading="lazy" />
+                  </figure>
+                ))}
                 <figure
-                  key={`sh-${i}-${si}`}
-                  data-shadow
-                  data-idx={i}
+                  data-primary
                   data-side={slot.side}
-                  data-ox={sh.ox}
-                  data-oz={sh.oz}
-                  data-oy={sh.oy}
-                  data-sc={sh.sc}
-                  style={{
-                    ...styles.frame,
-                    width: Math.round(420 * sh.sc),
-                    height: Math.round(560 * sh.sc),
-                  }}
+                  data-vy={slot.vy}
+                  style={styles.frame}
                 >
-                  <img src={sh.src} alt="" style={styles.img} draggable={false} loading="lazy" />
+                  <img src={slot.src} alt="" style={styles.img} draggable={false} loading="lazy" />
                 </figure>
-              ))}
-              <figure
-                data-primary
-                data-side={slot.side}
-                data-vy={slot.vy}
-                style={styles.frame}
-              >
-                <img src={slot.src} alt="" style={styles.img} draggable={false} loading="lazy" />
-              </figure>
-            </React.Fragment>
-          ))}
-        </div>
-
-        <div style={styles.fadeTop} />
-        <div style={styles.fadeBottom} />
-
-        <div ref={centerViewRef} style={styles.centerViewport}>
-          <div ref={centerInnerRef} style={styles.centerInner}>
-            {testimonials.map((t, i) => (
-              <div key={i} style={styles.card}>
-                <div style={styles.topRow}>
-                  <img src={t.avatar} alt="" style={styles.avatar} draggable={false} loading="lazy" />
-                  <div style={styles.topText}>
-                    <div style={styles.name}>{t.name}</div>
-                    <div style={styles.meta}>{t.role}</div>
-                  </div>
-                </div>
-                <p style={styles.quote}>{t.quote}</p>
-              </div>
+              </React.Fragment>
             ))}
           </div>
-        </div>
 
-        <div style={styles.vignette} />
-      </div>
-    </section>
+          <div style={styles.fadeTop} />
+          <div style={styles.fadeBottom} />
+
+          <div ref={centerViewRef} style={styles.centerViewport}>
+            <div ref={centerInnerRef} style={styles.centerInner}>
+              {testimonials.map((t, i) => (
+                <div key={i} style={styles.card}>
+                  <div style={styles.topRow}>
+                    <img src={t.avatar} alt="" style={styles.avatar} draggable={false} loading="lazy" />
+                    <div style={styles.topText}>
+                      <div style={styles.name}>{t.name}</div>
+                      <div style={styles.meta}>{t.role}</div>
+                    </div>
+                  </div>
+                  <p style={styles.quote}>{t.quote}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div style={styles.vignette} />
+        </div>
+      </section>
+      {}
+      <div ref={sentinelRef} style={{ height: 1, pointerEvents: "none" }} />
+    </>
   );
 }
 
