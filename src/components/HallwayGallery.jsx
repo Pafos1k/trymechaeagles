@@ -510,11 +510,12 @@ const styles = {
     borderRadius: 8,
     flexShrink: 0,
   },
-  topText: {
-    display: "flex",
-    flexDirection: "column",
-    gap: 4,
-  },
+topText: {
+  display: "flex",
+  flexDirection: "column",
+  gap: 4,
+  alignItems: "flex-start",
+},
   name: {
     fontSize: 15,
     fontWeight: 800,
@@ -527,6 +528,7 @@ const styles = {
     fontSize: 13,
     color: "rgba(255,255,255,0.50)",
     letterSpacing: "0.01em",
+    
   },
   quote: {
     margin: 0,
