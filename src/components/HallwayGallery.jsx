@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
+
 const SLOTS = [
   { side: "left",  src: "/AboutPictures/h3.jpg",  vy: -150, shadows: [
     { src: "/AboutPictures/h6.jpg",  ox: -400, oz: -70, oy:  -90, sc: 0.95 },
@@ -54,6 +55,55 @@ const QUOTE =
 const FADE_START = -5200;
 const FADE_FULL  = -3200;
 
+function getLayout() {
+  const vw = window.innerWidth;
+  const isMobile = vw <= 768;
+  const isSmallPhone = vw <= 480;
+
+  if (!isMobile) {
+    return {
+      wallX: 750,
+      wallRotY: 71,
+      frameW: 420,
+      frameH: 560,
+      scale: 1,
+      centerWidth: "min(440px, 88vw)",
+      centerMaxWidth: "440px",
+      centerHeight: "74%",
+      centerTop: "50%",
+      centerPaddingTop: 60,
+      cameraPerspective: "clamp(380px, 78vw, 1100px)",
+      fadeWidth: "40%",
+      vignette:
+        "linear-gradient(to right, rgba(0,0,0,0.85) 0%, transparent 26%, transparent 74%, rgba(0,0,0,0.85) 100%)",
+    };
+  }
+
+  const mobileScale = Math.max(0.42, Math.min(0.72, vw / 700));
+
+  return {
+    wallX: Math.round((isSmallPhone ? 980 : 900) * mobileScale),
+    wallRotY: 74,
+    frameW: Math.round((isSmallPhone ? 520 : 500) * mobileScale),
+    frameH: Math.round((isSmallPhone ? 700 : 670) * mobileScale),
+    scale: mobileScale,
+
+    // narrower text column on phone
+    centerWidth: isSmallPhone ? "58vw" : "60vw",
+    centerMaxWidth: isSmallPhone ? "250px" : "290px",
+
+    // move text block a bit lower and add more top padding
+    centerHeight: "74%",
+    centerTop: isSmallPhone ? "52%" : "51%",
+    centerPaddingTop: isSmallPhone ? 92 : 82,
+
+    cameraPerspective: "clamp(320px, 72vw, 900px)",
+    fadeWidth: "40%",
+    vignette:
+      "linear-gradient(to right, rgba(0,0,0,0.80) 0%, transparent 18%, transparent 82%, rgba(0,0,0,0.80) 100%)",
+  };
+}
+
 let rafPending = false;
 function updateOpacity(els) {
   if (rafPending) return;
@@ -79,11 +129,11 @@ export default function HallwayGallery() {
   const sentinelRef    = useRef(null);
 
   const testimonials = useMemo(() => [
-    { name: "Vedarsh Mishra",     role: "Project Manager",    avatar: "/team/VedarshMishra.jpg",      quote: QUOTE },
-    { name: "Austin Kinnealey",  role: "Project Manager",    avatar: "/team/Austin Kinnealey.jpg",   quote: QUOTE },
-    { name: "Lucas DiMarco",     role: "Science Lead",       avatar: "/team/Lucas DiMarco.jpg",      quote: QUOTE },
-    { name: "Ambrose McCullough",role: "Programmatics Lead", avatar: "/team/Ambrose McCullough.jpg", quote: QUOTE },
-    { name: "Sam Kaiser",        role: "Engineering Lead",   avatar: "/team/Samuel Kaiser.jpg",      quote: QUOTE },
+    { name: "Vedarsh Mishra",      role: "Project Manager",    avatar: "/team/VedarshMishra.jpg",      quote: QUOTE },
+    { name: "Austin Kinnealey",    role: "Project Manager",    avatar: "/team/Austin Kinnealey.jpg",   quote: QUOTE },
+    { name: "Lucas DiMarco",       role: "Science Lead",       avatar: "/team/Lucas DiMarco.jpg",      quote: QUOTE },
+    { name: "Ambrose McCullough",  role: "Programmatics Lead", avatar: "/team/Ambrose McCullough.jpg", quote: QUOTE },
+    { name: "Sam Kaiser",          role: "Engineering Lead",   avatar: "/team/Samuel Kaiser.jpg",      quote: QUOTE },
   ], []);
 
   useEffect(() => {
@@ -102,52 +152,66 @@ export default function HallwayGallery() {
     const spacingZ   = 500;
     const startZ     = -9210;
     const WARMUP_Z   = 1200;
-    const wallX      = 750;
-    const wallRotY   = 71;
     const totalDepth = primaryEls.length * spacingZ;
-    const travel = totalDepth;
+    const travel     = totalDepth;
     gsap.set(trackEl, { transformStyle: "preserve-3d" });
 
     const getPreProgress = () => {
-      const stageTop  = stageEl.getBoundingClientRect().top + window.scrollY;
-      const winH      = window.innerHeight;
-      const scrollY   = window.scrollY;
-      const preStart  = stageTop - winH;
-      const preEnd    = stageTop;
-      const preRange  = preEnd - preStart;
+      const stageTop = stageEl.getBoundingClientRect().top + window.scrollY;
+      const winH     = window.innerHeight;
+      const scrollY  = window.scrollY;
+      const preStart = stageTop - winH;
+      const preEnd   = stageTop;
+      const preRange = preEnd - preStart;
       if (preRange <= 0) return 1;
       return Math.min(1, Math.max(0, (scrollY - preStart) / preRange));
     };
 
     const placePrimary = (el, i, preProgress = 0, PRE_TRAVEL = 0) => {
+      const { wallX, wallRotY } = getLayout();
       const isLeft = el.getAttribute("data-side") === "left";
-      const vy = parseFloat(el.getAttribute("data-vy") || "0");
+      const vy     = parseFloat(el.getAttribute("data-vy") || "0");
       gsap.set(el, {
-        x: isLeft ? -wallX : wallX,
-        y: vy,
-        z: startZ + i * spacingZ + WARMUP_Z + preProgress * PRE_TRAVEL,
+        x:         isLeft ? -wallX : wallX,
+        y:         vy,
+        z:         startZ + i * spacingZ + WARMUP_Z + preProgress * PRE_TRAVEL,
         rotationY: isLeft ? wallRotY : -wallRotY,
       });
     };
 
     const placeShadow = (el, preProgress = 0, PRE_TRAVEL = 0) => {
+      const { wallX, wallRotY, scale } = getLayout();
       const idx    = parseInt(el.getAttribute("data-idx"), 10);
       const isLeft = el.getAttribute("data-side") === "left";
-      const ox     = parseFloat(el.getAttribute("data-ox"));
+      const ox     = parseFloat(el.getAttribute("data-ox")) * scale;
       const oz     = parseFloat(el.getAttribute("data-oz"));
       const oy     = parseFloat(el.getAttribute("data-oy"));
       const sc     = parseFloat(el.getAttribute("data-sc"));
       gsap.set(el, {
-        x: (isLeft ? -wallX : wallX) + (isLeft ? ox : -ox),
-        y: oy,
-        z: startZ + idx * spacingZ + WARMUP_Z + oz + preProgress * PRE_TRAVEL,
+        x:         (isLeft ? -wallX : wallX) + (isLeft ? ox : -ox),
+        y:         oy,
+        z:         startZ + idx * spacingZ + WARMUP_Z + oz + preProgress * PRE_TRAVEL,
         rotationY: isLeft ? wallRotY : -wallRotY,
-        scale: sc,
+        scale:     sc,
+      });
+    };
+
+    const resizeFrames = () => {
+      const { frameW, frameH } = getLayout();
+      primaryEls.forEach((el) => {
+        el.style.width  = `${frameW}px`;
+        el.style.height = `${frameH}px`;
+      });
+      shadowEls.forEach((el) => {
+        const sc = parseFloat(el.getAttribute("data-sc"));
+        el.style.width  = `${Math.round(frameW * sc)}px`;
+        el.style.height = `${Math.round(frameH * sc)}px`;
       });
     };
 
     primaryEls.forEach((el, i) => placePrimary(el, i, 0, 0));
     shadowEls.forEach((el) => placeShadow(el, 0, 0));
+    resizeFrames();
     updateOpacity(allFrameEls);
 
     let currentScrollTriggers = [];
@@ -159,24 +223,28 @@ export default function HallwayGallery() {
       gsap.killTweensOf(allFrameEls);
       gsap.killTweensOf(centerInnerEl);
 
+      resizeFrames();
+
       const centerScrollAmount = Math.max(
         0,
         centerInnerEl.scrollHeight - centerViewEl.clientHeight
       );
 
-      const PRE_TRAVEL        = travel * 0.18;
-      const MAIN_TRAVEL       = travel * 0.82;
-      const preCenterTravel   = centerScrollAmount * 0.12;
-      const mainCenterTravel  = centerScrollAmount * 2;
-  
-      const OUTRO_TRAVEL      = Math.abs(startZ) * 0.55 + 2400;
-      const OUTRO_SCROLL_PX   = 1600;
-      const END_PX            = Math.max(900, centerScrollAmount * 1.05);
+      const PRE_TRAVEL       = travel * 0.18;
+      const MAIN_TRAVEL      = travel * 0.82;
+      const preCenterTravel  = centerScrollAmount * 0.06;
+      const mainCenterTravel = centerScrollAmount * 0.94;
+      const OUTRO_TRAVEL     = Math.abs(startZ) * 0.55 + 2400;
+      const OUTRO_SCROLL_PX  = 1800;
+      const END_PX           = Math.max(900, centerScrollAmount * 1.05);
 
       const preProgress = getPreProgress();
+      const layout = getLayout();
+
       primaryEls.forEach((el, i) => placePrimary(el, i, preProgress, PRE_TRAVEL));
       shadowEls.forEach((el) => placeShadow(el, preProgress, PRE_TRAVEL));
       gsap.set(centerInnerEl, { y: -preProgress * preCenterTravel });
+      centerInnerEl.style.paddingTop = `${layout.centerPaddingTop}px`;
       updateOpacity(allFrameEls);
 
       const onUpdate = () => updateOpacity(allFrameEls);
@@ -190,15 +258,17 @@ export default function HallwayGallery() {
           scrub: true,
           onUpdate,
           onRefresh: () => {
+            resizeFrames();
             const pp = getPreProgress();
+            const refreshedLayout = getLayout();
             primaryEls.forEach((el, i) => placePrimary(el, i, pp, PRE_TRAVEL));
             shadowEls.forEach((el) => placeShadow(el, pp, PRE_TRAVEL));
             gsap.set(centerInnerEl, { y: -pp * preCenterTravel });
+            centerInnerEl.style.paddingTop = `${refreshedLayout.centerPaddingTop}px`;
             updateOpacity(allFrameEls);
           },
         },
       });
-
       allFrameEls.forEach((el) =>
         preTl.to(el, { z: `+=${PRE_TRAVEL}`, immediateRender: false }, 0)
       );
@@ -218,24 +288,21 @@ export default function HallwayGallery() {
           onUpdate,
         },
       });
-
       allFrameEls.forEach((el) => tl.to(el, { z: `+=${MAIN_TRAVEL}` }, 0));
       tl.to(centerInnerEl, { y: -mainCenterTravel }, 0);
       currentScrollTriggers.push(tl.scrollTrigger);
 
-  
       const outroTl = gsap.timeline({
         defaults: { ease: "none" },
         scrollTrigger: {
           trigger: sentinelEl,
-          start: "top bottom",  
+          start: "top bottom",
           end: `+=${OUTRO_SCROLL_PX}`,
           scrub: true,
           invalidateOnRefresh: true,
           onUpdate,
         },
       });
-
       allFrameEls.forEach((el) => outroTl.to(el, { z: `+=${OUTRO_TRAVEL}` }, 0));
       currentScrollTriggers.push(outroTl.scrollTrigger);
 
@@ -258,10 +325,17 @@ export default function HallwayGallery() {
     };
   }, []);
 
+  const layout = getLayout();
+
   return (
     <>
       <section className="hallway-section" ref={stageRef}>
-        <div style={styles.camera}>
+        <div
+          style={{
+            ...styles.camera,
+            perspective: layout.cameraPerspective,
+          }}
+        >
           <div ref={trackRef} style={styles.track}>
             {SLOTS.map((slot, i) => (
               <React.Fragment key={i}>
@@ -277,7 +351,7 @@ export default function HallwayGallery() {
                     data-sc={sh.sc}
                     style={{
                       ...styles.frame,
-                      width: Math.round(420 * sh.sc),
+                      width:  Math.round(420 * sh.sc),
                       height: Math.round(560 * sh.sc),
                     }}
                   >
@@ -288,7 +362,7 @@ export default function HallwayGallery() {
                   data-primary
                   data-side={slot.side}
                   data-vy={slot.vy}
-                  style={styles.frame}
+                  style={{ ...styles.frame, width: 420, height: 560 }}
                 >
                   <img src={slot.src} alt="" style={styles.img} draggable={false} loading="lazy" />
                 </figure>
@@ -296,11 +370,26 @@ export default function HallwayGallery() {
             ))}
           </div>
 
-          <div style={styles.fadeTop} />
-          <div style={styles.fadeBottom} />
+          <div style={{ ...styles.fadeTop, width: layout.fadeWidth }} />
+          <div style={{ ...styles.fadeBottom, width: layout.fadeWidth }} />
 
-          <div ref={centerViewRef} style={styles.centerViewport}>
-            <div ref={centerInnerRef} style={styles.centerInner}>
+          <div
+            ref={centerViewRef}
+            style={{
+              ...styles.centerViewport,
+              top: layout.centerTop,
+              width: layout.centerWidth,
+              maxWidth: layout.centerMaxWidth,
+              height: layout.centerHeight,
+            }}
+          >
+            <div
+              ref={centerInnerRef}
+              style={{
+                ...styles.centerInner,
+                paddingTop: layout.centerPaddingTop,
+              }}
+            >
               {testimonials.map((t, i) => (
                 <div key={i} style={styles.card}>
                   <div style={styles.topRow}>
@@ -316,10 +405,14 @@ export default function HallwayGallery() {
             </div>
           </div>
 
-          <div style={styles.vignette} />
+          <div
+            style={{
+              ...styles.vignette,
+              background: layout.vignette,
+            }}
+          />
         </div>
       </section>
-      {}
       <div ref={sentinelRef} style={{ height: 1, pointerEvents: "none" }} />
     </>
   );
@@ -332,7 +425,6 @@ const styles = {
     height: "min(760px, 82vh)",
     overflow: "hidden",
     background: "transparent",
-    perspective: "1100px",
     margin: "0 auto",
   },
   track: {
@@ -344,8 +436,6 @@ const styles = {
     position: "absolute",
     top: "50%",
     left: "50%",
-    width: 420,
-    height: 560,
     transform: "translate(-50%, -50%)",
     overflow: "hidden",
     background: "transparent",
@@ -384,7 +474,7 @@ const styles = {
     left: "50%",
     top: "50%",
     transform: "translate(-50%, -50%)",
-    width: "min(440px, 55vw)",
+    width: "min(440px, 88vw)",
     height: "74%",
     overflow: "hidden",
     background: "transparent",
@@ -448,8 +538,6 @@ const styles = {
   vignette: {
     position: "absolute",
     inset: 0,
-    background:
-      "linear-gradient(to right, rgba(0,0,0,0.85) 0%, transparent 26%, transparent 74%, rgba(0,0,0,0.85) 100%)",
     pointerEvents: "none",
     zIndex: 5,
   },
