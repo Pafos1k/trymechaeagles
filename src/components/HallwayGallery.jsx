@@ -511,10 +511,11 @@ const styles = {
     flexShrink: 0,
   },
   topText: {
-    display: "flex",
-    flexDirection: "column",
-    gap: 4,
-  },
+  display: "flex",
+  flexDirection: "column",
+  gap: 4,
+  alignItems: "flex-start",
+},
   name: {
     fontSize: 15,
     fontWeight: 800,
