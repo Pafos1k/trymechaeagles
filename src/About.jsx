@@ -158,10 +158,6 @@ export default function About() {
           </div>
         </section>
   
-
-
-        
-
         {/* SIDE MENU SECTION */}
         <section className="menu-section">
           {/* LEFT MENU */}

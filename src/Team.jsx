@@ -66,7 +66,7 @@ export default function Team() {
         members: [
           { id: 'p6', name: 'Eric Xie', role: 'Scheduling', image: '/team/EricXie.jpg', link: 'https://www.linkedin.com/in/eric-xie-68a620385/' },
           { id: 'p7', name: 'Jack Tommaney', role: 'Scheduling', image: '/team/Jack Tommaney.jpg', link: 'https://www.linkedin.com/in/jack-tommaney-19a598255/' },
-          { id: 'p4', name: 'Yuhwan Chon', role: 'Scheduling', image: '/team/YunwanChon.jpg', link: 'https://www.linkedin.com/in/yuhwan-chon-48014a1a4/'},
+          { id: 'p8', name: 'Yuhwan Chon', role: 'Scheduling', image: '/team/YunwanChon.jpg', link: 'https://www.linkedin.com/in/yuhwan-chon-48014a1a4/'},
         ]
       },
       'Marketing': {
@@ -78,11 +78,11 @@ export default function Team() {
       },
       'Finance': {
         head: [
-          { id: 'p8', name: 'Matt Mahan', role: 'Co-Head of Finance', image: '/team/Matt Mahan.jpg', link: 'https://www.linkedin.com/in/matt-mahan-88853a327/' },
-          { id: 'p9', name: 'Marcos Garay', role: 'Co-Head of Finance', image: '/team/Marcos Garay.jpg', link: 'https://www.linkedin.com/in/marcos-garay-723b48330/'},
+          { id: 'p9', name: 'Matt Mahan', role: 'Co-Head of Finance', image: '/team/Matt Mahan.jpg', link: 'https://www.linkedin.com/in/matt-mahan-88853a327/' },
+          { id: 'p10', name: 'Marcos Garay', role: 'Co-Head of Finance', image: '/team/Marcos Garay.jpg', link: 'https://www.linkedin.com/in/marcos-garay-723b48330/'},
         ],
         members: [
-          { id: 'p10', name: '', role: '', image: '/team/Apply.jpg', link: 'https://docs.google.com/forms/d/e/1FAIpQLSdOunUSR7l-q5qoLFwdAk3kbL_Radpw5x2goj_70lSLZm_vgQ/viewform' },
+          { id: 'p11', name: '', role: '', image: '/team/Apply.jpg', link: 'https://docs.google.com/forms/d/e/1FAIpQLSdOunUSR7l-q5qoLFwdAk3kbL_Radpw5x2goj_70lSLZm_vgQ/viewform' },
         ]
       },
     },
